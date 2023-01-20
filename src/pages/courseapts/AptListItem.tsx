@@ -5,6 +5,7 @@ import {Col, Grid, Stack, Tag, Row, IconButton, Button} from "rsuite";
 import CheckRoundIcon from "@rsuite/icons/CheckRound";
 import WarningRoundIcon from '@rsuite/icons/WarningRound';
 import FileUploadIcon from '@rsuite/icons/FileUpload';
+import {ListItem, ListItemButton, ListItemSecondaryAction, ListItemText} from "@mui/material";
 
 interface AptListItemProps {
     apt: Apt
@@ -35,11 +36,9 @@ function renderStatusTag(status: "DONE" | "INCOMPLETE" | "NOT_STARTED") {
     }
 }
 
-export const AptListItem = observer((props : AptListItemProps) => {
-
-    return (
-        <Button appearance="subtle" style={{width: "100%",}}>
-        <Grid fluid style={{marginLeft: 16, marginRight: 16, marginBottom: 4, marginTop: 4}} onClick={props.onClick}>
+function renderItemBody(props: AptListItemProps) {
+    return(
+        <Grid fluid style={{marginLeft: 16, marginBottom: 4, marginTop: 4, padding:0}} onClick={props.onClick}>
             <Row style={{display: 'flex', alignItems: "center"}}>
                 <Col xs={8} >
                     <Stack spacing={12}>
@@ -50,13 +49,53 @@ export const AptListItem = observer((props : AptListItemProps) => {
                 <Col xs={16} style={{textAlign:'right'}}>
                     <Stack spacing={12} justifyContent={"flex-end"}>
                         {renderStatusTag(props.apt.status)}
-                        <IconButton size="sm" icon={<FileUploadIcon />}>
-                        Submit
-                    </IconButton>
                     </Stack>
                 </Col>
             </Row>
         </Grid>
-        </Button>
+    )
+    // return (
+    //     <Stack spacing={8}>
+    //         {props.apt.name}
+    //         {renderDifficultyTag(props.apt.difficulty)}
+    //         {renderStatusTag(props.apt.status)}
+    //     </Stack>
+    // );
+}
+
+export const AptListItem = observer((props : AptListItemProps) => {
+
+    return (
+        <ListItem key={props.apt.id}>
+            <ListItemButton onClick={props.onClick} style={{ marginRight: 66, paddingRight:6}}>
+                <ListItemText primary={renderItemBody(props)}>Teste</ListItemText>
+            </ListItemButton>
+                <ListItemSecondaryAction>
+                    <IconButton size="sm" icon={<FileUploadIcon />}>
+                        Submit
+                    </IconButton>
+                </ListItemSecondaryAction>
+        </ListItem>
     );
 });
+
+// <Button appearance="subtle" style={{width: "100%",}}>
+//     <Grid fluid style={{marginLeft: 16, marginRight: 16, marginBottom: 4, marginTop: 4}} onClick={props.onClick}>
+//         <Row style={{display: 'flex', alignItems: "center"}}>
+//             <Col xs={8} >
+//                 <Stack spacing={12}>
+//                     <span style={{color: "#575757"}}>{props.apt.name}</span>
+//                     {renderDifficultyTag(props.apt.difficulty)}
+//                 </Stack>
+//             </Col>
+//             <Col xs={16} style={{textAlign:'right'}}>
+//                 <Stack spacing={12} justifyContent={"flex-end"}>
+//                     {renderStatusTag(props.apt.status)}
+//                     <IconButton size="sm" icon={<FileUploadIcon />}>
+//                         Submit
+//                     </IconButton>
+//                 </Stack>
+//             </Col>
+//         </Row>
+//     </Grid>
+// </Button>
