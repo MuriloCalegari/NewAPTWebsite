@@ -20,7 +20,8 @@ module.exports = (api, options) => {
       '@babel/plugin-proposal-export-namespace-from',
       '@babel/plugin-proposal-export-default-from',
       ['@babel/plugin-transform-runtime', { useESModules: !modules }],
-      ['module-resolver', { alias: { '@': './src' } }]
+      ['module-resolver', { alias: { '@': './src' } }],
+      "react-refresh/babel"
     ]
   };
 };
