@@ -1,6 +1,6 @@
 import RootStore from "@/stores/RootStore";
 import {action, makeAutoObservable, observable} from "mobx";
-import {Apt} from "@/pages/courseapts/ProblemSetList";
+import {Apt} from "@/data/model/Apt";
 
 export default class CourseAptsStore {
 
@@ -25,6 +25,5 @@ export default class CourseAptsStore {
     closeDrawer = () => {
         console.log("closeDrawer");
         this.isDrawerOpen = false;
-        this.currentLoadedApt = undefined;
     }
 }

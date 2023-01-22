@@ -1,11 +1,11 @@
 import {observer} from "mobx-react-lite";
-import {ProblemSet} from "@/pages/courseapts/ProblemSetList";
 import React from "react";
 import {List, ListItem, ListItemAvatar, ListItemButton, ListItemText} from "@mui/material";
 import ArrowRightLineIcon from '@rsuite/icons/ArrowRightLine';
 import {Progress} from "rsuite";
 import {AptListItem} from "@/pages/courseapts/AptListItem";
 import {useStores} from "@/hooks/useStores";
+import {ProblemSet} from "@/data/model/ProblemSet";
 
 interface ProblemSetItemProps {
     problemSet: ProblemSet;

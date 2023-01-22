@@ -4,20 +4,7 @@ import {ProblemSetItem} from "@/pages/courseapts/ProblemSetItem";
 import {List} from "@mui/material";
 import {useStores} from "@/hooks/useStores";
 import {AptDrawer} from "@/pages/courseapts/AptDrawer";
-
-export class Apt {
-    id!: number;
-    name!: string;
-    difficulty!: "HARD" | "MEDIUM" | "EASY";
-    status!: "DONE" | "INCOMPLETE" | "NOT_STARTED";
-}
-
-export class ProblemSet {
-    id!: number;
-    name!: string;
-    percentageComplete!: number;
-    apts!: Apt[];
-}
+import {ProblemSet} from "@/data/model/ProblemSet";
 
 interface ProblemSetListProps {
     problemSets: ProblemSet[];

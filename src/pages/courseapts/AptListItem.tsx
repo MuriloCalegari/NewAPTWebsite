@@ -1,11 +1,11 @@
 import React from "react";
 import {observer} from "mobx-react-lite";
-import {Apt} from "@/pages/courseapts/ProblemSetList";
 import {Col, Grid, Stack, Tag, Row, IconButton, Button} from "rsuite";
 import CheckRoundIcon from "@rsuite/icons/CheckRound";
 import WarningRoundIcon from '@rsuite/icons/WarningRound';
 import FileUploadIcon from '@rsuite/icons/FileUpload';
 import {ListItem, ListItemButton, ListItemSecondaryAction, ListItemText} from "@mui/material";
+import {Apt} from "@/data/model/Apt";
 
 interface AptListItemProps {
     apt: Apt
