@@ -11,7 +11,7 @@ export const problemSetsData: ProblemSet[] = [
                 "name": "Totality APT",
                 "difficulty": "MEDIUM",
                 "status": "DONE",
-                "problemStatement": "The phrases even keeled, odd job, and total eclipse might come to mind as you solve this APT. Given an array of int values, return the sum of those values that are at odd indexes, even indexes, or every index depending on whether the value of the String stype is \"odd\", \"even\", or \"all\", respectively. See examples for details.",
+                "problemStatement": "The phrases even keeled, odd job, and total eclipse might come to mind as you solve this APT. Given an array of int values, return the sum of those values that are at odd indexes, even indexes, or every index depending on whether the value of the String stype is **_\"odd\"_**, **_\"even\"_**, or **_\"all\"_**, respectively. See examples for details.",
                 "classCode": "public class Totality {\n    public int sum(int[] a, String stype) {\n        return 0;\n    }\n}",
                 "constraints": "The array a[] will have between 2 and 50 values **(inclusive)**:\n * The sum of the values in a[] will be less than Integer.MAX_VALUE. \n * The value of String stype will be \"odd\", or \"even\", or \"all\"",
                 "isQuizTaken": true,
@@ -68,35 +68,43 @@ export const problemSetsData: ProblemSet[] = [
     }
 ];
 
-export interface RuntimeData {
-    startingTime: number;
-    endingTime: number;
-    overallRuntimes: number[];
+export interface PerformanceData {
+    startingValue: number;
+    endingValue: number;
+    overallData: number[];
 }
 
 // Map containing mock data of runtime of different test cases for different APTs
 // The key is the test case id
 // The value is an array with the number of submissions on each chunk of the overall runtime interval
 // on a total of 20 submission runtime groups
-export const runtimeData = new Map<number, RuntimeData>(
+export const runtimeData = new Map<number, PerformanceData>(
     [
         [1, {
-            startingTime: 0,
-            endingTime: 200,
-            overallRuntimes: [0, 2, 4, 5, 2, 1, 10, 16, 32, 25, 10, 25, 3, 2, 4, 4, 1, 3, 2, 0]
+            startingValue: 0,
+            endingValue: 200,
+            overallData: [4, 12, 4, 5, 2, 1, 10, 16, 40, 25, 10, 25, 3, 2, 4, 4, 1, 3, 2, 6]
         }],
         [2, {
-            startingTime: 0,
-            endingTime: 200,
-            overallRuntimes: [0, 2, 4, 5, 2, 1, 10, 16, 32, 25, 10, 25, 3, 2, 4, 4, 1, 3, 2, 0]
+            startingValue: 0,
+            endingValue: 200,
+            overallData: [10, 2, 4, 5, 2, 1, 10, 16, 32, 25, 10, 25, 3, 2, 4, 4, 1, 3, 2, 6]
         }],
     ]
 );
 
 // Same thing as runtimeData, but for memory
-export const memoryData = new Map<{ aptId: number, testCaseNumber: number }, number[]>(
+export const memoryData = new Map<number, PerformanceData>(
     [
-        [{ aptId: 1, testCaseNumber: 1 }, [0, 2, 4, 5, 2, 1, 10, 16, 32, 25, 10, 25, 3, 2, 4, 4, 1, 3, 2, 0]],
-        [{ aptId: 1, testCaseNumber: 2 }, [0, 2, 4, 5, 2, 1, 10, 16, 32, 25, 10, 25, 3, 2, 4, 4, 1, 3, 2, 0]],
+        [1, {
+            startingValue: 0,
+            endingValue: 200,
+            overallData: [4, 12, 4, 5, 2, 1, 10, 16, 40, 25, 10, 25, 3, 2, 4, 4, 1, 3, 2, 6]
+        }],
+        [2, {
+            startingValue: 0,
+            endingValue: 200,
+            overallData: [10, 2, 4, 5, 2, 1, 10, 16, 32, 25, 10, 25, 3, 2, 4, 4, 1, 3, 2, 5]
+        }],
     ]
 );

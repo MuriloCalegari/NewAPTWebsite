@@ -1,11 +1,11 @@
 import React from "react";
 import {observer} from "mobx-react-lite";
-import {Col, Grid, Stack, Tag, Row, IconButton, Button} from "rsuite";
+import {Col, Grid, Stack, Tag, Row, Button} from "rsuite";
 import CheckRoundIcon from "@rsuite/icons/CheckRound";
 import WarningRoundIcon from '@rsuite/icons/WarningRound';
-import FileUploadIcon from '@rsuite/icons/FileUpload';
 import {ListItem, ListItemButton, ListItemSecondaryAction, ListItemText} from "@mui/material";
 import {Apt} from "@/data/model/Apt";
+import {SubmitButton} from "@/components/Buttons/SubmitButton";
 
 interface AptListItemProps {
     apt: Apt
@@ -67,14 +67,12 @@ export const AptListItem = observer((props : AptListItemProps) => {
 
     return (
         <ListItem key={props.apt.id}>
-            <ListItemButton onClick={props.onClick} style={{ marginRight: 66, paddingRight:6}}>
+            <ListItemButton onClick={props.onClick} style={{marginRight: 66, paddingRight: 6}}>
                 <ListItemText primary={renderItemBody(props)}>Teste</ListItemText>
             </ListItemButton>
-                <ListItemSecondaryAction>
-                    <IconButton size="sm" icon={<FileUploadIcon />}>
-                        Submit
-                    </IconButton>
-                </ListItemSecondaryAction>
+            <ListItemSecondaryAction>
+                <SubmitButton/>
+            </ListItemSecondaryAction>
         </ListItem>
     );
 });

@@ -7,8 +7,9 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import ReactMarkdown from "react-markdown";
 import WarningRoundIcon from '@rsuite/icons/WarningRound';
 import CheckRoundIcon from '@rsuite/icons/CheckRound';
-import {RuntimeGraph} from "@/components/graphs/RuntimeGraph";
-import {runtimeData} from "@/data/ProblemSetsData";
+import {PerformanceGraph} from "@/components/graphs/PerformanceGraph";
+import {memoryData, PerformanceData, runtimeData} from "@/data/ProblemSetsData";
+import {SubmitButton} from "@/components/Buttons/SubmitButton";
 
 export interface AptDrawerProps extends DrawerProps {
     apt?: Apt;
@@ -61,19 +62,6 @@ export const AptDrawer = observer((props: AptDrawerProps) => {
     );
 });
 
-const ConstraintsCard = observer((props: { constraints?: string }) => {
-    return <Panel
-        style={{backgroundColor: "white"}}
-        header={<h4>Constraints</h4>}
-    >
-        {props.constraints &&
-            <ReactMarkdown>
-                {props.constraints}
-            </ReactMarkdown>
-        }
-    </Panel>;
-});
-
 const SubmissionsCard = observer((props : { testCases?: TestCase[] }) => {
 
     const { testCases } = props;
@@ -85,22 +73,22 @@ const SubmissionsCard = observer((props : { testCases?: TestCase[] }) => {
                 {testCase.submission && testCase.submission.userOutput === testCase.expectedOutput &&
                     <CheckRoundIcon style={{marginTop: -4}} color="green"/>}
                 {testCase.submission && testCase.submission.userOutput !== testCase.expectedOutput &&
-                <WarningRoundIcon style={{marginTop: -4}} color="red"/>}
+                    <WarningRoundIcon style={{marginTop: -4}} color="red"/>}
             </Stack>
         );
     }
 
     return (<Panel
         style={{backgroundColor: "white"}}
-        header={<h4>Your submission</h4>}
+        header={
+            <Stack justifyContent="space-between" style={{marginRight: 16}}>
+                <h4>Your submission</h4>
+                <SubmitButton/>
+            </Stack>
+        }
     >
         <PanelGroup accordion >
             {testCases && testCases.map((testCase: TestCase) => {
-                console.log("testCase: " + testCase.testNumber);
-                console.log(runtimeData);
-                console.log({aptId: testCase.aptId, testCaseNumber: testCase.testNumber})
-                console.log(runtimeData.get(testCase.id))
-
                 return (
                     <Panel header={renderHeader(testCase)}>
                         <Grid style={{width: "100%"}}>
@@ -141,13 +129,69 @@ const SubmissionsCard = observer((props : { testCases?: TestCase[] }) => {
                                     <Stack direction="column" alignItems="flex-start">
                                         <b>Explanation</b>
                                         <p>{testCase.explanation}</p>
-                                        <Stack.Item style={{width: "100%"}}>
-                                            <RuntimeGraph
-                                                height={150}
-                                                userRuntime={testCase.submission.runtime}
-                                                runtimeData={runtimeData.get(testCase.id)}
-                                                labels={["0", "2", "4", "5", "2", "1", "10", "16", "32", "25", "10", "25", "3", "2", "4", "4", "1", "3", "2", "0"]}
-                                            />
+                                        <div style={{marginTop: 18}}><b>Runtime performance</b></div>
+                                        <Stack.Item style={{width: "100%", marginTop: -8}}>
+                                            <Row gutter={32}>
+                                                <Col xs={24} md={12}>
+                                                        <PerformanceGraph
+                                                            height={75}
+                                                            userValue={testCase.submission.runtime}
+                                                            data={runtimeData.get(testCase.id)}
+                                                            labels={[]}
+                                                        />
+                                                        <Stack.Item style={{width: "100%"}}>
+                                                            <Stack justifyContent="space-between">
+                                                                <Stack spacing={8}>
+                                                                    <span style={{color: "#575757"}}>Runtime</span>
+                                                                    <b>{testCase.submission.runtime + " ms"}</b>
+                                                                </Stack>
+                                                                <Stack spacing={8}>
+                                                                    <span style={{color: "#575757"}}>Beats</span>
+                                                                    <span style={{
+                                                                        background: "#2589F5",
+                                                                        borderRadius: 12,
+                                                                        paddingTop: 5,
+                                                                        paddingBottom: 5,
+                                                                        paddingLeft: 8,
+                                                                        paddingRight: 8,
+                                                                        width: "100%",
+                                                                        color: "white"
+                                                                    }}><b>{computeBeats(testCase.submission.runtime, runtimeData.get(testCase.id))}</b></span>
+                                                                </Stack>
+                                                            </Stack>
+                                                        </Stack.Item>
+                                                </Col>
+                                                <Col xs={24} md={12}>
+                                                    <PerformanceGraph
+                                                        height={75}
+                                                        userValue={testCase.submission.memory}
+                                                        data={memoryData.get(testCase.id)}
+                                                        labels={[]}
+                                                        highlightColor={"#FFC107"}
+                                                    />
+                                                    <Stack.Item style={{width: "100%"}}>
+                                                        <Stack justifyContent="space-between">
+                                                            <Stack spacing={8}>
+                                                                <span style={{color: "#575757"}}>Memory</span>
+                                                                <b>{testCase.submission.memory + " MB"}</b>
+                                                            </Stack>
+                                                            <Stack spacing={8}>
+                                                                <span style={{color: "#575757"}}>Beats</span>
+                                                                <span style={{
+                                                                    background: "#FFC107",
+                                                                    borderRadius: 12,
+                                                                    paddingTop: 5,
+                                                                    paddingBottom: 5,
+                                                                    paddingLeft: 8,
+                                                                    paddingRight: 8,
+                                                                    width: "100%",
+                                                                    color: "white"
+                                                                }}><b>{computeBeats(testCase.submission.memory, memoryData.get(testCase.id))}</b></span>
+                                                            </Stack>
+                                                        </Stack>
+                                                    </Stack.Item>
+                                                </Col>
+                                            </Row>
                                         </Stack.Item>
                                     </Stack>
                                 </Col>
@@ -181,6 +225,45 @@ const ProblemStatementCard = observer((props: { problemStatement?: string }) => 
                 <h4>Problem statement</h4>
             </Stack>
         }>
-        <p>{props.problemStatement}</p>
+        {props.problemStatement &&
+            <ReactMarkdown>
+                {props.problemStatement}
+            </ReactMarkdown>
+        }
     </Panel>;
 });
+
+
+
+const ConstraintsCard = observer((props: { constraints?: string }) => {
+    return <Panel
+        style={{backgroundColor: "white"}}
+        header={<h4>Constraints</h4>}
+    >
+        {props.constraints &&
+            <ReactMarkdown>
+                {props.constraints}
+            </ReactMarkdown>
+        }
+    </Panel>;
+});
+
+function computeBeats(userPerformance: number, performanceData: PerformanceData | undefined) {
+    if (performanceData) {
+        const intervalSize = (performanceData.endingValue - performanceData.startingValue) / performanceData.overallData.length;
+
+        const intervalIndex = Math.floor(userPerformance / intervalSize);
+
+        let beats = 0;
+        let totalValue = 0;
+
+        for(let i = 0; i < performanceData.overallData.length; i++) {
+            if(i < intervalIndex) beats += performanceData.overallData[i];
+            totalValue += performanceData.overallData[i];
+        }
+
+        // rounds the value to 2 decimal places
+        return Math.round(beats / totalValue * 10000) / 100 + "%";
+    }
+    return 0;
+}
