@@ -46,7 +46,7 @@ function renderItemBody(props: AptListItemProps) {
                         {renderDifficultyTag(props.apt.difficulty)}
                     </Stack>
                 </Col>
-                <Col xs={8} style={{textAlign:'right'}}>
+                <Col xs={8  } style={{textAlign:'right'}}>
                     <Stack spacing={12} justifyContent={"flex-end"}>
                         {renderStatusTag(props.apt.status)}
                     </Stack>

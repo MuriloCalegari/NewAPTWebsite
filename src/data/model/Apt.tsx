@@ -13,7 +13,7 @@ export class TestCase {
     input!: string;
     expectedOutput!: string;
     submission!: Submission;
-    explanation!: string;
+    explanation?: string;
 }
 
 export class Apt {

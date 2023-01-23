@@ -9,6 +9,154 @@ export const problemSetsData: ProblemSet[] = [
             {
                 "id": 1,
                 "name": "Totality APT",
+                "difficulty": "EASY",
+                "status": "DONE",
+                "problemStatement": "The phrases even keeled, odd job, and total eclipse might come to mind as you solve this APT. Given an array of int values, return the sum of those values that are at odd indexes, even indexes, or every index depending on whether the value of the String stype is **_\"odd\"_**, **_\"even\"_**, or **_\"all\"_**, respectively. See examples for details.",
+                "classCode": "public class Totality {\n    public int sum(int[] a, String stype) {\n        return 0;\n    }\n}",
+                "constraints": "The array a[] will have between 2 and 50 values **(inclusive)**:\n * The sum of the values in a[] will be less than Integer.MAX_VALUE. \n * The value of String stype will be \"odd\", or \"even\", or \"all\"",
+                "isQuizTaken": true,
+                "testCases": [
+                    {
+                        id: 1,
+                        aptId: 1,
+                        "testNumber": 1,
+                        "input": "a = [1,2,3,4,5], stype=\"odd\"",
+                        "expectedOutput": "6",
+                        "submission":
+                            {
+                                "testCaseNumber": 1,
+                                "userOutput": "6",
+                                "timestamp": 1623168600000,
+                                "runtime": 45,
+                                "memory": 128
+                            },
+                        "explanation": "The values 2 and 4 occur at odd indexes (indices 1 and 3, respectively)."
+                    },
+                    {
+                        id: 2,
+                        aptId: 1,
+                        "testNumber": 2,
+                        "input": "a = [1,2,3,4,5], stype=\"even\"",
+                        "expectedOutput": "9",
+                        "submission":
+                            {
+                                "testCaseNumber": 2,
+                                "userOutput": "6",
+                                "timestamp": 1623168600000,
+                                "runtime": 45,
+                                "memory": 128
+                            },
+                        "explanation": "The values 1, 3, and 5 occur at even indexes (0, 2, and 4, respectively)."
+                    },
+                    {
+                        id: 3,
+                        aptId: 1,
+                        "testNumber": 3,
+                        "input": "a = {1,2,3,4,5}, stype = \"all\"",
+                        "expectedOutput": "15",
+                        "submission":
+                            {
+                                "testCaseNumber": 3,
+                                "userOutput": "6",
+                                "timestamp": 1623168600000,
+                                "runtime": 45,
+                                "memory": 128
+                            },
+                    },
+                    {
+                        id: 4,
+                        aptId: 1,
+                        "testNumber": 4,
+                        "input": "a = {22, 23}, stype = \"even\"",
+                        "expectedOutput": "22",
+                        "submission":
+                            {
+                                "testCaseNumber": 4,
+                                "userOutput": "22",
+                                "timestamp": 1623168600000,
+                                "runtime": 45,
+                                "memory": 128
+                            },
+                    },
+                ]
+            },
+            {
+                "id": 2,
+                "name": "AccessLevel APT",
+                "difficulty": "EASY",
+                "status": "DONE",
+                "problemStatement": "The phrases even keeled, odd job, and total eclipse might come to mind as you solve this APT. Given an array of int values, return the sum of those values that are at odd indexes, even indexes, or every index depending on whether the value of the String stype is **_\"odd\"_**, **_\"even\"_**, or **_\"all\"_**, respectively. See examples for details.",
+                "classCode": "public class Totality {\n    public int sum(int[] a, String stype) {\n        return 0;\n    }\n}",
+                "constraints": "The array a[] will have between 2 and 50 values **(inclusive)**:\n * The sum of the values in a[] will be less than Integer.MAX_VALUE. \n * The value of String stype will be \"odd\", or \"even\", or \"all\"",
+                "isQuizTaken": true,
+                "testCases": [
+                    {
+                        id: 1,
+                        aptId: 1,
+                        "testNumber": 1,
+                        "input": "a = [1,2,3,4,5], stype=\"odd\"",
+                        "expectedOutput": "6",
+                        "submission":
+                            {
+                                "testCaseNumber": 1,
+                                "userOutput": "6",
+                                "timestamp": 1623168600000,
+                                "runtime": 45,
+                                "memory": 128
+                            },
+                        "explanation": "The values 2 and 4 occur at odd indexes (indices 1 and 3, respectively)."
+                    },
+                    {
+                        id: 2,
+                        aptId: 1,
+                        "testNumber": 2,
+                        "input": "a = [1,2,3,4,5], stype=\"even\"",
+                        "expectedOutput": "9",
+                        "submission":
+                            {
+                                "testCaseNumber": 2,
+                                "userOutput": "6",
+                                "timestamp": 1623168600000,
+                                "runtime": 45,
+                                "memory": 128
+                            },
+                        "explanation": "The values 1, 3, and 5 occur at even indexes (0, 2, and 4, respectively)."
+                    },
+                    {
+                        id: 3,
+                        aptId: 1,
+                        "testNumber": 3,
+                        "input": "a = {1,2,3,4,5}, stype = \"all\"",
+                        "expectedOutput": "15",
+                        "submission":
+                            {
+                                "testCaseNumber": 3,
+                                "userOutput": "6",
+                                "timestamp": 1623168600000,
+                                "runtime": 45,
+                                "memory": 128
+                            },
+                    },
+                    {
+                        id: 4,
+                        aptId: 1,
+                        "testNumber": 4,
+                        "input": "a = {22, 23}, stype = \"even\"",
+                        "expectedOutput": "22",
+                        "submission":
+                            {
+                                "testCaseNumber": 4,
+                                "userOutput": "22",
+                                "timestamp": 1623168600000,
+                                "runtime": 45,
+                                "memory": 128
+                            },
+                    },
+                ]
+            },
+            {
+                "id": 3,
+                "name": "Gravity APT",
                 "difficulty": "MEDIUM",
                 "status": "DONE",
                 "problemStatement": "The phrases even keeled, odd job, and total eclipse might come to mind as you solve this APT. Given an array of int values, return the sum of those values that are at odd indexes, even indexes, or every index depending on whether the value of the String stype is **_\"odd\"_**, **_\"even\"_**, or **_\"all\"_**, respectively. See examples for details.",
@@ -47,6 +195,184 @@ export const problemSetsData: ProblemSet[] = [
                                 "memory": 128
                             },
                         "explanation": "The values 1, 3, and 5 occur at even indexes (0, 2, and 4, respectively)."
+                    },
+                    {
+                        id: 3,
+                        aptId: 1,
+                        "testNumber": 3,
+                        "input": "a = {1,2,3,4,5}, stype = \"all\"",
+                        "expectedOutput": "15",
+                        "submission":
+                            {
+                                "testCaseNumber": 3,
+                                "userOutput": "6",
+                                "timestamp": 1623168600000,
+                                "runtime": 45,
+                                "memory": 128
+                            },
+                    },
+                    {
+                        id: 4,
+                        aptId: 1,
+                        "testNumber": 4,
+                        "input": "a = {22, 23}, stype = \"even\"",
+                        "expectedOutput": "22",
+                        "submission":
+                            {
+                                "testCaseNumber": 4,
+                                "userOutput": "22",
+                                "timestamp": 1623168600000,
+                                "runtime": 45,
+                                "memory": 128
+                            },
+                    },
+                ]
+            },
+            {
+                "id": 4,
+                "name": "Starter APT",
+                "difficulty": "HARD",
+                "status": "DONE",
+                "problemStatement": "The phrases even keeled, odd job, and total eclipse might come to mind as you solve this APT. Given an array of int values, return the sum of those values that are at odd indexes, even indexes, or every index depending on whether the value of the String stype is **_\"odd\"_**, **_\"even\"_**, or **_\"all\"_**, respectively. See examples for details.",
+                "classCode": "public class Totality {\n    public int sum(int[] a, String stype) {\n        return 0;\n    }\n}",
+                "constraints": "The array a[] will have between 2 and 50 values **(inclusive)**:\n * The sum of the values in a[] will be less than Integer.MAX_VALUE. \n * The value of String stype will be \"odd\", or \"even\", or \"all\"",
+                "isQuizTaken": true,
+                "testCases": [
+                    {
+                        id: 1,
+                        aptId: 1,
+                        "testNumber": 1,
+                        "input": "a = [1,2,3,4,5], stype=\"odd\"",
+                        "expectedOutput": "6",
+                        "submission":
+                            {
+                                "testCaseNumber": 1,
+                                "userOutput": "6",
+                                "timestamp": 1623168600000,
+                                "runtime": 45,
+                                "memory": 128
+                            },
+                        "explanation": "The values 2 and 4 occur at odd indexes (indices 1 and 3, respectively)."
+                    },
+                    {
+                        id: 2,
+                        aptId: 1,
+                        "testNumber": 2,
+                        "input": "a = [1,2,3,4,5], stype=\"even\"",
+                        "expectedOutput": "9",
+                        "submission":
+                            {
+                                "testCaseNumber": 2,
+                                "userOutput": "6",
+                                "timestamp": 1623168600000,
+                                "runtime": 45,
+                                "memory": 128
+                            },
+                        "explanation": "The values 1, 3, and 5 occur at even indexes (0, 2, and 4, respectively)."
+                    },
+                    {
+                        id: 3,
+                        aptId: 1,
+                        "testNumber": 3,
+                        "input": "a = {1,2,3,4,5}, stype = \"all\"",
+                        "expectedOutput": "15",
+                        "submission":
+                            {
+                                "testCaseNumber": 3,
+                                "userOutput": "6",
+                                "timestamp": 1623168600000,
+                                "runtime": 45,
+                                "memory": 128
+                            },
+                    },
+                    {
+                        id: 4,
+                        aptId: 1,
+                        "testNumber": 4,
+                        "input": "a = {22, 23}, stype = \"even\"",
+                        "expectedOutput": "22",
+                        "submission":
+                            {
+                                "testCaseNumber": 4,
+                                "userOutput": "22",
+                                "timestamp": 1623168600000,
+                                "runtime": 45,
+                                "memory": 128
+                            },
+                    },
+                ]
+            },
+            {
+                "id": 5,
+                "name": "CirclesCountry APT",
+                "difficulty": "HARD",
+                "status": "DONE",
+                "problemStatement": "The phrases even keeled, odd job, and total eclipse might come to mind as you solve this APT. Given an array of int values, return the sum of those values that are at odd indexes, even indexes, or every index depending on whether the value of the String stype is **_\"odd\"_**, **_\"even\"_**, or **_\"all\"_**, respectively. See examples for details.",
+                "classCode": "public class Totality {\n    public int sum(int[] a, String stype) {\n        return 0;\n    }\n}",
+                "constraints": "The array a[] will have between 2 and 50 values **(inclusive)**:\n * The sum of the values in a[] will be less than Integer.MAX_VALUE. \n * The value of String stype will be \"odd\", or \"even\", or \"all\"",
+                "isQuizTaken": true,
+                "testCases": [
+                    {
+                        id: 1,
+                        aptId: 1,
+                        "testNumber": 1,
+                        "input": "a = [1,2,3,4,5], stype=\"odd\"",
+                        "expectedOutput": "6",
+                        "submission":
+                            {
+                                "testCaseNumber": 1,
+                                "userOutput": "6",
+                                "timestamp": 1623168600000,
+                                "runtime": 45,
+                                "memory": 128
+                            },
+                        "explanation": "The values 2 and 4 occur at odd indexes (indices 1 and 3, respectively)."
+                    },
+                    {
+                        id: 2,
+                        aptId: 1,
+                        "testNumber": 2,
+                        "input": "a = [1,2,3,4,5], stype=\"even\"",
+                        "expectedOutput": "9",
+                        "submission":
+                            {
+                                "testCaseNumber": 2,
+                                "userOutput": "6",
+                                "timestamp": 1623168600000,
+                                "runtime": 45,
+                                "memory": 128
+                            },
+                        "explanation": "The values 1, 3, and 5 occur at even indexes (0, 2, and 4, respectively)."
+                    },
+                    {
+                        id: 3,
+                        aptId: 1,
+                        "testNumber": 3,
+                        "input": "a = {1,2,3,4,5}, stype = \"all\"",
+                        "expectedOutput": "15",
+                        "submission":
+                            {
+                                "testCaseNumber": 3,
+                                "userOutput": "6",
+                                "timestamp": 1623168600000,
+                                "runtime": 45,
+                                "memory": 128
+                            },
+                    },
+                    {
+                        id: 4,
+                        aptId: 1,
+                        "testNumber": 4,
+                        "input": "a = {22, 23}, stype = \"even\"",
+                        "expectedOutput": "22",
+                        "submission":
+                            {
+                                "testCaseNumber": 4,
+                                "userOutput": "22",
+                                "timestamp": 1623168600000,
+                                "runtime": 45,
+                                "memory": 128
+                            },
                     },
                 ]
             },

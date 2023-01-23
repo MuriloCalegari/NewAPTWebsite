@@ -1,6 +1,6 @@
 import React from 'react';
 import {observer} from "mobx-react-lite";
-import {Col, Drawer, DrawerProps, FlexboxGrid, Grid, Panel, PanelGroup, Row, Stack} from "rsuite";
+import {Col, Drawer, DrawerProps, Grid, Panel, PanelGroup, Row, Stack} from "rsuite";
 import {useStores} from "@/hooks/useStores";
 import {Apt, TestCase} from "@/data/model/Apt";
 import SyntaxHighlighter from 'react-syntax-highlighter';
@@ -35,7 +35,7 @@ export const AptDrawer = observer((props: AptDrawerProps) => {
                         style={{backgroundColor: "#F7F7FA"}}
                         className="card"
                     >
-                        <FlexboxGrid>
+                        <Grid>  
                             <Row gutter={24}>
                                 <Col xs={24} md={12} style={{marginBottom: 12}}>
                                     <ProblemStatementCard problemStatement={apt?.problemStatement}/>
@@ -54,7 +54,7 @@ export const AptDrawer = observer((props: AptDrawerProps) => {
                                     <SubmissionsCard testCases={apt?.testCases}/>
                                 </Col>
                             </Row>
-                        </FlexboxGrid>
+                        </Grid>
                     </Panel>
                 </div>
             </Drawer.Body>
@@ -127,9 +127,9 @@ const SubmissionsCard = observer((props : { testCases?: TestCase[] }) => {
                                 </Col>
                                 <Col xs={24} md={18}>
                                     <Stack direction="column" alignItems="flex-start">
-                                        <b>Explanation</b>
-                                        <p>{testCase.explanation}</p>
-                                        <div style={{marginTop: 18}}><b>Runtime performance</b></div>
+                                        { testCase.explanation && <><b>Explanation</b>
+                                            <p>{testCase.explanation}</p></>}
+                                        <div style={{marginTop: testCase.explanation ? 18 : 0}}><b>Runtime performance</b></div>
                                         <Stack.Item style={{width: "100%", marginTop: -8}}>
                                             <Row gutter={32}>
                                                 <Col xs={24} md={12}>
