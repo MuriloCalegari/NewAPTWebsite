@@ -64,6 +64,63 @@ export const problemSetsData: ProblemSet[] = [
         name: "Problem Set 3",
         percentageComplete: 65,
         apts: [
+            {
+                "id": 4,
+                "name": "Prime Numbers APT",
+                "difficulty": "MEDIUM",
+                "status": "INCOMPLETE",
+                "problemStatement": "Write a function that checks if a given number is a prime number.",
+                "classCode": "public class PrimeNumbers {\n public boolean isPrime(int number) {\n return false;\n }\n}",
+                "constraints": "The input number will be between 2 and 10^6 (inclusive).",
+                "isQuizTaken": false,
+                "testCases": [
+                    {
+                        id: 1,
+                        aptId: 4,
+                        "testNumber": 1,
+                        "input": "number = 2",
+                        "expectedOutput": "true",
+                        "submission": {
+                            "testCaseNumber": 1,
+                            "userOutput": "true",
+                            "timestamp": 1623168600000,
+                            "runtime": 45,
+                            "memory": 128
+                        },
+                        "explanation": "2 is a prime number."
+                    },
+                    {
+                        id: 1,
+                        aptId: 4,
+                        "testNumber": 1,
+                        "input": "number = 7",
+                        "expectedOutput": "true",
+                        "submission": {
+                            "testCaseNumber": 1,
+                            "userOutput": "false",
+                            "timestamp": 1623168600000,
+                            "runtime": 45,
+                            "memory": 128
+                        },
+                        "explanation": "7 is a prime number."
+                    },
+                    {
+                        id: 1,
+                        aptId: 4,
+                        "testNumber": 1,
+                        "input": "number = 10",
+                        "expectedOutput": "false",
+                        "submission": {
+                            "testCaseNumber": 1,
+                            "userOutput": "6",
+                            "timestamp": 1623168600000,
+                            "runtime": 45,
+                            "memory": 128
+                        },
+                        "explanation": "10 is not a prime number."
+                    }
+                ]
+            }
         ]
     }
 ];
