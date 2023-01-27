@@ -1,13 +1,13 @@
 import {observer} from "mobx-react-lite";
 import React from "react";
-import {List, ListItem, ListItemAvatar, ListItemButton, ListItemText} from "@mui/material";
+import {List, ListItem, ListItemAvatar, ListItemButton, ListItemProps, ListItemText} from "@mui/material";
 import ArrowRightLineIcon from '@rsuite/icons/ArrowRightLine';
 import {Progress} from "rsuite";
 import {AptListItem} from "@/pages/courseapts/AptListItem";
 import {useStores} from "@/hooks/useStores";
 import {ProblemSet} from "@/data/model/ProblemSet";
 
-interface ProblemSetItemProps {
+interface ProblemSetItemProps extends ListItemProps {
     problemSet: ProblemSet;
     index: number;
 }
@@ -24,6 +24,12 @@ function getStrokeColor(percentage: number) {
 
 export const ProblemSetItem = observer((props : ProblemSetItemProps) => {
 
+    const {
+        problemSet,
+        index,
+        ...other
+    } = props;
+
     const { courseAptsStore } = useStores();
 
     console.log("ProblemSetItem: " + props.problemSet.name);
@@ -32,7 +38,7 @@ export const ProblemSetItem = observer((props : ProblemSetItemProps) => {
 
     return (
         <>
-            <ListItem key={props.problemSet.id}>
+            <ListItem key={props.problemSet.id} {...other}>
                 <ListItemButton onClick={() => setOpen(!open)}>
                     <ListItemAvatar>
                         <ArrowRightLineIcon rotate={open ? 90 : 0}/>

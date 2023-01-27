@@ -54,20 +54,13 @@ function renderItemBody(props: AptListItemProps) {
             </Row>
         </Grid>
     )
-    // return (
-    //     <Stack spacing={8}>
-    //         {props.apt.name}
-    //         {renderDifficultyTag(props.apt.difficulty)}
-    //         {renderStatusTag(props.apt.status)}
-    //     </Stack>
-    // );
 }
 
 export const AptListItem = observer((props : AptListItemProps) => {
 
     return (
-        <ListItem key={props.apt.id}>
-            <ListItemButton onClick={props.onClick} style={{marginRight: 66, paddingRight: 6}}>
+        <ListItem key={props.apt.id} sx={{marginBottom: 0, marginTop: 0, paddingTop: 0, paddingBottom: 0}}>
+            <ListItemButton onClick={props.onClick} sx={{marginRight: 8, paddingRight: 1, paddingTop: "4px", paddingBottom: "4px"}}>
                 <ListItemText primary={renderItemBody(props)}>Teste</ListItemText>
             </ListItemButton>
             <ListItemSecondaryAction>
@@ -76,24 +69,3 @@ export const AptListItem = observer((props : AptListItemProps) => {
         </ListItem>
     );
 });
-
-// <Button appearance="subtle" style={{width: "100%",}}>
-//     <Grid fluid style={{marginLeft: 16, marginRight: 16, marginBottom: 4, marginTop: 4}} onClick={props.onClick}>
-//         <Row style={{display: 'flex', alignItems: "center"}}>
-//             <Col xs={8} >
-//                 <Stack spacing={12}>
-//                     <span style={{color: "#575757"}}>{props.apt.name}</span>
-//                     {renderDifficultyTag(props.apt.difficulty)}
-//                 </Stack>
-//             </Col>
-//             <Col xs={16} style={{textAlign:'right'}}>
-//                 <Stack spacing={12} justifyContent={"flex-end"}>
-//                     {renderStatusTag(props.apt.status)}
-//                     <IconButton size="sm" icon={<FileUploadIcon />}>
-//                         Submit
-//                     </IconButton>
-//                 </Stack>
-//             </Col>
-//         </Row>
-//     </Grid>
-// </Button>
