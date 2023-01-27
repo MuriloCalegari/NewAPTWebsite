@@ -11,7 +11,7 @@ const Copyright = () => {
             Murilo Calegari
           </a>
           {' and '}
-          <a href="https://github.com/MuriloCalegari" target="_blank" rel="noreferrer">
+          <a href="https://github.com/teyaevans" target="_blank" rel="noreferrer">
             Teya Evans
           </a>
         </p>

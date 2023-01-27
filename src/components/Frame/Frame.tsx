@@ -6,6 +6,8 @@ import NavToggle from './NavToggle';
 import Header from '../Header';
 import NavLink from '../NavLink';
 import Brand from '../Brand';
+import { CustomProvider } from 'rsuite';
+import enGB from 'rsuite/locales/en_GB';
 
 const { getHeight, on } = DOMHelper;
 
@@ -36,6 +38,7 @@ const Frame = (props: FrameProps) => {
   const { navs } = props;
   const [expand, setExpand] = useState(true);
   const [windowHeight, setWindowHeight] = useState(getHeight(window));
+  const [theme, setTheme] = useState<'light' | 'dark' | 'high-contrast'>('light');
 
   useEffect(() => {
     setWindowHeight(getHeight(window));
@@ -51,57 +54,59 @@ const Frame = (props: FrameProps) => {
   });
 
   const navBodyStyle: React.CSSProperties = expand
-    ? { height: windowHeight - 112, overflow: 'auto' }
+    ? { height: windowHeight - 150, overflow: 'auto' }
     : {};
 
   return (
-    <Container className="frame">
-      <Sidebar
-        style={{ display: 'flex', flexDirection: 'column' }}
-        width={expand ? 260 : 56}
-        collapsible
-      >
-        <Sidenav.Header>
-          <Brand />
-        </Sidenav.Header>
-        <Sidenav expanded={expand} appearance="subtle" defaultOpenKeys={['2', '3']}>
-          <Sidenav.Body style={navBodyStyle}>
-            <Nav>
-              {navs.map(item => {
-                const { children, ...rest } = item;
-                if (children) {
-                  return (
-                    <Nav.Menu key={item.eventKey} placement="rightStart" trigger="hover" {...rest}>
-                      {children.map(child => {
-                        return <NavItem key={child.eventKey} {...child} />;
-                      })}
-                    </Nav.Menu>
-                  );
-                }
+    <CustomProvider locale={enGB} theme={theme}>
+      <Container className="frame">
+        <Sidebar
+          style={{ display: 'flex', flexDirection: 'column' }}
+          width={expand ? 260 : 56}
+          collapsible
+        >
+          <Sidenav.Header>
+            <Brand />
+          </Sidenav.Header>
+          <Sidenav expanded={expand} appearance="subtle" defaultOpenKeys={['2', '3']}>
+            <Sidenav.Body style={navBodyStyle}>
+              <Nav>
+                {navs.map(item => {
+                  const { children, ...rest } = item;
+                  if (children) {
+                    return (
+                      <Nav.Menu key={item.eventKey} placement="rightStart" trigger="hover" {...rest}>
+                        {children.map(child => {
+                          return <NavItem key={child.eventKey} {...child} />;
+                        })}
+                      </Nav.Menu>
+                    );
+                  }
 
-                if (rest.target === '_blank') {
-                  return (
-                    <Nav.Item key={item.eventKey} {...rest}>
-                      {item.title}
-                    </Nav.Item>
-                  );
-                }
+                  if (rest.target === '_blank') {
+                    return (
+                      <Nav.Item key={item.eventKey} {...rest}>
+                        {item.title}
+                      </Nav.Item>
+                    );
+                  }
 
-                return <NavItem key={rest.eventKey} {...rest} />;
-              })}
-            </Nav>
-          </Sidenav.Body>
-        </Sidenav>
-        <NavToggle expand={expand} onChange={() => setExpand(!expand)} />
-      </Sidebar>
+                  return <NavItem key={rest.eventKey} {...rest} />;
+                })}
+              </Nav>
+            </Sidenav.Body>
+          </Sidenav>
+          <NavToggle expand={expand} onChange={() => setExpand(!expand)} />
+        </Sidebar>
 
-      <Container className={containerClasses}>
-        <Header />
-        <Content>
-          <Outlet />
-        </Content>
+        <Container className={containerClasses}>
+          <Header theme={theme} onChangeTheme={setTheme}/>
+          <Content>
+            <Outlet />
+          </Content>
+        </Container>
       </Container>
-    </Container>
+    </CustomProvider>
   );
 };
 

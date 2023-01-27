@@ -16,7 +16,7 @@
 @base-color: #34c3ff;
 
 body {
-  background: #f5f8fa;
+  background: var(--rs-body);
 }
 
 .text-muted {
@@ -27,6 +27,7 @@ body {
   position: fixed;
   height: 100vh;
   z-index: 3;
+  border-right: 1px solid var(--rs-divider-border);
 }
 
 .page-container {

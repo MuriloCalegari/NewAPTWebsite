@@ -15,7 +15,8 @@ import NoticeIcon from '@rsuite/icons/Notice';
 import HelpOutlineIcon from '@rsuite/icons/HelpOutline';
 import GithubIcon from '@rsuite/icons/legacy/Github';
 import HeartIcon from '@rsuite/icons/legacy/HeartO';
-import {Toggle} from "rsuite";
+import {Icon} from "@rsuite/icons";
+import { MdOutlineNightlight, MdOutlineLightMode } from 'react-icons/md';
 
 const renderAdminSpeaker = ({ onClose, left, top, className }: any, ref) => {
   const handleSelect = eventKey => {
@@ -89,15 +90,28 @@ const renderNoticeSpeaker = ({ onClose, left, top, className }: any, ref) => {
   );
 };
 
-const Header = () => {
+type ThemeType = 'dark' | 'light' | 'high-contrast';
+interface HeaderProps {
+    theme: ThemeType;
+    onChangeTheme: (theme: ThemeType) => void;
+}
+
+const Header = (props : HeaderProps) => {
   const trigger = useRef<WhisperInstance>(null);
+
+    const { theme, onChangeTheme } = props;
 
   return (
     <Stack className="header" spacing={8}>
-      <Toggle
-        size="md" checkedChildren="Dark" unCheckedChildren="Light"
-        //onChange= {CustomProvider theme="dark"}
-      />
+        <IconButton
+            icon={
+                <Icon
+                    as={theme === 'light' ? MdOutlineNightlight : MdOutlineLightMode}
+                    style={{ fontSize: 20 }}
+                />
+            }
+            onClick={() => onChangeTheme(theme === 'dark' ? 'light' : 'dark')}
+        />
 
       <IconButton
         icon={<HeartIcon style={{ fontSize: 20 }} color="red" />}

@@ -43,11 +43,11 @@ function renderItemBody(props: AptListItemProps) {
             <Row style={{display: 'flex', alignItems: "center"}}>
                 <Col xs={16} >
                     <Stack spacing={12}>
-                        <span style={{color: "#575757"}}>{props.apt.name}</span>
+                        <span>{props.apt.name}</span>
                         {renderDifficultyTag(props.apt.difficulty)}
                     </Stack>
                 </Col>
-                <Col xs={8  } style={{textAlign:'right'}}>
+                <Col xs={8} style={{textAlign:'right'}}>
                     <Stack spacing={12} justifyContent={"flex-end"}>
                         {renderStatusTag(props.apt.status)}
                     </Stack>

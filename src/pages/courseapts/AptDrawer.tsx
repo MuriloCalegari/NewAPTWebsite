@@ -32,8 +32,7 @@ export const AptDrawer = observer((props: AptDrawerProps) => {
                     </h2>
 
                     <Panel
-                        style={{backgroundColor: "#F7F7FA"}}
-                        className="card"
+                        className="apt-card"
                     >
                         <Grid>  
                             <Row gutter={24}>
@@ -71,7 +70,7 @@ const SubmissionsCard = observer((props : { apt?: Apt }) => {
     function renderHeader(testCase: TestCase) {
         return (
             <Stack spacing={8}>
-                <span style={{color: "#575757"}}>{`Test case ${testCase.testNumber}`}</span>
+                {`Test case ${testCase.testNumber}`}
                 {testCase.submission && testCase.submission.userOutput === testCase.expectedOutput &&
                     <CheckRoundIcon style={{marginTop: -4}} color="green"/>}
                 {testCase.submission && testCase.submission.userOutput !== testCase.expectedOutput &&
@@ -81,7 +80,7 @@ const SubmissionsCard = observer((props : { apt?: Apt }) => {
     }
 
     return (<Panel
-        style={{backgroundColor: "white"}}
+        className={"apt-card-section"}
         header={
             <Stack justifyContent="space-between" style={{marginRight: 16}}>
                 <h4>Your submission</h4>
@@ -99,31 +98,15 @@ const SubmissionsCard = observer((props : { apt?: Apt }) => {
                                     <Stack direction="column" alignItems="flex-start">
                                         <b style={{paddingLeft: 12}}>Input</b>
                                         <Stack.Item style={{width: "100%"}}>
-                                            <div style={{
-                                                background: "#F7F7FA",
-                                                borderRadius: 12,
-                                                padding: 12,
-                                                marginBottom: 12
-                                            }}>{testCase.input}</div>
+                                            <div className="input-output-box">{testCase.input}</div>
                                         </Stack.Item>
                                         <b style={{paddingLeft: 12}}>Expected output</b>
                                         <Stack.Item style={{width: "100%"}}>
-                                            <div style={{
-                                                background: "#F7F7FA",
-                                                borderRadius: 12,
-                                                padding: 12,
-                                                width: "100%",
-                                                marginBottom: 12
-                                            }}>{testCase.expectedOutput}</div>
+                                            <div className="input-output-box">{testCase.expectedOutput}</div>
                                         </Stack.Item>
                                         <b style={{paddingLeft: 12}}>Your output</b>
                                         <Stack.Item style={{width: "100%"}}>
-                                            <div style={{
-                                                background: "#F7F7FA",
-                                                borderRadius: 12,
-                                                padding: 12,
-                                                width: "100%",
-                                            }}>{testCase.submission.userOutput}</div>
+                                            <div className="input-output-box">{testCase.submission.userOutput}</div>
                                         </Stack.Item>
                                     </Stack>
                                 </Col>
@@ -144,7 +127,7 @@ const SubmissionsCard = observer((props : { apt?: Apt }) => {
                                                         <Stack.Item style={{width: "100%"}}>
                                                             <Stack justifyContent="space-between">
                                                                 <Stack spacing={8}>
-                                                                    <span style={{color: "#575757"}}>Runtime</span>
+                                                                    <span className="performance-title">Runtime</span>
                                                                     <b>{testCase.submission.runtime + " ms"}</b>
                                                                 </Stack>
                                                                 <Stack spacing={8}>
@@ -174,7 +157,7 @@ const SubmissionsCard = observer((props : { apt?: Apt }) => {
                                                     <Stack.Item style={{width: "100%"}}>
                                                         <Stack justifyContent="space-between">
                                                             <Stack spacing={8}>
-                                                                <span style={{color: "#575757"}}>Memory</span>
+                                                                <span className="performance-title">Memory</span>
                                                                 <b>{testCase.submission.memory + " MB"}</b>
                                                             </Stack>
                                                             <Stack spacing={8}>
@@ -207,7 +190,7 @@ const SubmissionsCard = observer((props : { apt?: Apt }) => {
 
 const ClassCodeCard = observer((props: { classCode?: string }) => {
     return <Panel
-        style={{backgroundColor: "white"}}
+        className={"apt-card-section"}
         header={
             <Stack style={{marginBottom: -24}} justifyContent="space-between">
                 <h4>Class</h4>
@@ -221,7 +204,7 @@ const ClassCodeCard = observer((props: { classCode?: string }) => {
 
 const ProblemStatementCard = observer((props: { problemStatement?: string }) => {
     return <Panel
-        style={{backgroundColor: "white"}}
+        className={"apt-card-section"}
         header={
             <Stack justifyContent="space-between">
                 <h4>Problem statement</h4>
@@ -239,7 +222,7 @@ const ProblemStatementCard = observer((props: { problemStatement?: string }) => 
 
 const ConstraintsCard = observer((props: { constraints?: string }) => {
     return <Panel
-        style={{backgroundColor: "white"}}
+        className={"apt-card-section"}
         header={<h4>Constraints</h4>}
     >
         {props.constraints &&

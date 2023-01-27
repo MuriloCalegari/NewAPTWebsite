@@ -5,7 +5,7 @@ import Copyright from '@/components/Copyright';
 const PageContent = props => {
   return (
     <>
-      <Panel style={{ background: '#fff' }} {...props} />
+      <Panel className="page-content" {...props} />
       <Copyright />
     </>
   );
