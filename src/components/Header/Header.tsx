@@ -15,6 +15,7 @@ import NoticeIcon from '@rsuite/icons/Notice';
 import HelpOutlineIcon from '@rsuite/icons/HelpOutline';
 import GithubIcon from '@rsuite/icons/legacy/Github';
 import HeartIcon from '@rsuite/icons/legacy/HeartO';
+import {Toggle} from "rsuite";
 
 const renderAdminSpeaker = ({ onClose, left, top, className }: any, ref) => {
   const handleSelect = eventKey => {
@@ -93,6 +94,11 @@ const Header = () => {
 
   return (
     <Stack className="header" spacing={8}>
+      <Toggle
+        size="md" checkedChildren="Dark" unCheckedChildren="Light"
+        //onChange= {CustomProvider theme="dark"}
+      />
+
       <IconButton
         icon={<HeartIcon style={{ fontSize: 20 }} color="red" />}
         href="https://opencollective.com/rsuite"
