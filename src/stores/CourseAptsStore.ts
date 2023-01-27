@@ -8,6 +8,7 @@ export default class CourseAptsStore {
 
     @observable isDrawerOpen = false;
     @observable currentLoadedApt : Apt | undefined = undefined;
+    @observable isSubmitFileOpen = false;
 
     constructor(rootStore) {
         makeAutoObservable(this);
@@ -15,9 +16,11 @@ export default class CourseAptsStore {
     }
 
     @action
-    openDrawer = (aptToLoad : Apt) => {
+    openDrawer = (aptToLoad?: Apt) => {
         this.isDrawerOpen = true;
-        this.currentLoadedApt = aptToLoad;
+        if(aptToLoad) {
+            this.currentLoadedApt = aptToLoad;
+        }
         console.log("openDrawer");
     }
 
@@ -25,5 +28,16 @@ export default class CourseAptsStore {
     closeDrawer = () => {
         console.log("closeDrawer");
         this.isDrawerOpen = false;
+    }
+
+    @action
+    openSubmitFileModal = (aptToLoad : Apt | undefined) => {
+        this.isSubmitFileOpen = true;
+        this.currentLoadedApt = aptToLoad;
+    }
+
+    @action
+    closeSubmitFileModal = () => {
+        this.isSubmitFileOpen = false;
     }
 }

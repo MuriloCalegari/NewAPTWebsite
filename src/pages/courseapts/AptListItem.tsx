@@ -6,6 +6,7 @@ import WarningRoundIcon from '@rsuite/icons/WarningRound';
 import {ListItem, ListItemButton, ListItemSecondaryAction, ListItemText} from "@mui/material";
 import {Apt} from "@/data/model/Apt";
 import {SubmitButton} from "@/components/Buttons/SubmitButton";
+import {useStores} from "@/hooks/useStores";
 
 interface AptListItemProps {
     apt: Apt
@@ -58,13 +59,17 @@ function renderItemBody(props: AptListItemProps) {
 
 export const AptListItem = observer((props : AptListItemProps) => {
 
+    const { courseAptsStore } = useStores();
+
+    const { apt } = props;
+
     return (
-        <ListItem key={props.apt.id} sx={{marginBottom: 0, marginTop: 0, paddingTop: 0, paddingBottom: 0}}>
+        <ListItem key={apt.id} sx={{marginBottom: 0, marginTop: 0, paddingTop: 0, paddingBottom: 0}}>
             <ListItemButton onClick={props.onClick} sx={{marginRight: 8, paddingRight: 1, paddingTop: "4px", paddingBottom: "4px"}}>
                 <ListItemText primary={renderItemBody(props)}>Teste</ListItemText>
             </ListItemButton>
             <ListItemSecondaryAction>
-                <SubmitButton/>
+                <SubmitButton onClick={() => courseAptsStore.openSubmitFileModal(apt)}/>
             </ListItemSecondaryAction>
         </ListItem>
     );

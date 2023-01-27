@@ -1,7 +1,7 @@
 import {observer} from "mobx-react-lite";
 import Chart from "react-apexcharts";
 import React from "react";
-import {RuntimeData} from "@/data/ProblemSetsData";
+import {PerformanceData} from "@/data/ProblemSetsData";
 
 const defaultOptions = {
     chart: {
@@ -54,7 +54,7 @@ const defaultOptions = {
 
 export interface RuntimeGraphProps {
     userRuntime: number;
-    runtimeData?: RuntimeData;
+    runtimeData?: PerformanceData;
     options?: any;
     labels?: string[];
     height?: number;
@@ -72,7 +72,7 @@ export const RuntimeGraph = observer(({userRuntime, runtimeData, options, labels
         },
         {
             name: 'Average Runtime',
-            data: runtimeData?.overallRuntimes ? constructOverallRuntimeArray(userRuntime, runtimeData) : []
+            data: runtimeData?.overallData ? constructOverallRuntimeArray(userRuntime, runtimeData) : []
         }
     ];
 
@@ -101,21 +101,21 @@ export const RuntimeGraph = observer(({userRuntime, runtimeData, options, labels
 // }
 // Output:
 // [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] (each chunk corresponds to a 10 ms interval)
-function constructUserRuntimeArray(runtime : number, runtimeData : RuntimeData)  {
-    const intervalCount = runtimeData.overallRuntimes.length;
-    const intervalSize = (runtimeData.endingTime - runtimeData.startingTime) / intervalCount;
+function constructUserRuntimeArray(runtime : number, runtimeData : PerformanceData)  {
+    const intervalCount = runtimeData.overallData.length;
+    const intervalSize = (runtimeData.endingValue - runtimeData.startingValue) / intervalCount;
     const intervalIndex = Math.floor(runtime / intervalSize);
     const runtimeArray = new Array(intervalCount).fill(0);
-    runtimeArray[intervalIndex] = runtimeData.overallRuntimes[intervalIndex];
+    runtimeArray[intervalIndex] = runtimeData.overallData[intervalIndex];
     return runtimeArray;
 }
 
-function constructOverallRuntimeArray(runtime : number, runtimeData : RuntimeData) {
-    const intervalCount = runtimeData.overallRuntimes.length;
-    const intervalSize = (runtimeData.endingTime - runtimeData.startingTime) / intervalCount;
+function constructOverallRuntimeArray(runtime : number, runtimeData : PerformanceData) {
+    const intervalCount = runtimeData.overallData.length;
+    const intervalSize = (runtimeData.endingValue - runtimeData.startingValue) / intervalCount;
     const intervalIndex = Math.floor(runtime / intervalSize);
     // Create a copy of the array
-    const runtimeArray = [...runtimeData.overallRuntimes];
+    const runtimeArray = [...runtimeData.overallData];
     runtimeArray[intervalIndex] = 0;
     return runtimeArray;
 }

@@ -5,6 +5,7 @@ import {List} from "@mui/material";
 import {useStores} from "@/hooks/useStores";
 import {AptDrawer} from "@/pages/courseapts/AptDrawer";
 import {ProblemSet} from "@/data/model/ProblemSet";
+import {SubmitFileModal} from "@/pages/courseapts/SubmitFileModal";
 
 interface ProblemSetListProps {
     problemSets: ProblemSet[];
@@ -22,6 +23,7 @@ export const ProblemSetList = observer((props : ProblemSetListProps) => {
                 })}
             </List>
             <AptDrawer open={courseAptsStore.isDrawerOpen} apt={courseAptsStore.currentLoadedApt}/>
+            <SubmitFileModal open={courseAptsStore.isSubmitFileOpen}/>
         </>
     );
 });

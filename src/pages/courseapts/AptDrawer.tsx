@@ -51,7 +51,7 @@ export const AptDrawer = observer((props: AptDrawerProps) => {
                             </Row>
                             <Row style={{marginTop: 12, width: "100%"}}>
                                 <Col xs={24} md={24}>
-                                    <SubmissionsCard testCases={apt?.testCases}/>
+                                    <SubmissionsCard apt={apt}/>
                                 </Col>
                             </Row>
                         </Grid>
@@ -62,9 +62,11 @@ export const AptDrawer = observer((props: AptDrawerProps) => {
     );
 });
 
-const SubmissionsCard = observer((props : { testCases?: TestCase[] }) => {
+const SubmissionsCard = observer((props : { apt?: Apt }) => {
 
-    const { testCases } = props;
+    const testCases = props.apt?.testCases;
+
+    const { courseAptsStore } = useStores();
 
     function renderHeader(testCase: TestCase) {
         return (
@@ -83,7 +85,7 @@ const SubmissionsCard = observer((props : { testCases?: TestCase[] }) => {
         header={
             <Stack justifyContent="space-between" style={{marginRight: 16}}>
                 <h4>Your submission</h4>
-                <SubmitButton/>
+                <SubmitButton onClick={() => courseAptsStore.openSubmitFileModal(props.apt)}/>
             </Stack>
         }
     >
