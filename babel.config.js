@@ -21,7 +21,7 @@ module.exports = (api, options) => {
       '@babel/plugin-proposal-export-default-from',
       ['@babel/plugin-transform-runtime', { useESModules: !modules }],
       ['module-resolver', { alias: { '@': './src' } }],
-      "react-refresh/babel"
+      ...(dev ? 'react-refresh/babel' : [])
     ]
   };
 };
