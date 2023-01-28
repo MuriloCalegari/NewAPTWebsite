@@ -24,3 +24,6 @@ yarn-error.log*
 
 # .env file
 .env
+
+# assets folder
+/assets
