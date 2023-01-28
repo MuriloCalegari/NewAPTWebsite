@@ -67,7 +67,7 @@ module.exports = {
   },
   plugins: [
     new HtmlwebpackPlugin({
-      title: 'Admin Dashboard Template',
+      title: 'APT System',
       filename: 'index.html',
       template: './src/index.html',
       inject: true,
