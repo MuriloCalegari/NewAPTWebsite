@@ -13,7 +13,13 @@ export const SubmitFileModal = observer((props: SubmitFileModalProps) => {
     const {courseAptsStore} = useStores();
 
     return (
-        <Modal className={"submit-file-modal"} {...props} backdrop onClose={() => courseAptsStore.closeSubmitFileModal()}>
+        <Modal
+            className={"submit-file-modal"}
+            backdropClassName={"submit-file-modal-backdrop"}
+            {...props}
+            backdrop
+            onClose={() => courseAptsStore.closeSubmitFileModal()}
+        >
             <Modal.Header>
                 <Modal.Title>Submit File</Modal.Title>
 
