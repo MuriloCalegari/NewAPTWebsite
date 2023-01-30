@@ -88,41 +88,61 @@ const QuizCard = observer(() => {
     return <Panel
         className={"apt-card-section"}
         header={
-        <h4>Test Your Knowledge</h4>
-    }
+            <h4>Test your knowledge</h4>
+        }
     >
         <Button size="lg" onClick={handleOpen}> Quiz</Button>
-        <Modal autoFocus open={open} backdrop="static" size='lg' onClose={handleClose}>
+        <Modal autoFocus={true} open={open} backdrop="static" size="lg" onClose={handleClose}
+            style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+
+            }}>
             <Modal.Header>
-                <Modal.Title>Concept Quiz</Modal.Title>
+                <Modal.Title><h2>Concept Quiz</h2></Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <ButtonToolbar>
+                <h3>This is an example question. This is just a placeholder. </h3>
+            </Modal.Body>
+            <Modal.Body>
+                <Row className="show-grid">
+                    <Col xs={6}>
                     <Button onClick={isCorrect} appearance="primary">
                         Option 1
                     </Button>
+                    </Col>
+                    <Col xs={6}>
                     <Button onClick={isIncorrect} appearance="primary">
                         Option 2
                     </Button>
+                    </Col>
+                    <Col xs={6}>
                     <Button onClick={isIncorrect} appearance="primary">
                         Option 3
                     </Button>
-                </ButtonToolbar>
-            </Modal.Body>
-
-            <Modal.Body>
-                <ButtonToolbar>
+                    </Col>
+                </Row>
+                <Modal.Body>
+                </Modal.Body>
+                <Row className="show-grid">
+                    <Col xs={6}>
                     <Button onClick={isIncorrect} appearance="primary">
                         Option 4
                     </Button>
+                    </Col>
+                    <Col xs={6}>
                     <Button onClick={isIncorrect} appearance="primary">
                         Option 5
                     </Button>
+                    </Col>
+                    <Col xs={6}>
                     <Button onClick={isIncorrect} appearance="primary">
                         Option 6
                     </Button>
-                </ButtonToolbar>
-            </Modal.Body>
+                    </Col>
+                </Row>
+                </Modal.Body>
         </Modal>
     </Panel>
 });
@@ -150,9 +170,7 @@ const SubmissionsCard = observer((props: { apt?: Apt }) => {
         className={"apt-card-section"}
         header={
             <Stack justifyContent="space-between" style={{ marginRight: 16 }}>
-
                 <h4>Your submission</h4>
-
                 <SubmitButton onClick={() => courseAptsStore.openSubmitFileModal(props.apt)} />
             </Stack>
         }
