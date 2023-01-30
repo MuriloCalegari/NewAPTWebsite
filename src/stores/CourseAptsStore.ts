@@ -9,6 +9,7 @@ export default class CourseAptsStore {
     @observable isDrawerOpen = false;
     @observable currentLoadedApt : Apt | undefined = undefined;
     @observable isSubmitFileOpen = false;
+    @observable isQuizModalOpen = false;
 
     constructor(rootStore) {
         makeAutoObservable(this);
@@ -40,4 +41,15 @@ export default class CourseAptsStore {
     closeSubmitFileModal = () => {
         this.isSubmitFileOpen = false;
     }
+
+    @action
+    openQuizModal = () => {
+        this.isQuizModalOpen = true
+    }
+
+    @action
+    closeQuizModal = () => {
+        this.isQuizModalOpen = false
+    }
+
 }

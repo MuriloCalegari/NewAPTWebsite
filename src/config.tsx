@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon } from '@rsuite/icons';
+import { VscTable, VscCalendar } from 'react-icons/vsc';
 import { MdDashboard } from 'react-icons/md';
 
 export const appNavs = [
@@ -8,5 +9,11 @@ export const appNavs = [
     icon: <Icon as={MdDashboard} />,
     title: 'Course APTs',
     to: '/course_apts'
+  },
+  {
+    eventKey: 'quiz',
+    icon: <Icon as={VscCalendar} />,
+    title: 'Quiz',
+    to: '/quiz'
   },
 ];
