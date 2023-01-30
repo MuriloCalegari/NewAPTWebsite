@@ -12,6 +12,7 @@ export class TestCase {
     testNumber!: number;
     input!: string;
     expectedOutput!: string;
+    reasonableWrongOutputs!: string[];
     submission!: Submission;
     explanation?: string;
 }

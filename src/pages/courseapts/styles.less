@@ -48,6 +48,23 @@
   color: #575757;
 }
 
+.quiz-answer-option {
+  width: 150px;
+  height: 50px;
+
+  &.correct {
+    background: @green;
+    border: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+  }
+
+  &.incorrect {
+    background: @red;
+    border: @red-100;
+    color: #FFFFFF;
+  }
+}
+
 .rs-theme-dark {
   .problem-set-cards {
     background: @B800-dark;

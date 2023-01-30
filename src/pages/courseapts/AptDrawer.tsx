@@ -10,8 +10,7 @@ import CheckRoundIcon from '@rsuite/icons/CheckRound';
 import { PerformanceGraph } from "@/components/graphs/PerformanceGraph";
 import { memoryData, PerformanceData, runtimeData } from "@/data/ProblemSetsData";
 import { SubmitButton } from "@/components/Buttons/SubmitButton";
-//import {QuizButton} from "@/components/Buttons/QuizButton";
-import { Button, ButtonToolbar, Modal } from 'rsuite';
+import { Button, Modal } from 'rsuite';
 
 
 
@@ -60,7 +59,7 @@ export const AptDrawer = observer((props: AptDrawerProps) => {
                             </Row>
                             <Row style={{ marginTop: 12, width: "100%" }}>
                                 <Col xs={24} md={24}>
-                                    <QuizCard />
+                                    <QuizCard apt={apt}/>
                                 </Col>
                             </Row>
                         </Grid>
@@ -71,19 +70,62 @@ export const AptDrawer = observer((props: AptDrawerProps) => {
     );
 });
 
+const WrongAnswerButton = observer((props: { answer : string, onClick?: () => void }) => {
+        const [isClicked, setIsClicked] = React.useState(false);
 
-const QuizCard = observer(() => {
+        const handleOnClick = () => {
+            setIsClicked(true);
+            if(props.onClick) props.onClick();
+        }
+
+        return (
+            <Button
+                className={`quiz-answer-option ${ isClicked ? "incorrect" : null }`}
+                onClick={handleOnClick}>{props.answer}
+            </Button>
+        )
+});
+
+const QuizCard = observer((props : {apt : Apt}) => {
     const [open, setOpen] = React.useState(false);
-    const [backdrop, setBackdrop] = React.useState('static');
+
+    const [ currentTestCase, setCurrentTestCase ] = React.useState(props.apt.testCases[0]);
+    const [ isCorrectAnswerSelected, setIsCorrectAnswerSelected ] = React.useState(false);
+
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    //const [noanswer, Correct] = React.useState(false)
-    const isCorrect = (event) => {
-        event.target.style.backgroundColor = 'green'
+
+    // TODO: Move to next test case by updating state
+    // TODO: Call setCurrentTestCase with next test case in array, but check first if there is a next test case
+    const handleCorrectClick = () => {
+        setIsCorrectAnswerSelected(true);
     };
-    const isIncorrect = (event) => {
-        event.target.style.backgroundColor = 'red'
+    // TODO: Move to next test case by updating state
+    // TODO: Call setCurrentTestCase with next test case in array, but check first if there is a next test case
+    const handleIncorrectClick = () => {
+        // event.target.style.backgroundColor = 'red'
     };
+
+    function renderAnswerOptions(testCase: TestCase) {
+        return (
+            <Grid>
+                <Row>
+                    <Col xs={12} md={8}>
+                        <Button
+                            className={`quiz-answer-option ${isCorrectAnswerSelected ? "correct" : ""}`}
+                            onClick={handleCorrectClick}>{testCase.expectedOutput}</Button>
+                    </Col>
+                        {testCase.reasonableWrongOutputs.map((output) => {
+                            return (
+                                <Col xs={12} md={8}>
+                                    <WrongAnswerButton answer={output} onClick={handleIncorrectClick}/>
+                                </Col>
+                            )
+                        })}
+                </Row>
+            </Grid>
+        );
+    }
 
     return <Panel
         className={"apt-card-section"}
@@ -106,43 +148,8 @@ const QuizCard = observer(() => {
                 <h3>This is an example question. This is just a placeholder. </h3>
             </Modal.Body>
             <Modal.Body>
-                <Row className="show-grid">
-                    <Col xs={6}>
-                    <Button onClick={isCorrect} appearance="primary">
-                        Option 1
-                    </Button>
-                    </Col>
-                    <Col xs={6}>
-                    <Button onClick={isIncorrect} appearance="primary">
-                        Option 2
-                    </Button>
-                    </Col>
-                    <Col xs={6}>
-                    <Button onClick={isIncorrect} appearance="primary">
-                        Option 3
-                    </Button>
-                    </Col>
-                </Row>
-                <Modal.Body>
-                </Modal.Body>
-                <Row className="show-grid">
-                    <Col xs={6}>
-                    <Button onClick={isIncorrect} appearance="primary">
-                        Option 4
-                    </Button>
-                    </Col>
-                    <Col xs={6}>
-                    <Button onClick={isIncorrect} appearance="primary">
-                        Option 5
-                    </Button>
-                    </Col>
-                    <Col xs={6}>
-                    <Button onClick={isIncorrect} appearance="primary">
-                        Option 6
-                    </Button>
-                    </Col>
-                </Row>
-                </Modal.Body>
+                {renderAnswerOptions(currentTestCase)}
+            </Modal.Body>
         </Modal>
     </Panel>
 });
