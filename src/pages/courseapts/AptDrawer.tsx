@@ -70,40 +70,73 @@ export const AptDrawer = observer((props: AptDrawerProps) => {
     );
 });
 
-const WrongAnswerButton = observer((props: { answer : string, onClick?: () => void }) => {
-        const [isClicked, setIsClicked] = React.useState(false);
 
-        const handleOnClick = () => {
-            setIsClicked(true);
-            if(props.onClick) props.onClick();
-        }
-
-        return (
-            <Button
-                className={`quiz-answer-option ${ isClicked ? "incorrect" : null }`}
-                onClick={handleOnClick}>{props.answer}
-            </Button>
-        )
-});
 
 const QuizCard = observer((props : {apt : Apt}) => {
     const [open, setOpen] = React.useState(false);
 
     const [ currentTestCase, setCurrentTestCase ] = React.useState(props.apt.testCases[0]);
     const [ isCorrectAnswerSelected, setIsCorrectAnswerSelected ] = React.useState(false);
-
+    const [ isNextSelected, setIsNextSelected ] = React.useState(false);
+    
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    const WrongAnswerButton = observer((props: { answer : string, onClick?: () => void }) => {
+        const [isClicked, setIsClicked] = React.useState(false);
+        //const [ isNextSelected, setIsNextSelected ] = React.useState(false);
+
+
+        const handleOnClick = () => {
+            setIsClicked(true);
+            if(props.onClick) props.onClick(); 
+        }
+
+        return (
+            <Button
+                className={`quiz-answer-option ${ isClicked ? "incorrect" : "" } `}
+                onClick={handleOnClick}>{props.answer}
+            </Button>
+        )
+});
+
     // TODO: Move to next test case by updating state
     // TODO: Call setCurrentTestCase with next test case in array, but check first if there is a next test case
+    // TODO: for each id in aptid, go to next id
     const handleCorrectClick = () => {
+
         setIsCorrectAnswerSelected(true);
+     
     };
     // TODO: Move to next test case by updating state
     // TODO: Call setCurrentTestCase with next test case in array, but check first if there is a next test case
+    /// if isnextselected is true, reset button style
     const handleIncorrectClick = () => {
-        // event.target.style.backgroundColor = 'red'
+        if (isNextSelected) {
+            setIsNextSelected(false);
+        }
+    
+    };
+
+    const handleNextButton = () => {
+        //check for next test
+        //if next test exists, set current test to next test
+        //if next test does not exist, close modal
+        //reset isCorrectAnswerSelected to false
+        for (let i = 0; i < props.apt.testCases.length; i++) {
+            if (props.apt.testCases[i] === currentTestCase) {
+                if (i < props.apt.testCases.length - 1) {
+                    setCurrentTestCase(props.apt.testCases[i + 1]);
+                } else {
+                    handleClose();
+                    setCurrentTestCase(props.apt.testCases[0]);
+                }
+                setIsNextSelected(true);
+            }
+        }
+        setIsCorrectAnswerSelected(false); 
+        setIsNextSelected(false);
+        
     };
 
     function renderAnswerOptions(testCase: TestCase) {
@@ -145,11 +178,14 @@ const QuizCard = observer((props : {apt : Apt}) => {
                 <Modal.Title><h2>Concept Quiz</h2></Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h3>This is an example question. This is just a placeholder. </h3>
+                <h3>{currentTestCase.input}</h3>
             </Modal.Body>
             <Modal.Body>
                 {renderAnswerOptions(currentTestCase)}
             </Modal.Body>
+            <Modal.Footer>
+                <Button onClick={handleNextButton}>Next </Button>
+            </Modal.Footer>
         </Modal>
     </Panel>
 });

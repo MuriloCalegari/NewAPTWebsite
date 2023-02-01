@@ -10,10 +10,4 @@ export const appNavs = [
     title: 'Course APTs',
     to: '/course_apts'
   },
-  {
-    eventKey: 'quiz',
-    icon: <Icon as={VscCalendar} />,
-    title: 'Quiz',
-    to: '/quiz'
-  },
 ];

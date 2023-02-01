@@ -22,7 +22,7 @@ export const problemSetsData: ProblemSet[] = [
                         "testNumber": 1,
                         "input": "a = [1,2,3,4,5], stype=\"odd\"",
                         "expectedOutput": "6",
-                        reasonableWrongOutputs: ["9", "15", "0", "1", "2"],
+                        reasonableWrongOutputs: ["9", "15", "40", "1", "43"],
                         "submission":
                             {
                                 "testCaseNumber": 1,
@@ -39,7 +39,7 @@ export const problemSetsData: ProblemSet[] = [
                         "testNumber": 2,
                         "input": "a = [1,2,3,4,5], stype=\"even\"",
                         "expectedOutput": "9",
-                        reasonableWrongOutputs: ["6", "15", "0", "1", "2"],
+                        reasonableWrongOutputs: ["6", "15", "7", "1", "17"],
                         "submission":
                             {
                                 "testCaseNumber": 2,
@@ -56,7 +56,7 @@ export const problemSetsData: ProblemSet[] = [
                         "testNumber": 3,
                         "input": "a = {1,2,3,4,5}, stype = \"all\"",
                         "expectedOutput": "15",
-                        reasonableWrongOutputs: ["6", "9", "0", "1", "2"],
+                        reasonableWrongOutputs: ["6", "9", "0", "18", "2"],
                         "submission":
                             {
                                 "testCaseNumber": 3,
@@ -72,7 +72,7 @@ export const problemSetsData: ProblemSet[] = [
                         "testNumber": 4,
                         "input": "a = {22, 23}, stype = \"even\"",
                         "expectedOutput": "22",
-                        reasonableWrongOutputs: ["6", "9", "0", "1", "2"],
+                        reasonableWrongOutputs: ["3", "0", "4", "25", "2"],
                         "submission":
                             {
                                 "testCaseNumber": 4,
@@ -117,7 +117,7 @@ export const problemSetsData: ProblemSet[] = [
                         "testNumber": 2,
                         "input": "a = [1,2,3,4,5], stype=\"even\"",
                         "expectedOutput": "9",
-                        reasonableWrongOutputs: ["6", "15", "0", "1", "2"],
+                        reasonableWrongOutputs: ["6", "15", "78", "1", "2"],
                         "submission":
                             {
                                 "testCaseNumber": 2,
@@ -134,7 +134,7 @@ export const problemSetsData: ProblemSet[] = [
                         "testNumber": 3,
                         "input": "a = {1,2,3,4,5}, stype = \"all\"",
                         "expectedOutput": "15",
-                        reasonableWrongOutputs: ["6", "9", "0", "1", "2"],
+                        reasonableWrongOutputs: ["6", "9", "4", "5", "6"],
                         "submission":
                             {
                                 "testCaseNumber": 3,
@@ -150,7 +150,7 @@ export const problemSetsData: ProblemSet[] = [
                         "testNumber": 4,
                         "input": "a = {22, 23}, stype = \"even\"",
                         "expectedOutput": "22",
-                        reasonableWrongOutputs: ["6", "9", "0", "1", "2"],
+                        reasonableWrongOutputs: ["6", "9", "99", "1", "42"],
                         "submission":
                             {
                                 "testCaseNumber": 4,
