@@ -59,7 +59,7 @@ export const AptDrawer = observer((props: AptDrawerProps) => {
                             </Row>
                             <Row style={{ marginTop: 12, width: "100%" }}>
                                 <Col xs={24} md={24}>
-                                    <QuizCard apt={apt}/>
+                                    <QuizCard apt={apt} />
                                 </Col>
                             </Row>
                         </Grid>
@@ -72,50 +72,54 @@ export const AptDrawer = observer((props: AptDrawerProps) => {
 
 
 
-const QuizCard = observer((props : {apt : Apt}) => {
+const QuizCard = observer((props: { apt: Apt }) => {
     const [open, setOpen] = React.useState(false);
 
-    const [ currentTestCase, setCurrentTestCase ] = React.useState(props.apt.testCases[0]);
-    const [ isCorrectAnswerSelected, setIsCorrectAnswerSelected ] = React.useState(false);
-    const [ isNextSelected, setIsNextSelected ] = React.useState(false);
-    
+    const [currentTestCase, setCurrentTestCase] = React.useState(props.apt.testCases[0]);
+    const [isCorrectAnswerSelected, setIsCorrectAnswerSelected] = React.useState(false);
+    const [isNextSelected, setIsNextSelected] = React.useState(false);
+
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const WrongAnswerButton = observer((props: { answer : string, onClick?: () => void }) => {
+    const WrongAnswerButton = observer((props: { answer: string, onClick?: () => void }) => {
         const [isClicked, setIsClicked] = React.useState(false);
         //const [ isNextSelected, setIsNextSelected ] = React.useState(false);
 
 
         const handleOnClick = () => {
             setIsClicked(true);
-            if(props.onClick) props.onClick(); 
+            if (props.onClick) props.onClick();
         }
 
         return (
             <Button
-                className={`quiz-answer-option ${ isClicked ? "incorrect" : "" } `}
+                disabled= {disableButton()}
+                className={`quiz-answer-option ${isClicked ? "incorrect" : ""} `}
                 onClick={handleOnClick}>{props.answer}
+                
             </Button>
         )
-});
+    });
 
-    // TODO: Move to next test case by updating state
-    // TODO: Call setCurrentTestCase with next test case in array, but check first if there is a next test case
-    // TODO: for each id in aptid, go to next id
+    const disableButton = () => {
+        if (isCorrectAnswerSelected) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     const handleCorrectClick = () => {
-
         setIsCorrectAnswerSelected(true);
-     
+
     };
-    // TODO: Move to next test case by updating state
-    // TODO: Call setCurrentTestCase with next test case in array, but check first if there is a next test case
-    /// if isnextselected is true, reset button style
+
     const handleIncorrectClick = () => {
         if (isNextSelected) {
             setIsNextSelected(false);
         }
-    
+
     };
 
     const handleNextButton = () => {
@@ -123,6 +127,7 @@ const QuizCard = observer((props : {apt : Apt}) => {
         //if next test exists, set current test to next test
         //if next test does not exist, close modal
         //reset isCorrectAnswerSelected to false
+        //used to set buttons to default when next is clicked
         for (let i = 0; i < props.apt.testCases.length; i++) {
             if (props.apt.testCases[i] === currentTestCase) {
                 if (i < props.apt.testCases.length - 1) {
@@ -134,9 +139,9 @@ const QuizCard = observer((props : {apt : Apt}) => {
                 setIsNextSelected(true);
             }
         }
-        setIsCorrectAnswerSelected(false); 
+        setIsCorrectAnswerSelected(false);
         setIsNextSelected(false);
-        
+
     };
 
     function renderAnswerOptions(testCase: TestCase) {
@@ -148,13 +153,13 @@ const QuizCard = observer((props : {apt : Apt}) => {
                             className={`quiz-answer-option ${isCorrectAnswerSelected ? "correct" : ""}`}
                             onClick={handleCorrectClick}>{testCase.expectedOutput}</Button>
                     </Col>
-                        {testCase.reasonableWrongOutputs.map((output) => {
-                            return (
-                                <Col xs={12} md={8}>
-                                    <WrongAnswerButton answer={output} onClick={handleIncorrectClick}/>
-                                </Col>
-                            )
-                        })}
+                    {testCase.reasonableWrongOutputs.map((output) => {
+                        return (
+                            <Col xs={12} md={8}>
+                                <WrongAnswerButton answer={output} onClick={handleIncorrectClick} />
+                            </Col>
+                        )
+                    })}
                 </Row>
             </Grid>
         );
@@ -168,6 +173,7 @@ const QuizCard = observer((props : {apt : Apt}) => {
     >
         <Button size="lg" onClick={handleOpen}> Quiz</Button>
         <Modal autoFocus={true} open={open} backdrop="static" size="lg" onClose={handleClose}
+            backdropClassName="quiz-modal-backdrop"
             style={{
                 display: "flex",
                 justifyContent: "center",
@@ -177,6 +183,10 @@ const QuizCard = observer((props : {apt : Apt}) => {
             <Modal.Header>
                 <Modal.Title><h2>Concept Quiz</h2></Modal.Title>
             </Modal.Header>
+            <Modal.Body> 
+                <h4>{`Test case ${currentTestCase.testNumber}`} / {props.apt.testCases.length}
+                </h4>
+            </Modal.Body>
             <Modal.Body>
                 <h3>{currentTestCase.input}</h3>
             </Modal.Body>
@@ -184,7 +194,7 @@ const QuizCard = observer((props : {apt : Apt}) => {
                 {renderAnswerOptions(currentTestCase)}
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={handleNextButton}>Next </Button>
+                <Button size = "lg" onClick={handleNextButton}>Next </Button>
             </Modal.Footer>
         </Modal>
     </Panel>

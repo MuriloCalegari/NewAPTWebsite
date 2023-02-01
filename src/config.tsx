@@ -1,6 +1,5 @@
 import React from 'react';
 import { Icon } from '@rsuite/icons';
-import { VscTable, VscCalendar } from 'react-icons/vsc';
 import { MdDashboard } from 'react-icons/md';
 
 export const appNavs = [

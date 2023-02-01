@@ -7,7 +7,10 @@
   z-index: 1050;
   backdrop-filter: blur(2px);
 }
-
+.quiz-modal-backdrop {
+  z-index: 1050;
+  backdrop-filter: blur(2px);
+}
 .problem-set-cards {
   background: #fff;
   margin-top: 30px;
@@ -51,16 +54,17 @@
 .quiz-answer-option {
   width: 150px;
   height: 50px;
+  margin: 10px;
 
   &.correct {
-    background: @green;
-    border: rgb(255, 255, 255);
+    background: #67A71A;
+    border: #67A71A;
     color: rgb(255, 255, 255);
   }
 
   &.incorrect {
-    background: @red;
-    border: @red-100;
+    background: #CF1C1C;
+    border: #CF1C1C;
     color: #FFFFFF;
   }
 }
