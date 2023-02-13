@@ -8,6 +8,7 @@ import Error404Page from './pages/authentication/404';
 import { appNavs } from './config';
 import {CourseApts} from "@/pages/courseapts/CourseApts";
 import {useObserver} from "mobx-react-lite";
+import {Textbook} from "@/pages/textbook/Textbook";
 
 const App = () => {
   return useObserver(() => (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/" element={<Frame navs={appNavs}/>}>
             <Route index element={<CourseApts/>}/>
             <Route path="course_apts" element={<CourseApts/>}/>
+              <Route path="textbook" element={<Textbook/>}/>
           </Route>
           <Route path="*" element={<Error404Page/>}/>
         </Routes>
