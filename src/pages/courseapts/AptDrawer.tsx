@@ -72,10 +72,15 @@ export const AptDrawer = observer((props: AptDrawerProps) => {
 
 
 
-const QuizCard = observer((props: { apt: Apt }) => {
+const QuizCard = observer((props: { apt?: Apt }) => {
+
+    const apt = props.apt;
+
+    if(!apt) return null;
+
     const [open, setOpen] = React.useState(false);
 
-    const [currentTestCase, setCurrentTestCase] = React.useState(props.apt.testCases[0]);
+    const [currentTestCase, setCurrentTestCase] = React.useState(apt.testCases[0]);
     const [isCorrectAnswerSelected, setIsCorrectAnswerSelected] = React.useState(false);
     const [isNextSelected, setIsNextSelected] = React.useState(false);
 
@@ -128,13 +133,13 @@ const QuizCard = observer((props: { apt: Apt }) => {
         //if next test does not exist, close modal
         //reset isCorrectAnswerSelected to false
         //used to set buttons to default when next is clicked
-        for (let i = 0; i < props.apt.testCases.length; i++) {
-            if (props.apt.testCases[i] === currentTestCase) {
-                if (i < props.apt.testCases.length - 1) {
-                    setCurrentTestCase(props.apt.testCases[i + 1]);
+        for (let i = 0; i < apt.testCases.length; i++) {
+            if (apt.testCases[i] === currentTestCase) {
+                if (i < apt.testCases.length - 1) {
+                    setCurrentTestCase(apt.testCases[i + 1]);
                 } else {
                     handleClose();
-                    setCurrentTestCase(props.apt.testCases[0]);
+                    setCurrentTestCase(apt.testCases[0]);
                 }
                 setIsNextSelected(true);
             }
@@ -184,7 +189,7 @@ const QuizCard = observer((props: { apt: Apt }) => {
                 <Modal.Title><h2>Concept Quiz</h2></Modal.Title>
             </Modal.Header>
             <Modal.Body> 
-                <h4>{`Test case ${currentTestCase.testNumber}`} / {props.apt.testCases.length}
+                <h4>{`Test case ${currentTestCase.testNumber}`} / {apt.testCases.length}
                 </h4>
             </Modal.Body>
             <Modal.Body>

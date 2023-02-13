@@ -40,9 +40,11 @@
     "@fullcalendar/interaction": "^5.11.3",
     "@fullcalendar/react": "^5.11.2",
     "@fullcalendar/timegrid": "^5.11.3",
+    "@hediet/semantic-json": "^0.3.15",
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/mdx": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
+    "@monaco-editor/react": "^4.4.6",
     "@mui/material": "^5.11.5",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "@rsuite/icons": "^1.0.2",
@@ -68,7 +70,8 @@
     "react-simple-code-editor": "^0.13.1",
     "react-syntax-highlighter": "^15.5.0",
     "react-transition-group": "^4.4.5",
-    "rsuite": "5.23.0"
+    "rsuite": "5.23.0",
+    "vis-network": "^9.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",

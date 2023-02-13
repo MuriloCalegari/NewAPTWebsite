@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from '@rsuite/icons';
-import { VscCalendar } from 'react-icons/vsc';
+import PageIcon from '@rsuite/icons/Page';
 import { MdDashboard } from 'react-icons/md';
 
 export const appNavs = [
@@ -12,7 +12,7 @@ export const appNavs = [
   },
   {
     eventKey: 'textbook',
-    icon: <Icon as={VscCalendar} />,
+    icon: <Icon as={PageIcon} />,
     title: 'Textbook chapter',
     to: '/textbook'
   },
