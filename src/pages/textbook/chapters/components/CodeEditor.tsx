@@ -8,7 +8,16 @@ import 'prismjs/themes/prism.css'; //Example style, you can use another
 
 export const CodeEditor = observer(() => {
     const [code, setCode] = React.useState(
-        `function add(a, b) {\n  return a + b;\n}`
+        `def average(sentencelist):
+        wordsinsentence = 0
+        for item in sentencelist:
+            wordsinitem = item.split()
+            wordsinindividualsentence = wordsinitem.count(" ") + 1
+            wordsinsentence = wordsinsentence + wordsinindividualsentence
+        numberofsentences = len(sentencelist)
+        result = wordsinsentence/numberofsentences
+        print(result)
+        return result`
     );
     return (
         <Editor
