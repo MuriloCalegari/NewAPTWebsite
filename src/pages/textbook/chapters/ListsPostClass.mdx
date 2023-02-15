@@ -1,13 +1,13 @@
 import {CodeEditor} from "./components/CodeEditor";
 import { CodeRunner } from "./components/CodeRunner";
 import {Panel} from "rsuite";
-import {Col, Grid, Row} from "rsuite";
+import {Col, Grid, Row, Divider} from "rsuite";
 import CodeSandboxer from 'react-codesandboxer';
 
 
 
 # Lists
->
+
 <br/>
 
 Lists are as common in programming as they are in everyday life. A Python list is a built-in data type representing a sequence of values, which are called elements or items. A list element can be any type of object, such as a string or integer or even another list.
@@ -154,12 +154,10 @@ Write code that will return a list of even integers from 1 to 11 below.
 >
 >
 
-<br/><br/><br/>
+<br/><br/>
 
 ## Indexes
 <br/>
->
->
 
 You can refer to any item in a list by a numeric index, which start numbering at 0. So, a list of length 10 has elements that are indexed from 0 to 9. As with any Python sequence, you use square brackets ([]), known as the index operator, to access a specific item in the list:
 >
@@ -229,13 +227,11 @@ So, the valid indexes of any list run from 0 to len(list) - 1. Trying to access 
 >
 As with strings and other sequences, Python lets you use a negative value as the index to refer to a position relative to the end of the list. You can think of a negative index as counting backwards from the end of the list. So, list[-1] is the last item in the list, list[-2] is the second to last item, etc.
 >
->
->
+
 <br/>
+
 ## Concatenation
-<br/><br/>
 >
-> 
 
 The elements of one list can be appended to another list, creating a third (longer) list. This process is called list concatenation, which is accomplished using the plus (+) operator (similar to string concatenation).
 >
