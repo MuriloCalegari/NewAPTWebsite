@@ -1,8 +1,8 @@
-import {CodeEditor} from "./components/CodeEditor";
 import { CodeRunner } from "./components/CodeRunner";
 import {Panel} from "rsuite";
-import {Col, Grid, Row} from "rsuite";
-import CodeSandboxer from 'react-codesandboxer';
+import {Col, Grid, Row, Divider} from "rsuite";
+import {MultipleChoiceQuestion} from "./components/MultipleChoiceQuestion";
+import {lists_questions} from "./lists/questions";
 
 # Warmup
 >
@@ -77,13 +77,17 @@ it("Example 1", () => {
 `}
 />
 
->
+<Divider/>
+
+<MultipleChoiceQuestion
+    title={"Quick check"}
+    subtitle={"What do you currently know about lists?"}
+    questions={lists_questions}
+/>
 
 Now that the Sentence List problem has been solved, here are more helpful things to know about lists before moving on:
 >
   * more facts about lists
   * wow another list fact
   * list of list facts
->
->
 >

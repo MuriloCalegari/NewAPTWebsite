@@ -1,7 +1,5 @@
 import React from "react";
 import {observer} from "mobx-react-lite";
-import {Col, Grid, Row} from "rsuite";
-import Editor, {EditorProps} from "@monaco-editor/react";
 import { getParameters } from 'codesandbox/lib/api/define';
 
 export const CodeRunner = observer(( props : { javaScriptCode : string, testCode : string } ) => {
