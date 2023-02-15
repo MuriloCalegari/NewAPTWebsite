@@ -17,16 +17,16 @@ export const TextbookChapters = observer(() => {
     return (<PageContent bodyFill className="textbook-page" header={<h3 className="title">Textbook</h3>}>
             <Panel>
                 <PanelGroup accordion className={"chapter-panel-group"}>
-                    {chapters.map((chapter) => {
+                    {chapters.map((chapter, chapterIndex) => {
                         return (
-                            <Panel header={<h5>{chapter.title}</h5>} eventKey={chapter.id}>
+                            <Panel header={<h5>{(chapterIndex + 1) + ". " + chapter.title}</h5>} eventKey={chapter.id}>
                                 <List>
-                                    {chapter.parts.map((part) => {
+                                    {chapter.parts.map((part, index) => {
                                         return (
                                             <ListItem>
                                                 <ListItemButton onClick={() => goToPart(part)}>
                                                     <ListItemText
-                                                        primary={part.title}
+                                                        primary={(chapterIndex + 1) + "." + (index + 1) + " " + part.title}
                                                     />
                                                 </ListItemButton>
                                             </ListItem>
