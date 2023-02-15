@@ -1,0 +1,311 @@
+import {CodeEditor} from "./components/CodeEditor";
+import { CodeRunner } from "./components/CodeRunner";
+import {Panel} from "rsuite";
+import {Col, Grid, Row} from "rsuite";
+import CodeSandboxer from 'react-codesandboxer';
+
+
+
+# Lists
+>
+<br/>
+
+Lists are as common in programming as they are in everyday life. A Python list is a built-in data type representing a sequence of values, which are called elements or items. A list element can be any type of object, such as a string or integer or even another list.
+
+A list is created by placing the elements inside square brackets ( [] ):
+>
+
+
+            <Panel
+                header={<b>Example List</b>}
+                className={"code-text-panel"}
+            >
+                beatles = ['John', 'Paul', 'George', 'Ringo']
+            >
+                print(beatles)
+            >
+                returns:
+            >
+                ['John', 'Paul', 'George', 'Ringo']
+
+                
+            </Panel>
+
+>
+
+<br/>
+A list can be empty, contain duplicate values, and have elements with differing types. Lists can also contain other lists, called sublists, and be nested as deep as necessary. 
+<br/>
+Here are some more examples:
+
+>
+>
+> 
+
+
+            <Panel
+                header={<b>Example Lists</b>}
+                className={"code-text-panel"}
+            >
+                empty_list = []
+            >
+                num_list = [55, 27, 94, 27, 18, 32, 27, 61, 94]
+            >
+                mixed_list = [1, 2, 'Bob', 'Mary', 75, 75, 75, 24.99]
+            >
+                nested_list = [0, 1, [2, 3, 4], [5, [6, 7]], 8, 9]
+            >
+            >                
+   
+            </Panel>
+ 
+    >
+<br/>
+        Using the following print statements we can print the following outputs:
+
+
+<Grid style={{width: "100%"}}>
+    <Row>
+        <Col xs={24} md={12}>
+            <Panel
+                header={<b>Print Statements </b>}
+                className={"code-text-panel"}
+            >
+                print(empty_list)
+            
+                print(num_list)
+            
+                print(mixed_list)
+            
+                print(nested_list)
+            >
+
+            </Panel>
+        </Col>
+
+        <Col xs={24} md={12}>
+            <Panel
+                header={<b>Output </b>}
+                className={"code-text-panel"}
+        >
+                []
+        
+                [55, 27, 94, 27, 18, 32, 27, 61, 94]
+        
+                [1, 2, 'Bob', 'Mary', 75, 75, 75, 24.99]
+        
+                [0, 1, [2, 3, 4], [5, [6, 7]], 8, 9]
+        >
+        
+            </Panel>
+        </Col>
+    </Row>
+    
+</Grid>
+
+<br/>
+
+A list can also be created using the list constructor, a built-in function that returns a list based on other data. For example, the following code creates a list of characters from a string:
+>
+
+
+>
+<Panel
+    className={"code-text-panel"}
+        >
+        char_list = list('Python')
+        >
+        print(char_list)
+        >
+        ['P', 'y', 't', 'h', 'o', 'n']
+        >
+
+</Panel>
+>
+### Try it!
+>
+Write code that will return a list of even integers from 1 to 11 below.
+>
+
+<CodeRunner
+  javaScriptCode={`
+    export function createArrayOfEvenIntegers(length) {
+      const arr = [];
+      // Your code here
+      return arr;
+    }
+
+    const output = createArrayOfEvenIntegers(5);
+    console.log(output);
+  `}
+  testCode={`
+    import { createArrayOfEvenIntegers } from ".";
+
+    it("returns an array of even integers", () => {
+      const input = 5;
+      const expectedOutput = [2, 4, 6, 8, 10];
+      const actualOutput = createArrayOfEvenIntegers(input);
+
+      expect(actualOutput).toEqual(expectedOutput);
+    });
+  `}
+/>
+
+>
+>
+
+<br/><br/><br/>
+
+## Indexes
+<br/>
+>
+>
+
+You can refer to any item in a list by a numeric index, which start numbering at 0. So, a list of length 10 has elements that are indexed from 0 to 9. As with any Python sequence, you use square brackets ([]), known as the index operator, to access a specific item in the list:
+>
+>
+
+<Panel
+    className={"code-text-panel"}
+    >
+
+    adjectives = ['gorgeous', 'nimble', 'fearless', 'arid', 'dense', 
+    >>> 'neat', 'quick', 'grouchy', 'bold', 'jovial']
+</Panel>
+
+<Grid style={{width: "100%"}}>
+    <Row>
+        <Col xs={24} md={12}>
+            <Panel
+                header={<b>Print Statements </b>}
+                className={"code-text-panel"}
+    >
+                print('Element at index 2:', adjectives[2])
+    >
+                print('Element at index 7:', adjectives[7])
+        
+            </Panel>
+        </Col>
+
+        <Col xs={24} md={12}>
+            <Panel
+                header={<b>Outputs </b>}
+                className={"code-text-panel"}
+    >
+                Element at index 2: fearless
+    >
+                Element at index 7: grouchy
+    
+            </Panel>
+        </Col>
+    </Row>
+</Grid>
+
+<br/>
+Note that the element at index 2 is the third element in the list because the indexes start at 0.
+<br/>
+
+The built-in function len, which stands for length, returns the current number of elements in a list:  
+
+> 
+>     
+>
+
+<Panel
+    className={"code-text-panel"}
+>
+    test_scores = [96, 77, 84, 85, 91, 94]
+> 
+    size = len(test_scores)
+> 
+    print('Number of test scores:', size)
+
+</Panel>
+
+<br/>
+Note that the number of elements in the list is always one more than the highest valid index. There are 6 scores in the test_scores list, which are indexed from 0 to 5.
+>
+So, the valid indexes of any list run from 0 to len(list) - 1. Trying to access an item outside of this range will cause an IndexError.
+>
+As with strings and other sequences, Python lets you use a negative value as the index to refer to a position relative to the end of the list. You can think of a negative index as counting backwards from the end of the list. So, list[-1] is the last item in the list, list[-2] is the second to last item, etc.
+>
+>
+>
+<br/>
+## Concatenation
+<br/><br/>
+>
+> 
+
+The elements of one list can be appended to another list, creating a third (longer) list. This process is called list concatenation, which is accomplished using the plus (+) operator (similar to string concatenation).
+>
+
+<Panel
+    className={"code-text-panel"}
+    >
+    low_numbers = [1, 2, 3, 4, 5]
+    >
+    high_numbers = [6, 7, 8, 9, 10]
+    >
+    all_numbers = low_numbers + high_numbers
+    >
+    print(all_numbers)
+    >
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+</Panel>
+>
+
+The augmented assignment operator += can be used for list concatenation as well:
+>
+
+<Panel
+    className={"code-text-panel"}
+>
+    numbers = [44, 27, 95, 31]
+>
+    numbers += [19, 54, 27, 12]
+>
+    print(numbers)
+>
+    [44, 27, 95, 31, 19, 54, 27, 12]
+
+</Panel>
+>
+
+<br/><br/>
+
+### Try it!
+>
+The exercise below uses both indexing and concatenation.
+
+Write code that will return a concatenation of the first and last element of the following list:
+<br/>
+
+### *['hello', 'world', 'how', 'are', 'you']*
+>
+<br/>
+
+<CodeRunner
+  javaScriptCode={`
+    export function firstAndLast(arr) {
+      const first = arr[0];
+      const last = arr[arr.length - 1];
+      return first + last;
+    }
+
+    const arr = ['hello', 'world', 'how', 'are', 'you'];
+    const output = firstAndLast(arr);
+    console.log(output);
+  `}
+  testCode={`
+    import { firstAndLast } from ".";
+
+    it("returns the concatenation of the first and last elements of the array", () => {
+      const input = ['hello', 'world', 'how', 'are', 'you'];
+      const expectedOutput = 'helloyou';
+      const actualOutput = firstAndLast(input);
+
+      expect(actualOutput).toEqual(expectedOutput);
+    });
+  `}
+/>
