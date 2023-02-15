@@ -38,6 +38,51 @@ export const chapters : Chapter[] =
                     content: <ListsPostClass/>,
                 },
             ]
+        },
+        {
+            id: "arraylists",
+            title: "ArrayLists",
+            parts: [
+                {
+                    id: "lists_warmup",
+                    title: "Warmup",
+                    content: <ListsWarmup/>,
+                },
+                {
+                    id: "lists_inclass",
+                    title: "In Class",
+                    content: <ListsInClass/>,
+                },
+
+                {
+                    id: "lists_postclass",
+                    title: "Post Class",
+                    content: <ListsPostClass/>,
+                },
+            ]
+        },
+
+        {
+            id: "linkedlists",
+            title: "LinkedLists",
+            parts: [
+                {
+                    id: "lists_warmup",
+                    title: "Warmup",
+                    content: <ListsWarmup/>,
+                },
+                {
+                    id: "lists_inclass",
+                    title: "In Class",
+                    content: <ListsInClass/>,
+                },
+
+                {
+                    id: "lists_postclass",
+                    title: "Post Class",
+                    content: <ListsPostClass/>,
+                },
+            ]
         }
     ];
 
