@@ -1,0 +1,89 @@
+import {CodeEditor} from "./components/CodeEditor";
+import { CodeRunner } from "./components/CodeRunner";
+import {Panel} from "rsuite";
+import {Col, Grid, Row} from "rsuite";
+import CodeSandboxer from 'react-codesandboxer';
+
+# Warmup
+>
+For this exercise, you are given most of the code.
+All that is left to do is fill in the blanks.
+
+>
+### SentenceLength
+>
+As part of analyzing readability you've been asked to compute the average sentence length of a list of sentences.
+Each sentence is a white-space delimited string of words. The length of a sentence is the number of words in it.
+See the examples for details.
+
+
+<Grid style={{width: "100%"}}>
+    <Row>
+        <Col xs={24} md={12}>
+            <Panel
+                header={<b>Example 1</b>}
+                className={"code-text-panel"}
+            >
+                sentenceList = ["the", "cat", "ate", "the", "dog"]
+
+                returns 1.0
+
+                There are five sentences, each is one word long, average is 1.0.
+            </Panel>
+        </Col>
+        <Col xs={24} md={12}>
+            <Panel
+                header={<b>Example 2</b>}
+                className={"code-text-panel"}
+            >
+                sentenceList = ["the cat ate", "the dog"]
+
+                returns 2.5
+
+                There are two sentences. One contains three words, the other contains two words. The average is 2.5.
+            </Panel>
+        </Col>
+    </Row>
+</Grid>
+
+### Complete the code below
+
+>
+
+<CodeRunner
+    javaScriptCode={`
+export function average(sentencelist) {
+  let wordsinsentence = 0;
+  for (let i = 0; i < sentencelist.length; i++) {
+    const item = sentencelist[i];
+    const wordsinitem = item.split(" ");
+    const wordsinindividualsentence = wordsinitem.length;
+    // MODIFY HERE ... WHAT IS NECESSARY TO HAPPEN TO wordsinsentence?
+  }
+  const numberofsentences = sentencelist.length;
+  const result = wordsinsentence / numberofsentences;
+  console.log(result);
+  return result;
+}
+
+average(["the", "cat", "ate", "the", "dog"]);
+`}
+    testCode={`
+import { average } from ".";
+
+it("Example 1", () => {
+  expect(average(["the", "cat", "ate", "the", "dog"])).toBe(1);
+});
+`}
+/>
+
+>
+
+Now that the Sentence List problem has been solved, here are more helpful things to know about lists before moving on:
+>
+  * more facts about lists
+  * wow another list fact
+  * list of list facts
+>
+>
+>

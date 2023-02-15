@@ -6,6 +6,8 @@ const HtmlwebpackPlugin = require('html-webpack-plugin');
 
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
+const codesandbox = require('remark-codesandbox');
+
 module.exports = {
   entry: './src/index.tsx',
   devtool: 'source-map',
@@ -69,7 +71,10 @@ module.exports = {
           {
             loader: '@mdx-js/loader',
             /** @type {import('@mdx-js/loader').Options} */
-            options: {providerImportSource: '@mdx-js/react'}
+            options: {
+              providerImportSource: '@mdx-js/react',
+              remarkPlugins: [[codesandbox, { mode: 'button' }]],
+            }
           }
         ]
       }

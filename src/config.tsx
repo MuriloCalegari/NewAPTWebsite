@@ -13,7 +13,7 @@ export const appNavs = [
   {
     eventKey: 'textbook',
     icon: <Icon as={PageIcon} />,
-    title: 'Textbook chapter',
+    title: 'Textbook',
     to: '/textbook'
   },
 ];
