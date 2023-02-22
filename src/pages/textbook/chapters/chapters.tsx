@@ -2,6 +2,7 @@ import React from "react";
 import ListsWarmup from "@/pages/textbook/chapters/ListsWarmup.mdx";
 import ListsInClass from "@/pages/textbook/chapters/ListsInClass.mdx";
 import ListsPostClass from "@/pages/textbook/chapters/ListsPostClass.mdx";
+import Debugging from "@/pages/textbook/chapters/Debugging.mdx";
 
 export interface Chapter {
     id: string;
@@ -44,9 +45,9 @@ export const chapters : Chapter[] =
             title: "ArrayLists",
             parts: [
                 {
-                    id: "lists_warmup",
-                    title: "Warmup",
-                    content: <ListsWarmup/>,
+                    id: "debugging",
+                    title: "Debugging",
+                    content: <Debugging/>,
                 },
                 {
                     id: "lists_inclass",
