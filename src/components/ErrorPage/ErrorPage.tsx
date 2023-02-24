@@ -1,5 +1,5 @@
 import React from 'react';
-import * as errors from '@/images/errors';
+import * as errors from '@/media/errors';
 
 const ErrorPage = ({ code = 404, children }) => (
   <div className="error-page">

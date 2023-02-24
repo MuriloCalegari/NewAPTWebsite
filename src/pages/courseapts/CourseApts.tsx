@@ -21,9 +21,7 @@ export const CourseApts = observer(() => {
                             </Stack>
                         }
                     >
-
                         <ProblemSetList problemSets={problemSetsData}/>
-
                     </Panel>
                 </>
             </Panel>

@@ -36,7 +36,11 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(jpg|png|svg)$/,
+        test: /\.mp3/,
+        type: 'asset',
+      },
+      {
+        test: /\.(jpg|png|svg|riv)$/,
         use: [
           {
             loader: 'url-loader',

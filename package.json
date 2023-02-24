@@ -47,6 +47,7 @@
     "@monaco-editor/react": "^4.4.6",
     "@mui/material": "^5.11.5",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
+    "@rive-app/react-canvas": "^3.0.36",
     "@rsuite/icons": "^1.0.2",
     "apexcharts": "^3.35.4",
     "classnames": "^2.3.1",
@@ -73,6 +74,7 @@
     "react-transition-group": "^4.4.5",
     "remark-codesandbox": "^0.10.1",
     "rsuite": "5.23.0",
+    "use-sound": "^4.0.1",
     "vis-network": "^9.1.2"
   },
   "devDependencies": {

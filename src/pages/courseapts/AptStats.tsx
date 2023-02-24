@@ -1,7 +1,7 @@
 import React from "react";
 import {observer} from "mobx-react-lite";
 import {Col, Panel, Row} from "rsuite";
-import * as images from "@/images/charts";
+import * as images from "@/media/charts";
 
 export const AptStats = observer(() => {
     return <Row gutter={30} className="dashboard-header">

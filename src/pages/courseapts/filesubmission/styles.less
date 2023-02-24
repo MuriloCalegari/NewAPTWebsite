@@ -1,0 +1,128 @@
+.submit-file-modal {
+  position: relative;
+  top: 25%;
+  transition:
+          width 0.3s cubic-bezier(0.47, 0, 0.75, 0.72),
+          height 0.3s cubic-bezier(0.47, 0, 0.75, 0.72),
+          top 0.3s cubic-bezier(0.47, 0, 0.75, 0.72),
+          background-color 0.75s cubic-bezier(0.47, 0, 0.75, 0.72);
+  height: auto;
+
+  .rs-modal-dialog {
+    transition: inherit;
+    height: 358px;
+  }
+
+  .rs-uploader-trigger-btn {
+    margin: 0;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rs-modal-content {
+    transition: inherit;
+  }
+
+  &.full-screen {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    margin-top: 0;
+    border-radius: 0;
+    max-width: 100%;
+
+    .rs-modal-dialog {
+      height: 100%;
+    }
+
+    .rs-modal-content {
+      height: 100%;
+      border-radius: 0;
+    }
+
+    .rs-modal-body {
+      height: 100%;
+    }
+
+    .submit-file-modal-body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &.success {
+    .rs-modal-content {
+      background-color: #39E841;
+    }
+
+    .submit-file-modal-header {
+      opacity: 0;
+    }
+  }
+
+  &.failure {
+    .rs-modal-content {
+      background-color: #B41818;
+    }
+
+    .submit-file-modal-header {
+      opacity: 0;
+    }
+  }
+
+  .submit-file-modal-header {
+    opacity: 100;
+    transition: opacity 0.75s cubic-bezier(0.47, 0, 0.75, 0.72);
+  }
+}
+
+.submit-file-modal-backdrop {
+  z-index: 1050;
+  backdrop-filter: blur(2px);
+}
+
+.upload-drop-area {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rive-component {
+  width: 400px;
+  height: 400px;
+  align-items: center;
+  justify-content: center;
+}
+
+.submission-result-message {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  font-family: monospace;
+  opacity: 0;
+  color: white;
+  transition: opacity 0.5s cubic-bezier(0.47, 0, 0.75, 0.72);
+
+  &.display {
+    opacity: 100%;
+  }
+}
+
+.submission-see-results-button {
+  margin-top: -28px;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.47, 0, 0.75, 0.72), margin-top 0.65s cubic-bezier(0.47, 0, 0.75, 0.72);
+  color: #FFFFFF;
+
+  &.display {
+    opacity: 100%;
+    margin-top: 0;
+  }
+}

@@ -5,7 +5,7 @@ import {List} from "@mui/material";
 import {useStores} from "@/hooks/useStores";
 import {AptDrawer} from "@/pages/courseapts/AptDrawer";
 import {ProblemSet} from "@/data/model/ProblemSet";
-import {SubmitFileModal} from "@/pages/courseapts/SubmitFileModal";
+import {SubmitFileModal} from "@/pages/courseapts/filesubmission/SubmitFileModal";
 
 interface ProblemSetListProps {
     problemSets: ProblemSet[];

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Panel, ButtonGroup, Button } from 'rsuite';
-import * as images from '../../images/charts';
+import * as images from '../../media/charts';
 import BarChart from './BarChart';
 import PieChart from './PieChart';
 import DataTable from './DataTable';
