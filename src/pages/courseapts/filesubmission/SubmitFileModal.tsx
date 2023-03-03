@@ -74,7 +74,7 @@ export const SubmitFileModal = observer((props: SubmitFileModalProps) => {
                     // <div className={"rive-div-container"}>
                         <ProcessingCheckError
                             status={modalSubmissionState}
-                            onSeeSubmissionClick={() => {courseAptsStore.openDrawer(courseAptsStore.currentLoadedApt); handleModalClose();}}
+                            onSeeSubmissionClick={() => {courseAptsStore.openDrawer(courseAptsStore.currentLoadedApt, true); handleModalClose();}}
                         />
                     // </div>
                 }

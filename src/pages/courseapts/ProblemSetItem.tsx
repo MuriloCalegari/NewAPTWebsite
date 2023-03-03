@@ -57,7 +57,7 @@ export const ProblemSetItem = observer((props : ProblemSetItemProps) => {
                 <>
                     <List style={{paddingLeft: 48, paddingRight: 24}}>
                         {props.problemSet.apts.map((apt) => {
-                            return <AptListItem apt={apt} onClick={() => courseAptsStore.openDrawer(apt)}/>
+                            return <AptListItem apt={apt} onClick={() => courseAptsStore.openDrawer(apt, false)}/>
                         })}
                     </List>
                 </>

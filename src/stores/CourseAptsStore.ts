@@ -8,6 +8,8 @@ export default class CourseAptsStore {
 
     @observable isDrawerOpen = false;
     @observable currentLoadedApt : Apt | undefined = undefined;
+    @observable shouldAnimateSubmissions = false;
+
     @observable isSubmitFileOpen = false;
     @observable isQuizModalOpen = false;
 
@@ -17,10 +19,14 @@ export default class CourseAptsStore {
     }
 
     @action
-    openDrawer = (aptToLoad?: Apt) => {
+    openDrawer = (aptToLoad?: Apt, shouldAnimateSubmissions? : boolean) => {
         this.isDrawerOpen = true;
         if(aptToLoad) {
             this.currentLoadedApt = aptToLoad;
+        }
+
+        if(shouldAnimateSubmissions !== undefined) {
+            this.shouldAnimateSubmissions = shouldAnimateSubmissions;
         }
         console.log("openDrawer");
     }
@@ -29,6 +35,7 @@ export default class CourseAptsStore {
     closeDrawer = () => {
         console.log("closeDrawer");
         this.isDrawerOpen = false;
+        this.shouldAnimateSubmissions = false;
     }
 
     @action

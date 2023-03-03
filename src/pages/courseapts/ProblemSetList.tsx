@@ -22,7 +22,11 @@ export const ProblemSetList = observer((props : ProblemSetListProps) => {
                     return <ProblemSetItem problemSet={problemSet} index={index}/>
                 })}
             </List>
-            <AptDrawer open={courseAptsStore.isDrawerOpen} apt={courseAptsStore.currentLoadedApt}/>
+            <AptDrawer
+                open={courseAptsStore.isDrawerOpen}
+                apt={courseAptsStore.currentLoadedApt}
+                shouldAnimateSubmissions={courseAptsStore.shouldAnimateSubmissions}
+            />
             <SubmitFileModal open={courseAptsStore.isSubmitFileOpen}/>
         </>
     );
