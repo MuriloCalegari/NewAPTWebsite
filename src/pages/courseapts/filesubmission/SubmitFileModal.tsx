@@ -57,11 +57,7 @@ export const SubmitFileModal = observer((props: SubmitFileModalProps) => {
                     <Uploader
                         draggable
                         action="https://jsonplaceholder.typicode.com/posts/"
-                        onSuccess={(data, file) => {
-                            courseAptsStore.openDrawer();
-                            courseAptsStore.closeSubmitFileModal();
-                            console.log(data, file);
-                        }}
+                        onSuccess={handleOnUploadError}
                         onError={handleOnUploadError}
                         disabledFileItem
                     >

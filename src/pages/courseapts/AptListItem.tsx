@@ -1,12 +1,12 @@
 import React from "react";
 import {observer} from "mobx-react-lite";
-import {Col, Grid, Stack, Tag, Row, Button} from "rsuite";
+import {Col, Grid, Stack, Tag, Row, Button, Dropdown, IconButton} from "rsuite";
 import CheckRoundIcon from "@rsuite/icons/CheckRound";
 import WarningRoundIcon from '@rsuite/icons/WarningRound';
-import {ListItem, ListItemButton, ListItemSecondaryAction, ListItemText} from "@mui/material";
+import {ListItem, ListItemButton, ListItemText} from "@mui/material";
 import {Apt} from "@/data/model/Apt";
-import {SubmitButton} from "@/components/Buttons/SubmitButton";
 import {useStores} from "@/hooks/useStores";
+import MoreIcon from '@rsuite/icons/More';
 
 interface AptListItemProps {
     apt: Apt
@@ -59,18 +59,34 @@ function renderItemBody(props: AptListItemProps) {
 
 export const AptListItem = observer((props : AptListItemProps) => {
 
-    const { courseAptsStore } = useStores();
-
     const { apt } = props;
 
     return (
         <ListItem key={apt.id} sx={{marginBottom: 0, marginTop: 0, paddingTop: 0, paddingBottom: 0}}>
-            <ListItemButton onClick={props.onClick} sx={{marginRight: 8, paddingRight: 1, paddingTop: "4px", paddingBottom: "4px"}}>
+            <ListItemButton onClick={props.onClick} sx={{marginRight: 1, paddingRight: 1, paddingTop: "4px", paddingBottom: "4px"}}>
                 <ListItemText primary={renderItemBody(props)}>Teste</ListItemText>
             </ListItemButton>
-            <ListItemSecondaryAction>
-                <SubmitButton onClick={() => courseAptsStore.openSubmitFileModal(apt)}/>
-            </ListItemSecondaryAction>
+            {/*<ListItemSecondaryAction>*/}
+                <SecondaryActionPopover apt={apt}/>
+            {/*</ListItemSecondaryAction>*/}
         </ListItem>
+    );
+});
+
+const SecondaryActionPopover = (({ apt } : {apt : Apt}) => {
+    const {courseAptsStore} = useStores();
+
+    return (
+        <Dropdown
+            trigger={"click"}
+            renderToggle={(props, ref) =>
+                <IconButton {...props} ref={ref} icon={<MoreIcon/>} appearance={"subtle"}/>
+            }
+            placement={"bottomEnd"}
+        >
+            <Dropdown.Item onSelect={() => courseAptsStore.openSubmitFileModal(apt)}>
+                Submit
+            </Dropdown.Item>
+        </Dropdown>
     );
 });

@@ -28,3 +28,11 @@ export class Apt {
     isQuizTaken!: boolean;
     testCases!: TestCase[];
 }
+
+export const isTestCaseCorrect = (testCase: TestCase) => {
+    return testCase.submission.userOutput === testCase.expectedOutput;
+}
+
+export const getCorrectTestCasesCount = (testCases: TestCase[]) => {
+    return testCases.filter(testCase => isTestCaseCorrect(testCase)).length;
+}

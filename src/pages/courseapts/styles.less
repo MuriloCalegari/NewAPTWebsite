@@ -87,3 +87,21 @@
     display: block;
   }
 }
+
+// Make font italic
+.submissions-card-motivating-text {
+  transition: margin-left 0.5s ease, opacity 0.5s ease;
+  margin-left: 0;
+  opacity: 100%;
+
+  span {
+    font-size: smaller;
+    font-style: italic;
+    color: @B600;
+  }
+
+  &.hidden {
+    margin-left: -100px;
+    opacity: 0;
+  }
+}

@@ -10,7 +10,7 @@ export const problemSetsData: ProblemSet[] = [
                 "id": 1,
                 "name": "Totality APT",
                 "difficulty": "EASY",
-                "status": "DONE",
+                "status": "INCOMPLETE",
                 "problemStatement": "The phrases even keeled, odd job, and total eclipse might come to mind as you solve this APT. Given an array of int values, return the sum of those values that are at odd indexes, even indexes, or every index depending on whether the value of the String stype is **_\"odd\"_**, **_\"even\"_**, or **_\"all\"_**, respectively. See examples for details.",
                 "classCode": "public class Totality {\n    public int sum(int[] a, String stype) {\n        return 0;\n    }\n}",
                 "constraints": "The array a[] will have between 2 and 50 values **(inclusive)**:\n * The sum of the values in a[] will be less than Integer.MAX_VALUE. \n * The value of String stype will be \"odd\", or \"even\", or \"all\"",
@@ -121,7 +121,7 @@ export const problemSetsData: ProblemSet[] = [
                         "submission":
                             {
                                 "testCaseNumber": 2,
-                                "userOutput": "6",
+                                "userOutput": "9",
                                 "timestamp": 1623168600000,
                                 "runtime": 45,
                                 "memory": 128
@@ -138,7 +138,7 @@ export const problemSetsData: ProblemSet[] = [
                         "submission":
                             {
                                 "testCaseNumber": 3,
-                                "userOutput": "6",
+                                "userOutput": "15",
                                 "timestamp": 1623168600000,
                                 "runtime": 45,
                                 "memory": 128
@@ -244,7 +244,7 @@ export const problemSetsData: ProblemSet[] = [
                 "id": 4,
                 "name": "Starter APT",
                 "difficulty": "HARD",
-                "status": "DONE",
+                "status": "NOT_STARTED",
                 "problemStatement": "The phrases even keeled, odd job, and total eclipse might come to mind as you solve this APT. Given an array of int values, return the sum of those values that are at odd indexes, even indexes, or every index depending on whether the value of the String stype is **_\"odd\"_**, **_\"even\"_**, or **_\"all\"_**, respectively. See examples for details.",
                 "classCode": "public class Totality {\n    public int sum(int[] a, String stype) {\n        return 0;\n    }\n}",
                 "constraints": "The array a[] will have between 2 and 50 values **(inclusive)**:\n * The sum of the values in a[] will be less than Integer.MAX_VALUE. \n * The value of String stype will be \"odd\", or \"even\", or \"all\"",
@@ -322,7 +322,7 @@ export const problemSetsData: ProblemSet[] = [
                 "id": 5,
                 "name": "CirclesCountry APT",
                 "difficulty": "HARD",
-                "status": "DONE",
+                "status": "NOT_STARTED",
                 "problemStatement": "The phrases even keeled, odd job, and total eclipse might come to mind as you solve this APT. Given an array of int values, return the sum of those values that are at odd indexes, even indexes, or every index depending on whether the value of the String stype is **_\"odd\"_**, **_\"even\"_**, or **_\"all\"_**, respectively. See examples for details.",
                 "classCode": "public class Totality {\n    public int sum(int[] a, String stype) {\n        return 0;\n    }\n}",
                 "constraints": "The array a[] will have between 2 and 50 values **(inclusive)**:\n * The sum of the values in a[] will be less than Integer.MAX_VALUE. \n * The value of String stype will be \"odd\", or \"even\", or \"all\"",
