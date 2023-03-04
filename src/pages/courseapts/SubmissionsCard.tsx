@@ -1,7 +1,7 @@
 import {observer} from "mobx-react-lite";
 import {Apt, isTestCaseCorrect, TestCase} from "@/data/model/Apt";
 import {useStores} from "@/hooks/useStores";
-import {Col, Divider, Grid, Panel, PanelGroup, Row, Stack} from "rsuite";
+import {Col, Divider, Grid, Panel, PanelGroup, PanelProps, Row, Stack} from "rsuite";
 import CheckRoundIcon from "@rsuite/icons/CheckRound";
 import WarningRoundIcon from "@rsuite/icons/WarningRound";
 import {SubmitButton} from "@/components/Buttons/SubmitButton";
@@ -53,7 +53,11 @@ export const SubmissionsCard = observer((props: SubmissionsCardProps) => {
         return <PanelGroup accordion>
             {testCases && testCases.map((testCase: TestCase) => {
                 return (
-                    <TestCasePanel testCase={testCase} shouldAnimate={props.shouldAnimate}/>)
+                    <TestCasePanel
+                        testCase={testCase}
+                        shouldAnimate={props.shouldAnimate}
+                        className={`submissions-card-test-case-item ${props.shouldAnimate && !hasAnimationRun ? "hidden" : ""}`}
+                    />)
             })
             }
         </PanelGroup>;
@@ -98,22 +102,29 @@ export const SubmissionsCard = observer((props: SubmissionsCardProps) => {
     </Panel>);
 });
 
-export const TestCasePanel = observer((props: { testCase: TestCase, shouldAnimate: boolean }) => {
+interface ITestCasePanelProps extends PanelProps {
+    testCase: TestCase,
+    shouldAnimate: boolean
+}
+
+export const TestCasePanel = observer((props: ITestCasePanelProps) => {
+
+    const { testCase, shouldAnimate, ...others} = props;
 
     function renderHeader(testCase: TestCase) {
         return (
             <Stack spacing={8}>
                 {`Test case ${testCase.testNumber}`}
                 {testCase.submission && isTestCaseCorrect(testCase) &&
-                    <CheckRoundIcon style={{marginTop: -4}} color="green"/>}
+                    <CheckRoundIcon className={"test-case-result-icon"} color="green"/>}
                 {testCase.submission && !isTestCaseCorrect(testCase) &&
-                    <WarningRoundIcon style={{marginTop: -4}} color="red"/>}
+                    <WarningRoundIcon className={"test-case-result-icon"} color="red"/>}
             </Stack>
         );
     }
 
     return (
-        <Panel header={renderHeader(props.testCase)}>
+        <Panel {...others} header={renderHeader(props.testCase)}>
             <Grid style={{width: "100%"}}>
                 <Row gutter={24}>
                     <Col xs={24} md={6}>
