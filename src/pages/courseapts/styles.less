@@ -60,6 +60,29 @@
   }
 }
 
+.path-option {
+  width: 150px;
+  height: 50px;
+  margin: 10px;
+
+  &.unavailable {
+    background: #ccd7e7;
+    border: #b3cdf0;
+    color: rgb(255, 255, 255);
+  }
+
+  &.part-of-path {
+    background: #5686c4;
+    border: #1c57a3;
+    color: #FFFFFF;
+  }
+  &.current {
+    background: #0c3469;
+    border: #0c3469;
+    color: #FFFFFF;
+  }
+}
+
 .rs-theme-dark {
   .problem-set-cards {
     background: @B800-dark;

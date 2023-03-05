@@ -16,4 +16,10 @@ export const appNavs = [
     title: 'Textbook',
     to: '/textbook'
   },
+  {
+    eventKey: 'journey',
+    icon: <Icon as={PageIcon} />,
+    title: 'Journey',
+    to: '/journey'
+  },
 ];

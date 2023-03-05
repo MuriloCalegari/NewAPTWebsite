@@ -10,6 +10,7 @@ import {CourseApts} from "@/pages/courseapts/CourseApts";
 import {useObserver} from "mobx-react-lite";
 import {TextbookChapters} from "@/pages/textbook/TextbookChapters";
 import {TextbookContent} from "@/pages/textbook/TextbookContent";
+import {Journey} from "@/pages/journey/Journey";
 
 const App = () => {
   return useObserver(() => (
@@ -20,6 +21,7 @@ const App = () => {
                 <Route path="course_apts" element={<CourseApts/>}/>
                 <Route path="textbook" element={<TextbookChapters/>}/>
                 <Route path="textbook/:chapter" element={<TextbookContent/>}/>
+                <Route path="journey" element={<Journey/>}/>
             </Route>
             <Route path="*" element={<Error404Page/>}/>
         </Routes>
