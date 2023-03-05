@@ -32,7 +32,7 @@ export const AptDrawer = observer((props: AptDrawerProps) => {
                     <Panel
                         className="apt-card"
                     >
-                        <Grid>
+                        <Grid style={{width: "100%"}}>
                             <Row gutter={24}>
                                 <Col xs={24} md={12} style={{ marginBottom: 12 }}>
                                     <ProblemStatementCard problemStatement={apt?.problemStatement} />
