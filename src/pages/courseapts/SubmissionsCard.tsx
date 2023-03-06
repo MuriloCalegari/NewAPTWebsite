@@ -31,7 +31,7 @@ export const SubmissionsCard = observer((props: SubmissionsCardProps) => {
     const [ hasAnimationRun, setHasAnimationRun ] = React.useState(!props.shouldAnimate);
     const {courseAptsStore} = useStores();
 
-    const [ playComputingSound ] = useSound(computingSound, { volume: 0.25 });
+    const [ playComputingSound ] = useSound(computingSound, { volume: 0.5 });
     const panelRef = React.useRef(null);
 
     // Force react ro rerender component if shouldAnimate changes,

@@ -35,8 +35,8 @@ export const ProcessingCheckError = observer((props : IProcessingCheckError) => 
         }
     );
 
-    const [playSuccessAudio] = useSound(successSound);
-    const [playErrorAudio] = useSound(errorSound);
+    const [playSuccessAudio] = useSound(successSound, { volume: 0.5 });
+    const [playErrorAudio] = useSound(errorSound, { volume: 0.5 });
 
     const [ isAnimationDone, setIsAnimationDone ] = React.useState(false);
 
