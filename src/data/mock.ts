@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker/locale/en';
+import {Message} from "@/data/model/Message";
 
 export function mockUsers(length: number) {
   const createRowData = rowIndex => {
@@ -88,4 +89,26 @@ export function mockTreeData(options: {
   mock(data);
 
   return data;
+}
+
+export function mockMessages(length : number) : Message[] {
+  const createMessage = (index : number) : Message => {
+    const fullName = faker.name.fullName();
+    const avatar = faker.image.avatar();
+    const message = faker.lorem.sentence();
+
+    return {
+        id: index + 1,
+        user: {
+            id: index + 1,
+            name: fullName,
+            avatar: avatar
+        },
+        content: message
+    }
+  }
+
+    return Array.from({ length }).map((_, index) => {
+      return createMessage(index);
+    });
 }

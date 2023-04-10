@@ -8,6 +8,7 @@ import NavLink from '../NavLink';
 import Brand from '../Brand';
 import { CustomProvider } from 'rsuite';
 import enGB from 'rsuite/locales/en_GB';
+import {observer} from "mobx-react-lite";
 
 const { getHeight, on } = DOMHelper;
 
@@ -34,7 +35,7 @@ export interface FrameProps {
   children?: React.ReactNode;
 }
 
-const Frame = (props: FrameProps) => {
+const Frame = observer((props: FrameProps) => {
   const { navs } = props;
   const [expand, setExpand] = useState(true);
   const [windowHeight, setWindowHeight] = useState(getHeight(window));
@@ -108,6 +109,6 @@ const Frame = (props: FrameProps) => {
       </Container>
     </CustomProvider>
   );
-};
+});
 
 export default Frame;

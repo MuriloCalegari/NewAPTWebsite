@@ -14,9 +14,14 @@ import {
 import NoticeIcon from '@rsuite/icons/Notice';
 import HelpOutlineIcon from '@rsuite/icons/HelpOutline';
 import GithubIcon from '@rsuite/icons/legacy/Github';
-import HeartIcon from '@rsuite/icons/legacy/HeartO';
 import {Icon} from "@rsuite/icons";
 import { MdOutlineNightlight, MdOutlineLightMode } from 'react-icons/md';
+import {useStores} from "@/hooks/useStores";
+import AdminIcon from '@rsuite/icons/Admin';
+import PeoplesIcon from '@rsuite/icons/Peoples';
+import ListIcon from '@rsuite/icons/List';
+import WechatOutlineIcon from '@rsuite/icons/WechatOutline';
+import {observer} from "mobx-react-lite";
 
 const renderAdminSpeaker = ({ onClose, left, top, className }: any, ref) => {
   const handleSelect = eventKey => {
@@ -96,55 +101,102 @@ interface HeaderProps {
     onChangeTheme: (theme: ThemeType) => void;
 }
 
-const Header = (props : HeaderProps) => {
-  const trigger = useRef<WhisperInstance>(null);
+const Header = observer((props : HeaderProps) => {
+    const trigger = useRef<WhisperInstance>(null);
 
     const { theme, onChangeTheme } = props;
 
-  return (
-    <Stack className="header" spacing={8}>
-        <IconButton
-            icon={
-                <Icon
-                    as={theme === 'light' ? MdOutlineNightlight : MdOutlineLightMode}
-                    style={{ fontSize: 20 }}
-                />
+    const { textbookStore } = useStores();
+
+    const { isOnCollaborativeMode } = textbookStore;
+
+    function handleOnClickThreads() {
+        if(textbookStore.sidebarState === 'threads') {
+            textbookStore.setSidebarState('closed');
+        } else {
+            textbookStore.setSidebarState('threads');
+        }
+    }
+
+    function handleOnClickChat() {
+        if(textbookStore.sidebarState === 'chat') {
+            textbookStore.setSidebarState('closed');
+        } else {
+            textbookStore.setSidebarState('chat');
+        }
+    }
+
+    return (
+        <Stack className="header" spacing={8}>
+            {
+                isOnCollaborativeMode && (
+                    [
+                    <IconButton
+                        icon={
+                            <Icon
+                                as={ListIcon}
+                                style={{ fontSize: 20 }}
+                            />
+                        }
+                        onClick={handleOnClickThreads}
+                    >
+                        Threads
+                    </IconButton>,
+                        <IconButton
+                            icon={ <Icon
+                                    as={WechatOutlineIcon}
+                                    style={{ fontSize: 20 }}/> }
+                            onClick={handleOnClickChat}
+                        />
+                    ]
+                )
             }
-            onClick={() => onChangeTheme(theme === 'dark' ? 'light' : 'dark')}
-        />
 
-      <IconButton
-        icon={<HeartIcon style={{ fontSize: 20 }} color="red" />}
-        href="https://opencollective.com/rsuite"
-        target="_blank"
-      />
-      <IconButton
-        icon={<GithubIcon style={{ fontSize: 20 }} />}
-        href="https://github.com/MuriloCalegari/NewAPTWebsite"
-        target="_blank"
-      />
+            <IconButton
+                icon={
+                    <Icon
+                        as={isOnCollaborativeMode ? AdminIcon : PeoplesIcon}
+                        style={{ fontSize: 20 }}
+                    />
+                }
+                onClick={() => textbookStore.setCollaborativeMode(!isOnCollaborativeMode)}
+            />
+            <IconButton
+                icon={
+                    <Icon
+                        as={theme === 'light' ? MdOutlineNightlight : MdOutlineLightMode}
+                        style={{ fontSize: 20 }}
+                    />
+                }
+                onClick={() => onChangeTheme(theme === 'dark' ? 'light' : 'dark')}
+            />
+          <IconButton
+            icon={<GithubIcon style={{ fontSize: 20 }} />}
+            href="https://github.com/MuriloCalegari/NewAPTWebsite"
+            target="_blank"
+          />
 
-      <Whisper placement="bottomEnd" trigger="click" ref={trigger} speaker={renderNoticeSpeaker}>
-        <IconButton
-          icon={
-            <Badge content={5}>
-              <NoticeIcon style={{ fontSize: 20 }} />
-            </Badge>
-          }
-        />
-      </Whisper>
+          <Whisper placement="bottomEnd" trigger="click" ref={trigger} speaker={renderNoticeSpeaker}>
+            <IconButton
+              icon={
+                <Badge content={5}>
+                  <NoticeIcon style={{ fontSize: 20 }} />
+                </Badge>
+              }
+            />
+          </Whisper>
 
-      <Whisper placement="bottomEnd" trigger="click" ref={trigger} speaker={renderAdminSpeaker}>
-        <Avatar
-          size="sm"
-          circle
-          src="https://avatars.githubusercontent.com/u/1203827"
-          alt="@simonguo"
-          style={{ marginLeft: 8 }}
-        />
-      </Whisper>
-    </Stack>
-  );
-};
+          <Whisper placement="bottomEnd" trigger="click" ref={trigger} speaker={renderAdminSpeaker}>
+            <Avatar
+              size="sm"
+              circle
+              src="https://avatars.githubusercontent.com/u/1203827"
+              alt="@simonguo"
+              style={{ marginLeft: 8 }}
+            />
+          </Whisper>
+        </Stack>
+    );
+});
 
 export default Header;
