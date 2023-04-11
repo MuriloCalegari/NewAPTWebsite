@@ -12,7 +12,7 @@
     "sourceMap": true,
     "moduleResolution": "node",
     "target": "esnext",
-    "module": "esnext",
+    "module": "commonjs",
     "jsx": "react",
     "skipLibCheck": true,
     "baseUrl": ".",
@@ -21,5 +21,15 @@
     }
   },
   "exclude": ["node_modules"],
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "src/components/miscQuiz/quizpage/quiz/validate.js", "src/components/miscQuiz/quizpage/quiz/store.js", "src/components/miscQuiz/quizpage/quiz/QuizFormResult.js", "src/components/miscQuiz/quizpage/quiz/Quiz.tsx", "src/components/miscQuiz/quizpage/quiz/QuizForm.js", "src/components/miscQuiz/quizpage/quiz/index.js"]
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "src/components/miscQuiz/quizpage/quiz/validate.js",
+    "src/components/miscQuiz/quizpage/quiz/store.js",
+    "src/components/miscQuiz/quizpage/quiz/QuizFormResult.js",
+    "src/components/miscQuiz/quizpage/quiz/Quiz.tsx",
+    "src/components/miscQuiz/quizpage/quiz/QuizForm.js",
+    "src/components/miscQuiz/quizpage/quiz/index.js",
+    "server.ts"
+  ]
 }

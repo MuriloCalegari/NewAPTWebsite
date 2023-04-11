@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { FlexboxGrid, IconButton, Panel, Sidebar } from "rsuite";
 import { MDXProvider } from "@mdx-js/react";
@@ -11,9 +11,18 @@ import { TextbookChat } from "@/components/Textbook/TextbookChat";
 import { TextbookThreads } from "@/components/Textbook/TextbookThreads";
 import useSelectedText from "@/utils/useSelectedText";
 import SelectionMenu from "./ai/SelectionMenu";
+import { getLastMessage } from "@/utils/queryFixie";
 
 export const TextbookContent = observer(() => {
     const { text, top, left } = useSelectedText();
+
+    const [query, setQuery] = useState<string>('');
+    const [lastMessage, setLastMessage] = useState<string | null>(null);
+
+    const handleQuerySubmit = async () => {
+        const message = await getLastMessage(query);
+        setLastMessage(message);
+    };
 
     console.log(text)
 
@@ -53,6 +62,23 @@ export const TextbookContent = observer(() => {
                                     {partToRender?.content}
                                 </MDXProvider>
                                 {text && <SelectionMenu top={top} left={left} />}
+                                <input
+                                    type="text"
+                                    value={query}
+                                    onChange={(e) => setQuery(e.target.value)}
+                                    placeholder="Enter query"
+                                />
+                                <button onClick={handleQuerySubmit}>Submit</button>
+                                {lastMessage && (
+                                    <div>
+                                        <p>Last message:</p>
+                                        <p>{lastMessage}</p>
+                                    </div>
+                                )}
+                                <MDXProvider>
+                                    {partToRender?.content}
+                                </MDXProvider>
+                                {text && <SelectionMenu top={top} left={left} onHighlight={(top, left, text) => { }} />}
 
                             </FlexboxGrid.Item>
                             <FlexboxGrid.Item colspan={sidebarState === "closed" ? 0 : 6}>

@@ -4,7 +4,7 @@ import React from 'react';
 interface SelectionMenuProps {
     top: number;
     left: number;
-    onHighlight: (arg1: number, arg2: number, arg3: string);
+    onHighlight: (arg1: number, arg2: number, arg3: string) => void;
 }
 
 const SelectionMenu: React.FC<SelectionMenuProps> = ({ top, left, onHighlight }) => {
@@ -21,7 +21,7 @@ const SelectionMenu: React.FC<SelectionMenuProps> = ({ top, left, onHighlight })
     return (
         <div style={style}>
             <button>Annotate</button>
-            <button onClick={() => { onHighlight() }}>Ask AI</button>
+            <button onClick={() => { onHighlight }}>Ask AI</button>
         </div>
     );
 };
