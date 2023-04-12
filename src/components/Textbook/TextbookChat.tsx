@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {observer} from "mobx-react-lite";
 import {Avatar, Container, Content, Footer, IconButton, Input, InputGroup, Panel, Stack} from "rsuite";
 import CloseIcon from '@rsuite/icons/Close';
@@ -7,7 +7,8 @@ import {Message} from "@/data/model/Message";
 import SendIcon from '@rsuite/icons/Send';
 export const TextbookChat = observer(() => {
 
-    const { textbookStore } = useStores();
+    const [ currentMessage, setCurrentText ] = useState("");
+    const { textbookStore, userStore } = useStores();
 
     function renderHeader() {
         return (
@@ -24,11 +25,20 @@ export const TextbookChat = observer(() => {
         )
     }
 
+    function handleSendMessage() {
+        textbookStore.sendMessage(
+            {
+                user: userStore.currentUser,
+                content: currentMessage
+            }
+        )
+    }
+
     function renderFooter() {
         return (
             <InputGroup>
-                <Input />
-                <InputGroup.Button>
+                <Input onChange={(text) => setCurrentText(text)}/>
+                <InputGroup.Button onClick={handleSendMessage}>
                     <SendIcon/>
                 </InputGroup.Button>
             </InputGroup>

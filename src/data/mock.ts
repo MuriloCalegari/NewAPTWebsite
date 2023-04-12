@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker/locale/en';
 import {Message} from "@/data/model/Message";
+import {User} from "@/data/model/User";
 
 export function mockUsers(length: number) {
   const createRowData = rowIndex => {
@@ -111,4 +112,20 @@ export function mockMessages(length : number) : Message[] {
     return Array.from({ length }).map((_, index) => {
       return createMessage(index);
     });
+}
+
+export function mockCurrentUser() : User {
+  const fullName = faker.name.fullName();
+  const avatar = faker.image.avatar();
+
+  let mockedUser = {
+    id: 0,
+    name: fullName,
+    avatar: avatar
+  };
+
+  console.log("Generating mocked current user");
+  console.log(mockedUser);
+
+  return mockedUser
 }

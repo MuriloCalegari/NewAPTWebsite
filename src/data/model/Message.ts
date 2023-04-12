@@ -1,9 +1,7 @@
+import {User} from "@/data/model/User";
+
 export interface Message {
     id: number;
-    user: {
-        id: number;
-        name: string;
-        avatar: string;
-    }
+    user: User;
     content: string;
 }
