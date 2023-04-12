@@ -1,30 +1,39 @@
 import React, {ReactElement} from "react";
 import {observer} from "mobx-react-lite";
-import {Whisper} from "rsuite";
+import {Button, Divider, Panel, Stack, Whisper} from "rsuite";
+import classNames from "classnames";
 
 export interface HighlightProps extends React.HTMLAttributes<HTMLElement>{
     children : ReactElement;
 }
 
-const Overlay = React.forwardRef(({ style, onClose, ...rest }, ref) => {
+const Overlay = React.forwardRef(({ style, onClose, className, ...rest }, ref) => {
     const styles = {
         ...style,
-        color: '#000',
+        // color: '#000',
         background: '#fff',
-        width: 200,
-        padding: 10,
-        borderRadius: 4,
+        // width: 200,
+        // padding: 10,
+        // borderRadius: 4,
         position: 'absolute',
-        border: '1px solid #ddd',
-        boxShadow: '0 3px 6px -2px rgba(0, 0, 0, 0.6)'
+        // border: '1px solid #ddd',
+        // boxShadow: '0 3px 6px -2px rgba(0, 0, 0, 0.6)'
+        // padding: "0 0 0 0"
+        top: style.top + 15
     };
 
+    const finalClassName = classNames(className, "highlight-overlay");
+
     return (
-        <div {...rest} style={styles} ref={ref}>
-            Overlay
-            <hr />
-            <button onClick={onClose}>close</button>
-        </div>
+        <Panel {...rest} className={finalClassName} style={styles} ref={ref} shaded>
+            <Stack>
+                <Button appearance={"subtle"}>Thread</Button>
+                <Divider style={{marginLeft: 0, marginRight: 0}} vertical/>
+                <Button appearance={"subtle"}>Ask AI</Button>
+                <Divider style={{marginLeft: 0, marginRight: 0}} vertical/>
+                <Button appearance={"subtle"}>Unhighlight</Button>
+            </Stack>
+        </Panel>
     );
 });
 
