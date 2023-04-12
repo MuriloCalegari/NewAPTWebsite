@@ -1,10 +1,10 @@
 import React from "react";
 import {observer} from "mobx-react-lite";
-import {Avatar, IconButton, Panel, Stack} from "rsuite";
+import {Avatar, Container, Content, Footer, IconButton, Input, InputGroup, Panel, Stack} from "rsuite";
 import CloseIcon from '@rsuite/icons/Close';
 import {useStores} from "@/hooks/useStores";
 import {Message} from "@/data/model/Message";
-
+import SendIcon from '@rsuite/icons/Send';
 export const TextbookChat = observer(() => {
 
     const { textbookStore } = useStores();
@@ -24,18 +24,32 @@ export const TextbookChat = observer(() => {
         )
     }
 
+    function renderFooter() {
+        return (
+            <InputGroup>
+                <Input />
+                <InputGroup.Button>
+                    <SendIcon/>
+                </InputGroup.Button>
+            </InputGroup>
+        )
+    }
+
     return (
+
         <Panel header={renderHeader()} shaded className={"chat-container"}>
-            <Stack direction={"column"} alignItems={"flex-start"}>
-            <div className={"messages-container"}>
-                {
-                    textbookStore.messages.map((message) => {
-                        return <TextbookMessage message={message}/>
-                    })
-                }
-            </div>
-            <div className={"message-input"}>teste</div>
-            </Stack>
+            <Container>
+                <Content className={"messages-container"}>
+                        {
+                            textbookStore.messages.map((message) => {
+                                return <TextbookMessage message={message}/>
+                            })
+                        }
+                </Content>
+                <Footer className={"footer-container"}>
+                    {renderFooter()}
+                </Footer>
+            </Container>
         </Panel>
     );
 });
