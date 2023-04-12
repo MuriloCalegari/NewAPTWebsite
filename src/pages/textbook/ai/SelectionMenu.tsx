@@ -1,5 +1,8 @@
 // SelectionMenu.tsx
 import React from 'react';
+import { observer } from "mobx-react-lite";
+import { useStores } from "@/hooks/useStores";
+
 
 interface SelectionMenuProps {
     top: number;
@@ -7,12 +10,15 @@ interface SelectionMenuProps {
     onHighlight: (arg1: number, arg2: number, arg3: string) => void;
 }
 
-const SelectionMenu: React.FC<SelectionMenuProps> = ({ top, left, onHighlight }) => {
+export const SelectionMenu = observer(({ top, left, onHighlight }: SelectionMenuProps) => {
+    const { textbookStore } = useStores();
+
     const style: React.CSSProperties = {
         position: 'absolute',
-        top: `${top - 35}px`,
-        left: `${left - 70}px`,
+        top: `${top}px`,
+        left: `${left}px`,
         backgroundColor: 'white',
+        transform: 'translate(-50%, -50%)',
         padding: '5px',
         borderRadius: '3px',
         boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
@@ -20,10 +26,10 @@ const SelectionMenu: React.FC<SelectionMenuProps> = ({ top, left, onHighlight })
 
     return (
         <div style={style}>
-            <button>Annotate</button>
-            <button onClick={() => { onHighlight }}>Ask AI</button>
+            <button className="selection-button" onClick={() => { onHighlight }}>Annotate</button>
+            <button className="selection-button" onClick={() => { textbookStore.setSidebarState('ask-ai') }}>Ask AI</button>
         </div>
     );
-};
+});
 
 export default SelectionMenu;

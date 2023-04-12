@@ -9,22 +9,12 @@ import ArrowBackIcon from '@rsuite/icons/ArowBack';
 import { useStores } from "@/hooks/useStores";
 import { TextbookChat } from "@/components/Textbook/TextbookChat";
 import { TextbookThreads } from "@/components/Textbook/TextbookThreads";
+import { TextbookAI } from "@/components/Textbook/TextbookAI";
 import useSelectedText from "@/utils/useSelectedText";
 import SelectionMenu from "./ai/SelectionMenu";
-import { getLastMessage } from "@/utils/queryFixie";
 
 export const TextbookContent = observer(() => {
     const { text, top, left } = useSelectedText();
-
-    const [query, setQuery] = useState<string>('');
-    const [lastMessage, setLastMessage] = useState<string | null>(null);
-
-    const handleQuerySubmit = async () => {
-        const message = await getLastMessage(query);
-        setLastMessage(message);
-    };
-
-    console.log(text)
 
     const location = useLocation();
     const { chapter } = useParams();
@@ -32,9 +22,6 @@ export const TextbookContent = observer(() => {
 
     const { textbookStore } = useStores();
     const { sidebarState } = textbookStore;
-
-    console.log(location);
-    console.log(chapter)
 
     const partToRender = chapterParts.find((part) => part.id === chapter);
 
@@ -61,31 +48,16 @@ export const TextbookContent = observer(() => {
                                 <MDXProvider>
                                     {partToRender?.content}
                                 </MDXProvider>
-                                {text && <SelectionMenu top={top} left={left} />}
-                                <input
-                                    type="text"
-                                    value={query}
-                                    onChange={(e) => setQuery(e.target.value)}
-                                    placeholder="Enter query"
-                                />
-                                <button onClick={handleQuerySubmit}>Submit</button>
-                                {lastMessage && (
-                                    <div>
-                                        <p>Last message:</p>
-                                        <p>{lastMessage}</p>
-                                    </div>
-                                )}
-                                <MDXProvider>
-                                    {partToRender?.content}
-                                </MDXProvider>
-                                {text && <SelectionMenu top={top} left={left} onHighlight={(top, left, text) => { }} />}
-
                             </FlexboxGrid.Item>
                             <FlexboxGrid.Item colspan={sidebarState === "closed" ? 0 : 6}>
                                 {sidebarState === "chat" && <TextbookChat />}
                                 {sidebarState === "threads" && <TextbookThreads />}
+                                {sidebarState === "ask-ai" && text && <TextbookAI text={text} />}
+
                             </FlexboxGrid.Item>
                         </FlexboxGrid>
+                        {text && <SelectionMenu top={top} left={left} onHighlight={(top, left, text) => { }} />}
+
                     </Panel>
                 </>
             </Panel>
