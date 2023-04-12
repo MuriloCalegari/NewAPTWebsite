@@ -1,15 +1,15 @@
 import RootStore from "@/stores/RootStore";
-import {action, makeAutoObservable} from "mobx";
-import {Message} from "@/data/model/Message";
-import {mockMessages} from "@/data/mock";
+import { action, makeAutoObservable } from "mobx";
+import { Message } from "@/data/model/Message";
+import { mockMessages } from "@/data/mock";
 
 export default class CourseAptsStore {
 
     rootStore: RootStore;
     isOnCollaborativeMode = false;
-    sidebarState : "closed" | "chat" | "threads" = "closed";
+    sidebarState: "closed" | "chat" | "ask-ai" | "threads" = "closed";
 
-    messages : Message[] = mockMessages(10);
+    messages: Message[] = mockMessages(10);
 
     constructor(rootStore) {
         makeAutoObservable(this);
@@ -20,13 +20,13 @@ export default class CourseAptsStore {
     setCollaborativeMode = (isOnCollaborativeMode: boolean) => {
         console.log("setCollaborativeMode: " + isOnCollaborativeMode);
         this.isOnCollaborativeMode = isOnCollaborativeMode;
-        if(!isOnCollaborativeMode) {
+        if (!isOnCollaborativeMode) {
             this.sidebarState = "closed";
         }
     }
 
     @action
-    setSidebarState = (sidebarState: "closed" | "chat" | "threads") => {
+    setSidebarState = (sidebarState: "closed" | "chat" | "ask-ai" | "threads") => {
         this.sidebarState = sidebarState;
     };
 
