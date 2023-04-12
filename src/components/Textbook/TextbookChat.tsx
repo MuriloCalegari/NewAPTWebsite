@@ -46,21 +46,22 @@ export const TextbookChat = observer(() => {
     }
 
     return (
-
-        <Panel header={renderHeader()} shaded className={"chat-container"}>
-            <Container>
-                <Content className={"messages-container"}>
-                        {
-                            textbookStore.messages.map((message) => {
-                                return <TextbookMessage message={message}/>
-                            })
-                        }
-                </Content>
-                <Footer className={"footer-container"}>
-                    {renderFooter()}
-                </Footer>
-            </Container>
-        </Panel>
+        <div className={"right-sidebar"}>
+            <Panel header={renderHeader()} shaded className={"chat-container"}>
+                <Container>
+                    <Content className={"messages-container"}>
+                            {
+                                textbookStore.messages.map((message) => {
+                                    return <TextbookMessage message={message}/>
+                                })
+                            }
+                    </Content>
+                    <Footer className={"footer-container"}>
+                        {renderFooter()}
+                    </Footer>
+                </Container>
+            </Panel>
+        </div>
     );
 });
 

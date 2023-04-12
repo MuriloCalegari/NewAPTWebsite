@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { Container, Sidebar, Sidenav, Content, Nav, DOMHelper } from 'rsuite';
-import { Outlet } from 'react-router-dom';
+import {Container, Sidebar, Sidenav, Content, Nav, DOMHelper, FlexboxGrid} from 'rsuite';
+import {Outlet, useLocation} from 'react-router-dom';
 import NavToggle from './NavToggle';
 import Header from '../Header';
 import NavLink from '../NavLink';
@@ -9,6 +9,12 @@ import Brand from '../Brand';
 import { CustomProvider } from 'rsuite';
 import enGB from 'rsuite/locales/en_GB';
 import {observer} from "mobx-react-lite";
+import {useStores} from "@/hooks/useStores";
+import {TextbookChat} from "@/components/Textbook/TextbookChat";
+import {TextbookThreads} from "@/components/Textbook/TextbookThreads";
+import {TextbookAI} from "@/components/Textbook/TextbookAI";
+import useSelectedText from "@/utils/useSelectedText";
+import SelectionMenu from "@/pages/textbook/ai/SelectionMenu";
 
 const { getHeight, on } = DOMHelper;
 
@@ -40,6 +46,12 @@ const Frame = observer((props: FrameProps) => {
   const [expand, setExpand] = useState(true);
   const [windowHeight, setWindowHeight] = useState(getHeight(window));
   const [theme, setTheme] = useState<'light' | 'dark' | 'high-contrast'>('light');
+
+  const { textbookStore } = useStores();
+  const { sidebarState } = textbookStore;
+
+  const { text, top, left } = useSelectedText();
+  const location = useLocation();
 
   useEffect(() => {
     setWindowHeight(getHeight(window));
@@ -101,10 +113,22 @@ const Frame = observer((props: FrameProps) => {
         </Sidebar>
 
         <Container className={containerClasses}>
-          <Header theme={theme} onChangeTheme={setTheme}/>
-          <Content>
-            <Outlet />
-          </Content>
+          <FlexboxGrid>
+            <FlexboxGrid.Item colspan={sidebarState === "closed" ? 24 : 18}>
+              <Header theme={theme} onChangeTheme={setTheme}/>
+              <Content>
+                <Outlet />
+              </Content>
+            </FlexboxGrid.Item>
+            <FlexboxGrid.Item colspan={sidebarState === "closed" ? 0 : 6}>
+              <div>
+                {sidebarState === "chat" && <TextbookChat />}
+                {sidebarState === "threads" && <TextbookThreads />}
+                {sidebarState === "ask-ai" && text && <TextbookAI text={text} />}
+              </div>
+            </FlexboxGrid.Item>
+          </FlexboxGrid>
+          {text && <SelectionMenu top={top} left={left} onHighlight={(top, left, text) => { }} />}
         </Container>
       </Container>
     </CustomProvider>
