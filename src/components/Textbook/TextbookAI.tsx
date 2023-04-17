@@ -1,9 +1,9 @@
 import { observer } from "mobx-react-lite";
 import React, { useState } from "react";
 import { getLastMessage } from "@/utils/queryFixie";
-import {Container, Content, IconButton, Panel, Stack} from "rsuite";
+import { Container, Content, IconButton, Panel, Stack } from "rsuite";
 import CloseIcon from "@rsuite/icons/Close";
-import {useStores} from "@/hooks/useStores";
+import { useStores } from "@/hooks/useStores";
 
 interface TextbookAIProps {
     text: string;
@@ -25,9 +25,9 @@ export const TextbookAI = observer(({ text }: TextbookAIProps) => {
             <Stack justifyContent={"space-between"}>
                 <b>Ask AI</b>
                 <IconButton
-                    icon={<CloseIcon/>}
+                    icon={<CloseIcon />}
                     appearance="subtle"
-                    onClick={() => {textbookStore.setSidebarState('closed')}}
+                    onClick={() => { textbookStore.setSidebarState('closed') }}
                 >
 
                 </IconButton>
@@ -45,7 +45,7 @@ export const TextbookAI = observer(({ text }: TextbookAIProps) => {
 
                         {lastMessage && (
                             <div>
-                                <p>Last message:</p>
+                                <b>Response: </b>
                                 <p>{lastMessage}</p>
                             </div>
                         )}

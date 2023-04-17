@@ -2,7 +2,7 @@ import RootStore from "@/stores/RootStore";
 import { action, makeAutoObservable } from "mobx";
 import { Message } from "@/data/model/Message";
 import { mockMessages } from "@/data/mock";
-import {faker} from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 
 export default class CourseAptsStore {
 
@@ -32,9 +32,9 @@ export default class CourseAptsStore {
     };
 
     @action
-    sendMessage(message : Omit<Message, "id">) {
+    sendMessage(message: Omit<Message, "id">) {
 
-        const messageToSend : Message = {
+        const messageToSend: Message = {
             ...message,
             id: Number(faker.random.numeric())
         };
