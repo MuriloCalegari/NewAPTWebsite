@@ -17,18 +17,18 @@ export interface Part {
 }
 
 export const chaptersData = [
-  // ...
-  {
-    id: 'chapter1',
-    title: 'Chapter 1: Your Chapter Title',
-    path: '/textbook/chapters/chapter1',
-  },
-  {
-    id: 'chapter2',
-    title: 'Chapter 2: Your Chapter Title',
-    path: '/textbook/chapters/chapter2',
-  },
-];
+    // ...
+    {
+      id: 'runestone-chapter1',
+      title: 'Runestone Chapter 1: Your Chapter Title',
+      path: '/textbook/chapters/runestone/chapter1',
+    },
+    {
+      id: 'runestone-chapter2',
+      title: 'Runestone Chapter 2: Your Chapter Title',
+      path: '/textbook/chapters/runestone/chapter2',
+    },
+  ];
 
 export const chapters : Chapter[] =
     [
