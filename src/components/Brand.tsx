@@ -7,7 +7,7 @@ const Brand = props => {
   return (
     <Stack className="brand" {...props}>
       <Link to="/">
-          <Logo height={48} style={{ marginTop: 6 }} />
+          <Logo height={props.height} style={{ marginTop: 7, marginBottom:7 }} />
       </Link>
     </Stack>
   );

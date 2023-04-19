@@ -75,11 +75,11 @@ const Frame = observer((props: FrameProps) => {
       <Container className="frame">
         <Sidebar
           style={{ display: 'flex', flexDirection: 'column' }}
-          width={expand ? 260 : 56}
+          width={expand ? 230 : 56}
           collapsible
         >
-          <Sidenav.Header>
-            <Brand />
+          <Sidenav.Header >
+            <Brand style={{ display: 'flex', alignItems:'center', justifyContent:'center'}} height={expand ? 50 : 25} width={expand ? 78 : 39}/>
           </Sidenav.Header>
           <Sidenav expanded={expand} appearance="subtle" defaultOpenKeys={['2', '3']}>
             <Sidenav.Body style={navBodyStyle}>
