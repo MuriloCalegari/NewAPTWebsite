@@ -1,3 +1,6 @@
+//noinspection CssUnknownTarget
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
 .right-sidebar {
   position: fixed;
   height: 100%;
@@ -67,5 +70,122 @@
 
   .rs-panel-body {
     padding-left: 0;
+  }
+}
+
+.textbook-thread-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .rs-container {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .header-container{
+    position: relative;
+    top: 0;
+    width: 100%;
+  }
+
+  .threads-container {
+    position: relative;
+    flex-direction: column-reverse;
+    overflow-y: scroll;
+    margin-bottom: 16px;
+
+    .rs-panel-body {
+      padding-right: 0;
+    }
+
+    .rs-panel-header {
+      padding-right: 0;
+    }
+  }
+
+  .footer-container {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .rs-panel-body {
+    display: flex;
+    flex: auto;
+    height: 90%;
+  }
+
+  .thread-user-name {
+    font-size: 0.75em;
+  }
+}
+
+.textbook-side-thread {
+  .rs-panel-header {
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0.75em;
+  }
+
+  .rs-panel-body {
+    padding-left: 0;
+    padding-bottom: 0;
+  }
+
+  .side-thread-wrapper-container {
+    background-color: #4e4e4e10;
+    padding: 8px 8px 8px 8px;
+    border-radius: 4px;
+    width: 100%;
+  }
+}
+
+.textbook-side-thread-divider {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.textbook-thread-modal {
+  position: relative;
+  top: 50%;
+  translate: 0 -50%;
+  height: auto;
+  margin-top: 0;
+}
+
+.thread-screen-container {
+  margin-top: 24px;
+
+  h1 {
+    font-size: 1.5em;
+    font-weight: 600;
+    line-height: 1em;
+  }
+
+  h2 {
+    font-size: 1em;
+    line-height: 1em;
+    margin-bottom: 1em;
+  };
+
+  .side-thread-wrapper-container {
+    background-color: #4e4e4e10;
+    padding: 16px 16px 16px 16px;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+}
+
+.messages-container {
+  margin-left: 12px;
+
+  .thread-message-username {
+    font-size: 0.85em;
+    font-weight: 500;
+    font-family: Montserrat, serif;
   }
 }

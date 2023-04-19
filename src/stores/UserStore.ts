@@ -1,12 +1,12 @@
 import { makeAutoObservable } from "mobx";
 import RootStore from "@/stores/RootStore";
 import {User} from "@/data/model/User";
-import {mockCurrentUser} from "@/data/mock";
+import {mockUser} from "@/data/mock";
 
 export default class UserStore {
     rootStore: RootStore;
 
-    currentUser: User = mockCurrentUser();
+    currentUser: User = mockUser();
 
     constructor(rootStore) {
         makeAutoObservable(this);

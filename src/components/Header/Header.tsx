@@ -1,15 +1,15 @@
 import React, { useRef } from 'react';
 import {
-  Dropdown,
-  Popover,
-  Whisper,
-  WhisperInstance,
-  Stack,
-  Badge,
-  Avatar,
-  IconButton,
-  List,
-  Button
+    Dropdown,
+    Popover,
+    Whisper,
+    WhisperInstance,
+    Stack,
+    Badge,
+    Avatar,
+    IconButton,
+    List,
+    Button
 } from 'rsuite';
 import NoticeIcon from '@rsuite/icons/Notice';
 import HelpOutlineIcon from '@rsuite/icons/HelpOutline';
@@ -22,6 +22,7 @@ import PeoplesIcon from '@rsuite/icons/Peoples';
 import ListIcon from '@rsuite/icons/List';
 import WechatOutlineIcon from '@rsuite/icons/WechatOutline';
 import {observer} from "mobx-react-lite";
+import {UserAvatarsGroup} from "@/components/Textbook/UserAvatarsGroup";
 
 const renderAdminSpeaker = ({ onClose, left, top, className }: any, ref) => {
   const handleSelect = eventKey => {
@@ -107,8 +108,7 @@ const Header = observer((props : HeaderProps) => {
     const { theme, onChangeTheme } = props;
 
     const { textbookStore } = useStores();
-
-    const { isOnCollaborativeMode } = textbookStore;
+    const { users, isOnCollaborativeMode } = textbookStore;
 
     function handleOnClickThreads() {
         if(textbookStore.sidebarState === 'threads') {
@@ -131,6 +131,7 @@ const Header = observer((props : HeaderProps) => {
             {
                 isOnCollaborativeMode && (
                     [
+                    <UserAvatarsGroup users={users} maxUsersToDisplay={5}/>,
                     <IconButton
                         icon={
                             <Icon
