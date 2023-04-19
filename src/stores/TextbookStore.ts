@@ -1,8 +1,10 @@
 import RootStore from "@/stores/RootStore";
 import { action, makeAutoObservable } from "mobx";
 import { Message } from "@/data/model/Message";
-import { mockMessages } from "@/data/mock";
+import { mockDifferentUsers, mockMessages, mockThreads } from "@/data/mock";
 import { faker } from "@faker-js/faker";
+import { User } from "@/data/model/User";
+import { Thread } from "@/data/model/Thread";
 
 export default class CourseAptsStore {
 
@@ -11,6 +13,11 @@ export default class CourseAptsStore {
     sidebarState: "closed" | "chat" | "ask-ai" | "threads" = "closed";
 
     messages: Message[] = mockMessages(10);
+    threads: Thread[] = mockThreads(10);
+
+    users: User[] = mockDifferentUsers(10);
+
+    activeThread: Thread | null = null;
 
     constructor(rootStore) {
         makeAutoObservable(this);
@@ -42,4 +49,20 @@ export default class CourseAptsStore {
         this.messages.push(messageToSend);
     }
 
+    @action
+    setActiveThread(thread: Thread | null) {
+        if(thread !== null) console.log("Setting active thread: " + thread.id);
+        this.activeThread = thread;
+    }
+
+    @action
+    sendMessageOnCurrentThread(message: string) {
+        this.activeThread?.messages?.push(
+            {
+                user : this.rootStore.userStore.currentUser,
+                content : message,
+                id : Number(faker.random.numeric())
+            }
+        );
+    }
 }

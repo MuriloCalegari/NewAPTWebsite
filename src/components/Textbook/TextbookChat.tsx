@@ -91,19 +91,4 @@ const TextbookMessage = observer((props : MessageProps) => {
             <p>{message.content}</p>
         </Panel>
     );
-
-    // return (
-    //     <div className={`message`}>
-    //         <div className="message-content">
-    //             <div className="message-header">
-    //                 <div className="message-author">
-    //                     {message.user.name}
-    //                 </div>
-    //             </div>
-    //             <div className="message-body">
-    //                 {message.content}
-    //             </div>
-    //         </div>
-    //     </div>
-    // );
 });

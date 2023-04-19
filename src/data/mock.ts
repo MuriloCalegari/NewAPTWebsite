@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker/locale/en';
 import {Message} from "@/data/model/Message";
 import {User} from "@/data/model/User";
+import {Thread} from "@/data/model/Thread";
 
 export function mockUsers(length: number) {
   const createRowData = rowIndex => {
@@ -114,12 +115,12 @@ export function mockMessages(length : number) : Message[] {
     });
 }
 
-export function mockCurrentUser() : User {
+export function mockUser(index : number | undefined) : User {
   const fullName = faker.name.fullName();
   const avatar = faker.image.avatar();
 
   let mockedUser = {
-    id: 0,
+    id: index ? index + 1 : 0,
     name: fullName,
     avatar: avatar
   };
@@ -128,4 +129,57 @@ export function mockCurrentUser() : User {
   console.log(mockedUser);
 
   return mockedUser
+}
+
+export function mockDifferentUsers(length: number) : User[] {
+  return Array.from({ length }).map((_, index) => {
+    return mockUser(index);
+  });
+}
+
+// Generate a fake markdown body with multiple lines and different components
+function generateFakeMarkdown() {
+    let markdown = "";
+
+    for (let i = 0; i < 2; i++) {
+        markdown += faker.lorem.paragraph() + "\n\n";
+    }
+
+    // Include bullet point list
+    markdown += `\n\n
+        - ${faker.lorem.sentence(3)}
+        - ${faker.lorem.sentence(3)}
+        - ${faker.lorem.sentence(3)}
+    `
+
+    return markdown;
+}
+
+export function mockThread(index : number | undefined) : Thread {
+  const title = faker.lorem.sentence();
+  let content = faker.lorem.sentence(3);
+
+  content = "... " + content;
+  content = content +  ` <Highlight>${faker.lorem.sentence(1)}</Highlight> ` + faker.lorem.sentence(1);
+  content = content + " ...";
+
+  let mockedThread : Thread = {
+    id: index ? index + 1 : 0,
+    title: title,
+    user: mockUser(0),
+    relatedTextbookContent: content,
+    contentBody : generateFakeMarkdown(),
+    messages: mockMessages(faker.datatype.number({min: 1, max: 5}))
+  };
+
+  console.log("Generating mocked thread");
+  console.log(mockedThread);
+
+  return mockedThread;
+}
+
+export function mockThreads(length: number) : Thread[] {
+    return Array.from({ length }).map((_, index) => {
+        return mockThread(index);
+    });
 }
