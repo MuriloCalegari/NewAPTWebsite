@@ -12,6 +12,7 @@ import {TextbookChapters} from "@/pages/textbook/TextbookChapters";
 import {TextbookContent} from "@/pages/textbook/TextbookContent";
 import {Journey} from "@/pages/journey/Journey";
 import {Home} from "@/pages/home/Home";
+import {Friends} from "@/pages/friends/Friends";
 
 const App = () => {
   return useObserver(() => (
