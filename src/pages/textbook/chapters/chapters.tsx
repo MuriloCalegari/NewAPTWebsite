@@ -16,6 +16,20 @@ export interface Part {
     content: any;
 }
 
+export const chaptersData = [
+  // ...
+  {
+    id: 'chapter1',
+    title: 'Chapter 1: Your Chapter Title',
+    path: '/textbook/chapters/chapter1',
+  },
+  {
+    id: 'chapter2',
+    title: 'Chapter 2: Your Chapter Title',
+    path: '/textbook/chapters/chapter2',
+  },
+];
+
 export const chapters : Chapter[] =
     [
         {
