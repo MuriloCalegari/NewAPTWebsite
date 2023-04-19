@@ -1,6 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
-import { Button, Col, FlexboxGrid, Grid, IconButton, Modal, Panel, Row } from "rsuite";
+import { Button, Col, FlexboxGrid, Grid, IconButton, Modal, Panel, Row, Avatar, AvatarGroup} from "rsuite";
 import { MDXProvider } from "@mdx-js/react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { chapterParts } from "@/pages/textbook/chapters/chapters";
@@ -9,7 +9,14 @@ import ReactMarkdown from "react-markdown";
 import ArrowBackIcon from '@rsuite/icons/ArowBack';
 import { unary } from "lodash";
 import LineTo from 'react-lineto';
-import { MultipleChoiceQuestion } from "./components/MultipleChoiceQuestion";
+//import { MultipleChoiceQuestion } from "./components/MultipleChoiceQuestion";
+//import default function from "./dummyAvatars";
+import { LessonModal } from "./lessonModal";
+import { Sidenav, Nav } from 'rsuite';
+import DashboardIcon from '@rsuite/icons/legacy/Dashboard';
+import GroupIcon from '@rsuite/icons/legacy/Group';
+import MagicIcon from '@rsuite/icons/legacy/Magic';
+import GearCircleIcon from '@rsuite/icons/legacy/GearCircle';
 
 export const Journey = observer(() => {
 
@@ -20,24 +27,24 @@ export const Journey = observer(() => {
     console.log(location);
     console.log(chapter)
 
+    //old consts
     const [isCurrent1, setIsCurrent1] = React.useState(true);
     const [isCurrent2, setIsCurrent2] = React.useState(false);
     const [isCurrent3, setIsCurrent3] = React.useState(false);
 
-    const [isPath1, setIsPath1] = React.useState(false);
-    const [isPath2, setIsPath2] = React.useState(false);
-    const [isPath3, setIsPath3] = React.useState(false);
+    //const [isPath1, setIsPath1] = React.useState(false);
+    //const [isPath2, setIsPath2] = React.useState(false);
+    //const [isPath3, setIsPath3] = React.useState(false);
 
-    const [isPath4, setIsPath4] = React.useState(false);
-    const [isPath5, setIsPath5] = React.useState(false);
-    const [isPath6, setIsPath6] = React.useState(false);
+    //const [isPath4, setIsPath4] = React.useState(false);
+    //const [isPath5, setIsPath5] = React.useState(false);
+    //const [isPath6, setIsPath6] = React.useState(false);
 
     const [placeholdQ1, setPlaceholdQ1] = React.useState(false);
     const [placeholdQ2, setPlaceholdQ2] = React.useState(false);
     const [placeholdQ3, setPlaceholdQ3] = React.useState(false);
 
-    const [placeholdPath1, setPlaceholdPath1] = React.useState(false);
-    const [placeholdPath2, setPlaceholdPath2] = React.useState(false);
+
 
     const [open1, setOpen1] = React.useState(false);
     const handleOpen1 = () => setOpen1(true);
@@ -57,9 +64,35 @@ export const Journey = observer(() => {
     const [isClicked2, setIsClicked2] = React.useState(false);
     const [isClicked3, setIsClicked3] = React.useState(false);
 
+    //new consts /////////////////////////////////////
 
+    //const [isRewardClicked, setIsRewardClicked] = React.useState(false);
+    const [openReward, setOpenReward] = React.useState(false);
+    //const [closeReward, setCloseReward] = React.useState(true);
+    const [openMessage, setOpenMessage] = React.useState(false);
+
+    //const [isLessonClicked, setIsLessonClicked] = React.useState(false);
+    const [openLesson, setOpenLesson] = React.useState(false);
+
+    const handleLessonOpen = () => setOpenLesson(true);
+    const handleLessonClose = () => setOpenLesson(false);
+
+    // new handle click functions ////////////////////////////
+
+    //const handleRewardOpen = () => setIsRewardClicked(true);
+    //const handleRewardClose = () => setIsRewardClicked(false);
+
+   
+    const handleOpenReward = () => setOpenReward(true);
+    const handleCloseReward = () => setOpenReward(false);
+    const handleOpenMessage = () => setOpenMessage(true);
+    const handleCloseMessage = () => setOpenMessage(false);
+  
+
+
+    //old 
     const i = 0;
-
+    
 
     const partToRender = chapterParts.find((part) => part.id === chapter);
 
@@ -94,6 +127,8 @@ export const Journey = observer(() => {
         )
     });
 
+    //disabled button
+
     //const disableButton = () => {
     //if (!isUnavailable) {
     //    return true;
@@ -102,7 +137,8 @@ export const Journey = observer(() => {
     //}
     //}
 
-
+    //old handle click functions
+    
     const handleQuiz1Click = () => {
         //sets 1st quiz to be current
         setIsCurrent1(true);
@@ -127,51 +163,6 @@ export const Journey = observer(() => {
         setPlaceholdQ3(true);
     };
 
-    const handlePath1Click = () => {
-
-        setIsPath1(true);
-        setIsPath2(false);
-        setIsPath3(false);
-        setPlaceholdPath1(true);
-    };
-
-    const handlePath2Click = () => {
-        setIsPath1(false);
-        setIsPath2(true);
-        setIsPath3(false);
-        setPlaceholdPath1(true);
-    };
-
-    const handlePath3Click = () => {
-        setIsPath1(false);
-        setIsPath2(false);
-        setIsPath3(true);
-        setPlaceholdPath1(true);
-    };
-
-
-    const handlePath4Click = () => {
-        setIsPath4(true);
-        setIsPath5(false);
-        setIsPath6(false);
-        setPlaceholdPath2(true);
-    };
-
-    const handlePath5Click = () => {
-        setIsCurrent1(false);
-        setIsPath4(false);
-        setIsPath5(true);
-        setIsPath6(false);
-        setPlaceholdPath2(true);
-    };
-
-    const handlePath6Click = () => {
-        setIsCurrent2(false);
-        setIsPath4(false);
-        setIsPath5(false);
-        setIsPath6(true);
-        setPlaceholdPath2(true);
-    };
 
     const handleAnswerClick1 = () => {
         setIsClicked1(true);
@@ -189,35 +180,110 @@ export const Journey = observer(() => {
         setIsClicked3(true);
     };
 
-    const handleClear = () => {
+     const handleClear = () => {
         setIsClicked1(false);
         setIsClicked2(false);
         setIsClicked3(false);
     };
+    //
+    // 
+    // users //////////////////////////////////////////////////////////////////////
+
+    const users1 = [
+        { avatar : 'A', color: '#000', name: 'AP' },
+        { avatar : 'B', color: '#4f6733', name: 'BL' },
+        { avatar : 'C', color: '#245643', name: 'RG' },
+        { avatar : 'D', color: '#bbb568', name: 'LK' },
+        { avatar : 'E', color: '#4f6733', name: 'BY' },
+        { avatar : 'F', color: '#245643', name: 'RF' },
+        { avatar : 'G', color: '#78dd', name: 'LL' },
+    ];
+
+    const users2 = [
+        { avatar : 'A', color: '#444aaa', name: 'SS' },
+        { avatar : 'B', color: '#0f6733', name: 'DO' },
+        { avatar : 'C', color: '#245643', name: 'WM' },
+        { avatar : 'D', color: '#78dd', name: 'TN' },
+    ];
+
+    const users3 = [
+        { avatar : 'A', color: '#D291BC', name: 'EF' },
+        { avatar : 'B', color: '#957DAD', name: 'IH' },
+        { avatar : 'C', color: '#E0BBE4', name: 'XC' },
+  
+    ];
+
+    const users4 = [
+        { avatar : 'A', color: '#ffb3ba', name: 'AA' },
+        { avatar : 'C', color: '#FFD580', name: 'XC' },
+    
+    ];
+
+    const users5 = [
+        { avatar : 'A', color: '#000437', name: 'NS' },
 
 
+    ];
 
+    const users6 = [
+        { avatar : 'A', color: '#0bb568', name: 'HH' },
+    ];
+
+    const users7 = [
+        { avatar : 'yeah', color: '#a7bed3', name: 'JT' },
+    ];
+
+    const maxAvatars = 4;
+
+
+    //<CustomSidenav
+    //activeKey={3}
+    //openKeys={openKeys}
+    //onSelect={setActiveKey}
+    //onOpenChange={setOpenKeys}
+    //expanded={expanded}
+    //onExpand={setExpand}
+    ///>
 
     return (
         <PageContent bodyFill className="textbook-page" header={renderBackButton()}>
             <Panel>
-
                 <Panel
                     className="question-card"
                 >
+
                     <Grid style={{ width: "100%" }} align="center">
+                        <Row>
+                            <Col xs={24} md={8}>
+                            </Col>
+                            <Col xs={24} md={8}>
+                                </Col>
+                            <Col xs={24} md={8}>
+                            <Button 
+                                size = "lg"
+                                className={`friends`}> 
+                                Friends 
+                            </Button>
+                            </Col>
+                        </Row>
                         <Row >
                             <Col xs={24} md={8}>
                             </Col>
                             <Col xs={24} md={8}>
                                 <Button
                                     size="lg"
-                                    className={`path-option ${placeholdPath1 ? "part-of-path" : isCurrent1 ? "current" : "unavailable"} `}
-                                    //on click handquiz1click and open modal
-                                    onClick={() => { handleQuiz1Click(); handleOpen1() }}>
-
+                                    className={`reward-chest ${openReward ? "opened" : "unopened"} `}
+                                    onClick={() => { handleQuiz1Click(); handleOpen1(); handleOpenReward()}}
+                                    >
+                                    Reward
                                 </Button>
-                                <Modal autoFocus={true} open={open1} backdrop="static" size="lg" onClose={handleClose}
+                                
+                                <Row>
+                                <h4>Chapter 1</h4>
+                                </Row>
+
+
+                                <Modal autoFocus={true} open={open1} backdrop="static" size="lg" onClose={handleCloseReward}
                                     backdropClassName="quiz-modal-backdrop"
                                     style={{
                                         display: "flex",
@@ -226,10 +292,10 @@ export const Journey = observer(() => {
 
                                     }}>
                                     <Modal.Header>
-                                        <Modal.Title><h2>Questionnaire</h2></Modal.Title>
+                                        <Modal.Title><h2>Rewards</h2></Modal.Title>
                                     </Modal.Header>
                                     <Modal.Body>
-                                        <h4>Which of the following do you prefer?
+                                        <h4>Choose a new theme:
                                         </h4>
                                     </Modal.Body>
                                     <Modal.Body>
@@ -243,32 +309,123 @@ export const Journey = observer(() => {
                                             className={`path-option ${isClicked3 ? "current" : "part-of-path"} `}
                                             onClick={handleAnswerClick3}> Green </Button>
                                     </Modal.Body>
+
                                     <Modal.Footer>
-                                        <Button size="lg" onClick={() => { handleClose(); handleClear() }}>Close </Button>
+                                        <Button size="lg" onClick={() => { handleClose(); handleClear(); handleOpenMessage() }}>Close </Button>
                                     </Modal.Footer>
                                 </Modal>
+                                <Modal autoFocus={true} open={openMessage} size="lg" onClose={handleCloseReward}
+                                    backdropClassName="quiz-modal-backdrop"
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center"
+                                    }}>
+                                    <Modal.Header>
+                                        <h4> Good Choice! </h4>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        Item added to your collection!
+                                    </Modal.Body>
+                                    <Modal.Footer>
+                                        <Button size="lg" onClick={() => { handleCloseMessage(); handleClear() }}>Close </Button>
+                                    </Modal.Footer>
+                                    </Modal>
+
+
+                                
                             </Col>
                             <Col xs={24} md={8}>
                             </Col>
                         </Row>
                         <Row>
                             <Col xs={24} md={8}>
+                                    <AvatarGroup stack size="md">
+                                            {users1
+                                                .filter((user, i) => i < maxAvatars)
+                                                .map((user) => (
+                                                    <Avatar circle key={user.name} style={{background: user.color}}>
+                                                    {user.name}
+                                                    </Avatar>
+                                                ))}
+                                                <Avatar circle style={{ background: '#111' }}>
+                                                    + {users1.length - maxAvatars}
+                                                </Avatar>
+                                            </AvatarGroup>
+                                    <Button
+                                        className={`lesson-option ${openLesson ? "selected" :  "notselected"}  `}
+                                        onClick={handleLessonOpen}
+                                    
+                                        > 
+                                        1.1
+                                    </Button>
+                                    <Modal autoFocus={true} open={openLesson} size="lg" onClose = {handleLessonClose} 
+                                        backdropClassName="quiz-modal-backdrop"
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                        }}>
+                                        <Modal.Header>
+                                            <Modal.Title><h2>Lesson 1.1</h2></Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                            <h4> List Iteration </h4>
+                                            {users1.length} people are active on this lesson right now
+                                        </Modal.Body>
+                                        <Modal.Body>
+                                        Here is a description of this lesson.
+                                        </Modal.Body>
+                                        <Modal.Body>
+                                            <h5>Friends</h5>
+                                            <AvatarGroup stack size="md">
+                                            {users1
+                                                .filter((user, i) => i < maxAvatars)
+                                                .map((user) => (
+                                                    <Avatar circle key={user.name} style={{background: user.color}}>
+                                                    {user.name}
+                                                    </Avatar>
 
-                                <Button
-                                    className={`path-option ${placeholdQ2 && isPath1 ? "part-of-path" : isPath1 ? "current" : "unavailable"} `}
-                                    onClick={handlePath1Click}></Button>
+
+                                                ))}
+                                                <Avatar circle style={{ background: '#111' }}>
+                                                    + {users1.length - maxAvatars}
+                                                </Avatar>
+                                            </AvatarGroup>
+                                            
+                                        </Modal.Body>
+                                    </Modal> 
+                                    
+
+
                             </Col>
                             <Col xs={24} md={8}>
-
+                                <AvatarGroup stack size="md">
+                                        {users2.map((user) => (
+                                      <Avatar circle key={user.name} style={{background: user.color}} >
+                                      {user.name}
+                                      </Avatar>
+                                      ))}
+                                </AvatarGroup>
                                 <Button
-                                    className={`path-option ${placeholdQ2 && isPath2 ? "part-of-path" : isPath2 ? "current" : "unavailable"} `}
-                                    onClick={handlePath2Click}>
-
+                                    
+                                    className={`lesson-option ${openLesson ? "selected" :  "notselected"} `}
+                                    onClick={handleLessonOpen} >
+                                    1.2
                                 </Button>
+                                
                             </Col><Col xs={24} md={8}>
+                                <AvatarGroup stack size="md">
+                                        {users3.map((user) => (
+                                        <Avatar circle key={user.name} style={{background: user.color}} >
+                                        {user.name}
+                                        </Avatar>
+                                        ))}
+                                </AvatarGroup>
                                 <Button
-                                    className={`path-option ${placeholdQ2 && isPath3 ? "part-of-path" : isPath3 ? "current" : "unavailable"} `}
-                                    onClick={handlePath3Click}> </Button>
+                                    className={`lesson-option ${openLesson ? "selected" :  "notselected"}  `}
+                                    onClick={handleLessonOpen}> 
+                                    1.3 </Button>
                             </Col>
                         </Row>
                         <Row>
@@ -276,11 +433,14 @@ export const Journey = observer(() => {
                             </Col>
                             <Col xs={24} md={8}>
                                 <Button
-                                    className={`path-option ${placeholdQ3 || placeholdPath2 ? "part-of-path" : isCurrent2 && placeholdPath1 ? "current" : "unavailable"} `}
-                                    onClick={() => { handleQuiz2Click(); handleOpen2() }}>
-
+                                    className={`reward-chest ${openReward ? "opened" : "unopened"} `}
+                                    onClick={() => { handleQuiz2Click(); handleOpen2(); handleOpenReward}}>
+                                    Reward
                                 </Button>
-                                <Modal autoFocus={true} open={open2} backdrop="static" size="lg" onClose={handleClose}
+
+                                <h4>Chapter 2</h4>
+
+                                <Modal autoFocus={true} open={open2} backdrop="static" size="lg" onClose={handleCloseReward}
                                     backdropClassName="quiz-modal-backdrop"
                                     style={{
                                         display: "flex",
@@ -289,10 +449,10 @@ export const Journey = observer(() => {
 
                                     }}>
                                     <Modal.Header>
-                                        <Modal.Title><h2>Questionnaire</h2></Modal.Title>
+                                        <Modal.Title><h2>Reward</h2></Modal.Title>
                                     </Modal.Header>
                                     <Modal.Body>
-                                        <h4>Which of the following do you prefer?
+                                        <h4> Choose a new icon:
                                         </h4>
                                     </Modal.Body>
                                     <Modal.Body>
@@ -307,7 +467,7 @@ export const Journey = observer(() => {
                                             onClick={handleAnswerClick3}> Bojack Horseman </Button>
                                     </Modal.Body>
                                     <Modal.Footer>
-                                        <Button size="lg" onClick={() => { handleClose(); handleClear() }}>Close </Button>
+                                        <Button size="lg" onClick={() => { handleClose(); handleClear(); handleOpenMessage() }}>Close </Button>
                                     </Modal.Footer>
                                 </Modal>
                             </Col>
@@ -316,25 +476,74 @@ export const Journey = observer(() => {
                         </Row>
                         <Row>
                             <Col xs={24} md={8}>
-
+                            <AvatarGroup stack size="md">
+                                        {users4.map((user) => (
+                                      <Avatar circle key={user.name} style={{background: user.color}} >
+                                      {user.name}
+                                      </Avatar>
+                                      ))}
+                                </AvatarGroup>
                                 <Button
-                                    className={`path-option ${placeholdQ3 && isPath4 ? "part-of-path" : isPath4 ? "current" : "unavailable"} `}
-                                    onClick={handlePath4Click}>
+                                    className={`lesson-option ${openLesson ? "selected" :  "notselected"}  `}
+                                    onClick={handleLessonOpen}
+                                    
+                                    > 
+                                    2.1
+                                    </Button>
 
-                                </Button>
+                                
                             </Col>
                             <Col xs={24} md={8}>
-
+                            <AvatarGroup stack size="md">
+                                        {users5.map((user) => (
+                                      <Avatar circle key={user.name} style={{background: user.color}} >
+                                      {user.name}
+                                      </Avatar>
+                                      ))}
+                                </AvatarGroup>
                                 <Button
-                                    className={`path-option ${placeholdQ3 && isPath5 ? "part-of-path" : isPath5 ? "current" : "unavailable"} `}
-                                    onClick={handlePath5Click}>
-
-                                </Button>
+                                    className={`lesson-option ${openLesson ? "selected" :  "notselected"}  `}
+                                    onClick={handleLessonOpen}> 
+                                    2.2
+                                    </Button>
+                                    
+                                    
                             </Col><Col xs={24} md={8}>
+                            <AvatarGroup stack size="md">
+                                        {users6.map((user) => (
+                                      <Avatar circle key={user.name} style={{background: user.color}} >
+                                      {user.name}
+                                      </Avatar>
+                                      ))}
+                                </AvatarGroup>
+                                <h4>    </h4>
 
                                 <Button
-                                    className={`path-option ${placeholdQ3 && isPath6 ? "part-of-path" : isPath6 ? "current" : "unavailable"} `}
-                                    onClick={handlePath6Click}> </Button>
+                                    className={`lesson-option ${openLesson ? "selected" :  "notselected"}  `}
+                                    onClick={handleLessonOpen}
+                                    > 
+                                    2.3
+                                    </Button>
+                                    
+                                        
+                            </Col>
+                            <Col xs={24} md={8}></Col>
+                            <Col xs={24} md={8}>
+                            <AvatarGroup stack size="md">
+                                        {users7.map((user) => (
+                                      <Avatar circle key={user.name} style={{background: user.color}} >
+                                      {user.name}
+                                      </Avatar>
+                                      ))}
+                                </AvatarGroup>
+                                <h4>    </h4>
+                            
+                                <Button
+                                    className={`lesson-option ${openLesson ? "selected" :  "notselected"}  `}
+                                    onClick={handleLessonOpen}
+                                    > 
+                                    2.4
+                                    </Button>
                             </Col>
                         </Row>
                         <Row>
@@ -342,11 +551,13 @@ export const Journey = observer(() => {
                             </Col>
                             <Col xs={24} md={8}>
                                 <Button
-                                    className={`path-option ${isCurrent3 ? "current" : "unavailable"} `}
-                                    onClick={() => { handleQuiz3Click(); handleOpen3() }}>
-
+                                    className={`reward-chest ${openReward ? "opened" : "unopened"} `}
+                                    onClick={() => { handleQuiz3Click(); handleOpen3(); handleOpenReward}}
+                                    >
+                                    Reward
                                 </Button>
-                                <Modal autoFocus={true} open={open3} backdrop="static" size="lg" onClose={handleClose}
+                                <h4>Chapter 3</h4>
+                                <Modal autoFocus={true} open={open3} backdrop="static" size="lg" onClose={handleCloseReward}
                                     backdropClassName="quiz-modal-backdrop"
                                     style={{
                                         display: "flex",
@@ -355,10 +566,10 @@ export const Journey = observer(() => {
 
                                     }}>
                                     <Modal.Header>
-                                        <Modal.Title><h2>Questionnaire</h2></Modal.Title>
+                                        <Modal.Title><h2>Reward</h2></Modal.Title>
                                     </Modal.Header>
                                     <Modal.Body>
-                                        <h4>Which of the following do you prefer?
+                                        <h4>Choose a new theme:
                                         </h4>
                                     </Modal.Body>
                                     <Modal.Body>
@@ -373,7 +584,7 @@ export const Journey = observer(() => {
                                             onClick={handleAnswerClick3}> The Country </Button>
                                     </Modal.Body>
                                     <Modal.Footer>
-                                        <Button size="lg" onClick={() => { handleClose(); handleClear() }}>Close </Button>
+                                        <Button size="lg" onClick={() => { handleClose(); handleClear(); handleOpenMessage() }}>Close </Button>
                                     </Modal.Footer>
                                 </Modal>
 
@@ -387,6 +598,7 @@ export const Journey = observer(() => {
             </Panel>
 
         </PageContent>
+        
     );
 });
 

@@ -155,7 +155,7 @@ const QuizCard = observer((props: { apt?: Apt }) => {
                     {testCase.reasonableWrongOutputs.map((output) => {
                         return (
                             <Col xs={12} md={8}>
-                                <WrongAnswerButton answer={output} onClick={handleIncorrectClick} />
+                                <AnswerButton answer={output} onClick={handleIncorrectClick} />
                             </Col>
                         )
                     })}
