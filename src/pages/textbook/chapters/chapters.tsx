@@ -3,6 +3,8 @@ import ListsWarmup from "@/pages/textbook/chapters/ListsWarmup.mdx";
 import ListsInClass from "@/pages/textbook/chapters/ListsInClass.mdx";
 import ListsPostClass from "@/pages/textbook/chapters/ListsPostClass.mdx";
 import Debugging from "@/pages/textbook/chapters/Debugging.mdx";
+import Sorting from "@/pages/textbook/chapters/runestone/runestone-chapter1.mdx";
+
 
 export interface Chapter {
     id: string;
@@ -15,20 +17,6 @@ export interface Part {
     title: string;
     content: any;
 }
-
-export const chaptersData = [
-    // ...
-    {
-      id: 'runestone-chapter1',
-      title: 'Runestone Chapter 1: Your Chapter Title',
-      path: '/textbook/chapters/runestone/chapter1',
-    },
-    {
-      id: 'runestone-chapter2',
-      title: 'Runestone Chapter 2: Your Chapter Title',
-      path: '/textbook/chapters/runestone/chapter2',
-    },
-  ];
 
 export const chapters : Chapter[] =
     [
@@ -97,8 +85,21 @@ export const chapters : Chapter[] =
                     title: "Post Class",
                     content: <ListsPostClass/>,
                 },
+
+                {
+                    id: 'runestone-chapter1',
+                    title: 'Runestone Chapter 1: Your Chapter Title',
+                    content: <Sorting/>,
+                },
+
+                {
+                    id: 'runestone-chapter2',
+                    title: 'Runestone Chapter 2: Your Chapter Title',
+                    content: <ListsPostClass/>,
+                },
             ]
         }
+
     ];
 
 export const chapterParts : Part[] = chapters.flatMap((chapter) => chapter.parts);
