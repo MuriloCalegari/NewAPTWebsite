@@ -11,7 +11,7 @@ export const TextbookChapters = observer(() => {
     const navigate = useNavigate();
 
     function goToPart(part: Part) {
-        navigate(`/content/${part.id}`);
+        navigate(`/contents/${part.id}`);
     }
 
     return (<PageContent bodyFill className="textbook-page" header={<h3 className="title" style={{ marginTop: 20 }}>Textbook Name</h3>}>
@@ -34,7 +34,9 @@ export const TextbookChapters = observer(() => {
 
         </Panel>
 
-        <Panel collapsible bordered className="section">
+        <div>HI</div>
+
+        <PanelGroup accordion className="section">
             {chapters.map((chapter, chapterIndex) => {
                 return (
                     <Panel header={<h5>{(chapterIndex + 1) + ". " + chapter.title}</h5>} eventKey={chapter.id}>
@@ -57,7 +59,7 @@ export const TextbookChapters = observer(() => {
             })
             }
 
-        </Panel>
+        </PanelGroup>
 
 
     </PageContent>
