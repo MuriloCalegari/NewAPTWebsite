@@ -55,10 +55,10 @@ const Frame = observer((props: FrameProps) => {
 
   useEffect(() => {
     setWindowHeight(getHeight(window));
-    const resizeListenner = on(window, 'resize', () => setWindowHeight(getHeight(window)));
+    const resizeListener = on(window, 'resize', () => setWindowHeight(getHeight(window)));
 
     return () => {
-      resizeListenner.off();
+      resizeListener.off();
     };
   }, []);
 
@@ -112,7 +112,7 @@ const Frame = observer((props: FrameProps) => {
           <NavToggle expand={expand} onChange={() => setExpand(!expand)} />
         </Sidebar>
 
-        <Container className={containerClasses}>
+        <Container className={containerClasses} style={{marginLeft:'30px'}}>
           <FlexboxGrid>
             <FlexboxGrid.Item colspan={sidebarState === "closed" ? 24 : 18}>
               <Header theme={theme} onChangeTheme={setTheme}/>

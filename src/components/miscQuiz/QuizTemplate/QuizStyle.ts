@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
         background-image: url('bg.jpg');
         background-size: cover;
         /* background-repeat: none; */
-        font-family:  Helvetica, Arial, sans-serif;
+        font-family: 'Open Sans', sans-serif;
         margin: 0;
         padding: 0 20px;
         display: flex;
@@ -35,7 +35,7 @@ export const Wrapper = styled.div`
 		margin-bottom: 10px;
 	}
 	h1 {
-		font-family: Helvetica, Arial;
+		font-family: 'Open Sans', sans-serif;
 		/* bg-image will show through the h1 element */
 		background-image: linear-gradient(180deg, #fff, #87f1ff);
 		background-size: 100%;

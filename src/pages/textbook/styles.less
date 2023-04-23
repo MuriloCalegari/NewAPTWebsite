@@ -1,6 +1,9 @@
 .textbook-page {
   //background: @B100;
   margin-top: 0px;
+  font-family: 'Open Sans', sans-serif;
+  color: var(--black);
+  font-weight: 400;
 
   .chapter-panel-group {
     background: white;
@@ -13,6 +16,14 @@
       padding: 0;
     }
   }
+}
+
+.textbook-title{
+  font-size: 18px;
+  margin-top: 40px;
+  margin-left: -20px;
+  font-weight: 700;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .textbook-card {
@@ -178,8 +189,47 @@
   border-width: 2px;
   border-color: var(--blue);
   border-style: solid;
+  margin-right: 30px;
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
+
+
 .circle{
-  width:10px;
-  display: 'inline-block',
+  width:5px;
+  display: 'inline-block';
+}
+
+.assignments{
+  margin-bottom: 10px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.assignment{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+  border: 2px solid var(--light-gray);
+  border-radius: 10px;
+  font-family: 'Open Sans', sans-serif;
+  color: var(--black);
+  padding: 5px;
+  align-items: center;
+  font-weight: 600;
+}
+
+.assignment-title{
+  margin-left: 10px;
+}
+
+.progress-bar{
+  width: 100%;
+  margin-left: -12px;
+  margin-bottom: -5px;
+}
+
+.MuiListItemText-primary{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  color: black;
 }

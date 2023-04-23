@@ -87,7 +87,7 @@ module.exports = {
   },
   plugins: [
     new HtmlwebpackPlugin({
-      title: "APT System",
+      title: "Textbook",
       filename: "index.html",
       template: "./src/index.html",
       inject: true,
