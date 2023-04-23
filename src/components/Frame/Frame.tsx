@@ -79,7 +79,7 @@ const Frame = observer((props: FrameProps) => {
           collapsible
         >
           <Sidenav.Header >
-            <Brand style={{ display: 'flex', alignItems:'center', justifyContent:'center'}} height={expand ? 50 : 25} width={expand ? 78 : 39}/>
+            <Brand style={{ display: 'flex', alignItems:'center', justifyContent:'center'}} height={expand ? 50 : 25} width={expand ? 78 : 39} theme={theme} />
           </Sidenav.Header>
           <Sidenav expanded={expand} appearance="subtle" defaultOpenKeys={['2', '3']}>
             <Sidenav.Body style={navBodyStyle}>

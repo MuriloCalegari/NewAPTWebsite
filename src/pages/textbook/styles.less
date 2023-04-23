@@ -1,5 +1,5 @@
 .textbook-page {
-  //background: @B100;
+  
   margin-top: 0px;
   font-family: 'Open Sans', sans-serif;
   color: var(--black);
@@ -112,21 +112,23 @@
 
 .rs-theme-dark {
   .textbook-page {
+    color: white;
+
     .chapter-panel-group {
-      background: @B800-dark;
+      background: var(--dark-mode-bg);
 
       .rs-panel-body {
-        background: @B700-dark;
+        background: var(--dark-mode-bg);
       }
     }
   }
 
   .textbook-card {
-    background: @B800-dark;
+    background: var(--dark-mode-bg);
   }
 
   .code-text-panel {
-    background: @B700-dark;
+    background: var(--dark-mode-bg);
   }
 
   .code-editor-iframe {
@@ -138,7 +140,7 @@
   }
 
   .mcq-form {
-    background: @B900-dark;
+    background: var(--dark-mode-bg);
     border-radius: 8px;
     margin: 8px 0 8px 0;
     padding: 24px;
@@ -146,7 +148,7 @@
   }
 
   .question-card {
-    background: @B800-dark;
+    background: var(--dark-mode-bg);
     border-radius: 8px;
     margin: 8px 0 8px 0;
     padding: 20px 20px 16px 20px;
@@ -168,7 +170,7 @@
   main {
     display: inline-block;
     vertical-align: middle;
-    border: 1px solid blue;
+    border: 1px solid var(--blue);
   }
 
   aside {
@@ -212,7 +214,6 @@
   border: 2px solid var(--light-gray);
   border-radius: 10px;
   font-family: 'Open Sans', sans-serif;
-  color: var(--black);
   padding: 5px;
   align-items: center;
   font-weight: 600;
@@ -226,10 +227,4 @@
   width: 100%;
   margin-left: -12px;
   margin-bottom: -5px;
-}
-
-.MuiListItemText-primary{
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
-  color: black;
 }
