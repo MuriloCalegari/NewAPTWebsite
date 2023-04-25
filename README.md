@@ -9,7 +9,9 @@ npm install --force
 npm run dev
 ```
 
-#### To run with the express server working (necesary for AI integration):
+#### OPTIONAL: To run with the express server working:
+
+Note: This is only necessary to run the express server locally. It will work using the render server by default.
 
 1. Make an account on [Fixie](app.fixie.ai)
 2. Go to your profile, get the API key

@@ -15,6 +15,7 @@ import {TextbookThreads} from "@/components/Textbook/TextbookThreads";
 import {TextbookAI} from "@/components/Textbook/TextbookAI";
 import useSelectedText from "@/utils/useSelectedText";
 import SelectionMenu from "@/pages/textbook/ai/SelectionMenu";
+import {ThreadModal} from "@/components/Textbook/Threads/ThreadModal";
 
 const { getHeight, on } = DOMHelper;
 
@@ -52,6 +53,8 @@ const Frame = observer((props: FrameProps) => {
 
   const { text, top, left } = useSelectedText();
   const location = useLocation();
+
+  console.log(location);
 
   useEffect(() => {
     setWindowHeight(getHeight(window));
@@ -115,7 +118,7 @@ const Frame = observer((props: FrameProps) => {
         <Container className={containerClasses} style={{marginLeft:'30px'}}>
           <FlexboxGrid>
             <FlexboxGrid.Item colspan={sidebarState === "closed" ? 24 : 18}>
-              <Header theme={theme} onChangeTheme={setTheme}/>
+              <Header theme={theme} onChangeTheme={setTheme} shouldDisplayCollaborativeTools={location.pathname.includes("contents/")}/>
               <Content>
                 <Outlet />
               </Content>
@@ -131,6 +134,7 @@ const Frame = observer((props: FrameProps) => {
           {text && <SelectionMenu top={top} left={left} onHighlight={(top, left, text) => { }} />}
         </Container>
       </Container>
+      <ThreadModal/>
     </CustomProvider>
   );
 });

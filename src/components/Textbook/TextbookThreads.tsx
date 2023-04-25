@@ -8,7 +8,10 @@ import {MDXProvider} from "@mdx-js/react";
 import {Highlight} from "@/pages/textbook/chapters/components/Highlight";
 import {evaluate} from "@mdx-js/mdx";
 import * as runtime from "react/jsx-runtime";
-import {ThreadScreen} from "@/components/Textbook/ThreadScreen";
+import {MdxOnDemand} from "@/components/Textbook/MdxOnDemand";
+import {ThreadModal} from "@/components/Textbook/Threads/ThreadModal";
+
+const CONTENT_MAX_LENGTH = 100;
 
 export const TextbookThreads = observer(() => {
     const { textbookStore } = useStores();
@@ -50,21 +53,6 @@ export const TextbookThreads = observer(() => {
                     </Content>
                 </Container>
             </Panel>
-            <Modal
-                backdrop
-                open={textbookStore.activeThread !== null}
-                onClose={() => { textbookStore.setActiveThread(null) }}
-                className={"textbook-thread-modal"}
-            >
-                { textbookStore.activeThread && ([
-                    <Modal.Header>
-                        <Modal.Title>Thread</Modal.Title>
-                    </Modal.Header>,
-                    <Modal.Body style={{marginTop: 0}}>
-                        <ThreadScreen thread={textbookStore.activeThread}/>
-                    </Modal.Body>
-                ])}
-            </Modal>
         </div>
     );
 });
@@ -74,7 +62,7 @@ export interface ThreadContainerProps {
 }
 
 // Message component with an avatar, a person's name and the message content
-const ThreadContainer = observer((props : ThreadContainerProps) => {
+export const ThreadContainer = observer((props : ThreadContainerProps) => {
     const { thread } = props;
 
     // @ts-ignore
@@ -115,13 +103,18 @@ const ThreadContainer = observer((props : ThreadContainerProps) => {
     return (
         <>
             <Panel header={renderHeader()} className={"textbook-side-thread"}>
-                <div className={"side-thread-wrapper-container"}>
-                {threadContent && (
-                    <MDXProvider
-                        components={{Highlight: (props) => <Highlight>{props.children}</Highlight>}}>
-                        <MdxContent components={{Highlight: (props) => <Highlight>{props.children}</Highlight>}}/>
-                    </MDXProvider>
-                )}
+                <div className={"thread-highlight-content-container"}>
+                    <div className={"side-thread-wrapper-container"}>
+                    {threadContent && (
+                        <MDXProvider
+                            components={{Highlight: (props) => <Highlight>{props.children}</Highlight>}}>
+                            <MdxContent components={{Highlight: (props) => <Highlight>{props.children}</Highlight>}}/>
+                        </MDXProvider>
+                    )}
+                    </div>
+                    <MdxOnDemand content={
+                        thread.contentBody.substring(0, CONTENT_MAX_LENGTH) + (thread.contentBody.length > CONTENT_MAX_LENGTH ? "..." : "")
+                    }/>
                 </div>
             </Panel>
         </>

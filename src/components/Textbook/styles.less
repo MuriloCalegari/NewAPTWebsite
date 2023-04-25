@@ -1,10 +1,10 @@
 //noinspection CssUnknownTarget
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
 .right-sidebar {
   position: fixed;
   height: 100%;
-  padding: 12px 12px 12px 0
+  padding: 12px 12px 12px 0;
 }
 
 .chat-container {
@@ -22,7 +22,7 @@
     box-sizing: border-box;
   }
 
-  .header-container{
+  .header-container {
     //background: red;
     position: relative;
     top: 0;
@@ -73,6 +73,33 @@
   }
 }
 
+.thread-page-cards {
+  margin-top: 30px;
+  border-radius: 6px;
+  padding: 0 0 0 0;
+  background: red;
+
+  .rs-panel-body {
+    padding: 0 0 0 0;
+  }
+
+  .thread-list-item {
+    padding: 12px;
+  }
+}
+
+.rs-theme-dark {
+  .thread-page-cards {
+    .thread-list-item {
+      background: @B800-dark;
+    }
+  }
+}
+
+.thread-highlight-content-container {
+
+}
+
 .textbook-thread-container {
   height: 100%;
   display: flex;
@@ -84,7 +111,7 @@
     box-sizing: border-box;
   }
 
-  .header-container{
+  .header-container {
     position: relative;
     top: 0;
     width: 100%;
@@ -116,10 +143,10 @@
     flex: auto;
     height: 90%;
   }
+}
 
-  .thread-user-name {
-    font-size: 0.75em;
-  }
+.thread-user-name {
+  font-size: 0.75em;
 }
 
 .textbook-side-thread {
@@ -139,6 +166,11 @@
     padding: 8px 8px 8px 8px;
     border-radius: 4px;
     width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .thread-highlight-content-container {
+    flex-direction: column;
   }
 }
 
@@ -168,7 +200,7 @@
     font-size: 1em;
     line-height: 1em;
     margin-bottom: 1em;
-  };
+  }
 
   .side-thread-wrapper-container {
     background-color: #4e4e4e10;
@@ -187,5 +219,47 @@
     font-size: 0.85em;
     font-weight: 500;
     font-family: 'Open Sans', sans-serif;
+  }
+}
+
+.rotating {
+  font-size: 30px;
+  animation: rotate360 1s linear infinite;
+}
+
+.aiButton {
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.ai-loader {
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.aiButton:hover {
+  background-color: rgb(228, 228, 228);
+  color: black;
+}
+
+.code-block {
+  background-color: black;
+  padding: 1rem;
+  border-radius: 5px;
+  font-family: monospace;
+  white-space: pre;
+}
+
+.button-content {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
