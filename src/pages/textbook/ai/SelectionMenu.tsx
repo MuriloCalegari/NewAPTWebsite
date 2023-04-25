@@ -2,7 +2,9 @@
 import React from 'react';
 import { observer } from "mobx-react-lite";
 import { useStores } from "@/hooks/useStores";
-
+import { Icon } from '@rsuite/icons';
+import { AiOutlineHighlight, AiOutlineRobot } from "react-icons/ai"
+import { BsChatDots } from "react-icons/bs"
 
 interface SelectionMenuProps {
     top: number;
@@ -22,12 +24,14 @@ export const SelectionMenu = observer(({ top, left, onHighlight }: SelectionMenu
         padding: '5px',
         borderRadius: '3px',
         boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
+        display: 'inline-block',
     };
 
     return (
-        <div style={style}>
-            <button className="selection-button" onClick={() => { onHighlight }}>Annotate</button>
-            <button className="selection-button" onClick={() => { textbookStore.setSidebarState('ask-ai') }}>Ask AI</button>
+        <div style={style} className="triangle">
+            <button className="selection-button" onClick={() => { onHighlight }}><Icon as={AiOutlineHighlight} /></button>
+            <button className="selection-button" onClick={() => { textbookStore.setSidebarState('ask-ai') }}><Icon as={AiOutlineRobot} /></button>
+            <button className="selection-button" onClick={() => { textbookStore.setSidebarState('chat') }}><Icon as={BsChatDots} /></button>
         </div>
     );
 });

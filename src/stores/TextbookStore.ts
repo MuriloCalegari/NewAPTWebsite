@@ -51,7 +51,7 @@ export default class CourseAptsStore {
 
     @action
     setActiveThread(thread: Thread | null) {
-        if(thread !== null) console.log("Setting active thread: " + thread.id);
+        if (thread !== null) console.log("Setting active thread: " + thread.id);
         this.activeThread = thread;
     }
 
@@ -59,9 +59,9 @@ export default class CourseAptsStore {
     sendMessageOnCurrentThread(message: string) {
         this.activeThread?.messages?.push(
             {
-                user : this.rootStore.userStore.currentUser,
-                content : message,
-                id : Number(faker.random.numeric())
+                user: this.rootStore.userStore.currentUser,
+                content: message,
+                id: Number(faker.random.numeric())
             }
         );
     }

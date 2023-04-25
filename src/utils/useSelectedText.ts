@@ -25,7 +25,7 @@ function useSelectedText(): SelectedTextData {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
                 const centerX = rect.left + rect.width / 2 + scrollLeft;
-                const centerY = rect.top + rect.height / 2 + scrollTop - 30;
+                const centerY = rect.top + rect.height / 2 + scrollTop - 60;
 
                 setSelectedTextData({ text: selection.toString(), top: centerY, left: centerX });
             } else {
