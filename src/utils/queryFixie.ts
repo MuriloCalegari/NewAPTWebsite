@@ -1,8 +1,7 @@
 import fetch from 'isomorphic-fetch';
 
 export const callAPI = async (query: string): Promise<any> => {
-  console.log("TEST")
-  const url = 'http://localhost:5000/api/agents/silaslenihan/example-agent';
+  const url = 'https://online-textbook-backend.onrender.com/api/agents/silaslenihan/example-agent';
 
   const requestOptions: RequestInit = {
     method: 'POST',
