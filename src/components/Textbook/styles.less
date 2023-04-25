@@ -73,6 +73,33 @@
   }
 }
 
+.thread-page-cards {
+  margin-top: 30px;
+  border-radius: 6px;
+  padding: 0 0 0 0;
+  background: red;
+
+  .rs-panel-body {
+    padding: 0 0 0 0;
+  }
+
+  .thread-list-item {
+    padding: 12px;
+  }
+}
+
+.rs-theme-dark {
+  .thread-page-cards {
+    .thread-list-item {
+      background: @B800-dark;
+    }
+  }
+}
+
+.thread-highlight-content-container {
+
+}
+
 .textbook-thread-container {
   height: 100%;
   display: flex;
@@ -116,10 +143,10 @@
     flex: auto;
     height: 90%;
   }
+}
 
-  .thread-user-name {
-    font-size: 0.75em;
-  }
+.thread-user-name {
+  font-size: 0.75em;
 }
 
 .textbook-side-thread {
@@ -139,6 +166,11 @@
     padding: 8px 8px 8px 8px;
     border-radius: 4px;
     width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .thread-highlight-content-container {
+    flex-direction: column;
   }
 }
 

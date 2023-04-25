@@ -13,6 +13,7 @@ import {TextbookContent} from "@/pages/textbook/TextbookContent";
 import {Journey} from "@/pages/journey/Journey";
 import {Home} from "@/pages/home/Home";
 import {Friends} from "@/pages/friends/Friends";
+import {ThreadPage} from "@/pages/textbook/threads/ThreadPage";
 
 const App = () => {
   return useObserver(() => (
@@ -23,9 +24,10 @@ const App = () => {
                 <Route index element={<CourseApts/>}/>
                 <Route path="course_apts" element={<CourseApts/>}/>
                 <Route path="contents" element={<TextbookChapters/>}/>
-                <Route path="contents/:chapter" element={<TextbookContent/>}/>
+                <Route path="contents/:chapter" element={<TextbookContent/>} id={"textbook-content-chapter"}/>
                 <Route path="journey" element={<Journey/>}/>
                 <Route path="friends" element={<Friends/>}/>
+                <Route path="threads" element={<ThreadPage/>}/>
             </Route>
             <Route path="*" element={<Error404Page/>}/>
         </Routes>

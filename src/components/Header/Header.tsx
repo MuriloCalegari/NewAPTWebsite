@@ -100,12 +100,17 @@ type ThemeType = 'dark' | 'light' | 'high-contrast';
 interface HeaderProps {
     theme: ThemeType;
     onChangeTheme: (theme: ThemeType) => void;
+    shouldDisplayCollaborativeTools?: boolean;
 }
 
 const Header = observer((props : HeaderProps) => {
     const trigger = useRef<WhisperInstance>(null);
 
-    const { theme, onChangeTheme } = props;
+    const {
+        theme,
+        onChangeTheme,
+        shouldDisplayCollaborativeTools
+    } = props;
 
     const { textbookStore } = useStores();
     const { users, isOnCollaborativeMode } = textbookStore;
@@ -129,7 +134,7 @@ const Header = observer((props : HeaderProps) => {
     return (
         <Stack className="header" spacing={8}>
             {
-                isOnCollaborativeMode && (
+                shouldDisplayCollaborativeTools && isOnCollaborativeMode && (
                     [
                     <UserAvatarsGroup users={users} maxUsersToDisplay={5}/>,
                     <IconButton
@@ -153,15 +158,17 @@ const Header = observer((props : HeaderProps) => {
                 )
             }
 
-            <IconButton
-                icon={
-                    <Icon
-                        as={isOnCollaborativeMode ? AdminIcon : PeoplesIcon}
-                        style={{ fontSize: 20 }}
-                    />
-                }
-                onClick={() => textbookStore.setCollaborativeMode(!isOnCollaborativeMode)}
-            />
+            { shouldDisplayCollaborativeTools &&
+                <IconButton
+                    icon={
+                        <Icon
+                            as={isOnCollaborativeMode ? AdminIcon : PeoplesIcon}
+                            style={{ fontSize: 20 }}
+                        />
+                    }
+                    onClick={() => textbookStore.setCollaborativeMode(!isOnCollaborativeMode)}
+                />
+            }
             <IconButton
                 icon={
                     <Icon

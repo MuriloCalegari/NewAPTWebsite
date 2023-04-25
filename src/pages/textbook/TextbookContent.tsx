@@ -19,7 +19,7 @@ export const TextbookContent = observer(() => {
             <IconButton
                 className="back-button"
                 icon={<ArrowBackIcon />}
-                onClick={() => { navigate('/textbook') }}
+                onClick={() => { navigate('/contents') }}
             >
             </IconButton>
         );
