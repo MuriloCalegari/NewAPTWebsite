@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon } from '@rsuite/icons';
 import PageIcon from '@rsuite/icons/Page';
 import { MdDashboard } from 'react-icons/md';
-import { AiOutlineUsergroupAdd,AiOutlineOrderedList, AiOutlineTrophy, AiOutlineHighlight, AiOutlineQuestionCircle, AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineUsergroupAdd, AiOutlineOrderedList, AiOutlineTrophy, AiOutlineHighlight, AiOutlineQuestionCircle, AiOutlineSearch } from 'react-icons/ai';
 import { BsBookmark } from 'react-icons/bs';
 import TextImageIcon from '@rsuite/icons/TextImage';
 

@@ -38,7 +38,6 @@ export const TextbookAI = observer(({ selectedText }: TextbookAIProps) => {
         }
         setAiLoading(true)
         const message = await callAPI(query);
-        console.log(message)
         setAiLoading(false)
         setLastMessage(message);
     }

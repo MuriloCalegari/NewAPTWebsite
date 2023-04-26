@@ -11,6 +11,7 @@ export default class CourseAptsStore {
     rootStore: RootStore;
     isOnCollaborativeMode = false;
     sidebarState: "closed" | "chat" | "ask-ai" | "threads" = "closed";
+    bookmark: string;
 
     messages: Message[] = mockMessages(10);
     threads: Thread[] = mockThreads(10);
@@ -22,6 +23,7 @@ export default class CourseAptsStore {
     constructor(rootStore) {
         makeAutoObservable(this);
         this.rootStore = rootStore;
+        this.bookmark = '/';
     }
 
     @action
@@ -37,6 +39,15 @@ export default class CourseAptsStore {
     setSidebarState = (sidebarState: "closed" | "chat" | "ask-ai" | "threads") => {
         this.sidebarState = sidebarState;
     };
+
+    @action
+    setBookmark = (pathname: string) => {
+        if (pathname === this.bookmark) {
+            this.bookmark = "/"
+        } else {
+            this.bookmark = pathname
+        }
+    }
 
     @action
     sendMessage(message: Omit<Message, "id">) {
