@@ -17,6 +17,7 @@ import DashboardIcon from '@rsuite/icons/legacy/Dashboard';
 import GroupIcon from '@rsuite/icons/legacy/Group';
 import MagicIcon from '@rsuite/icons/legacy/Magic';
 import GearCircleIcon from '@rsuite/icons/legacy/GearCircle';
+import { LessonsData } from "./LessonData";
 
 export const Journey = observer(() => {
 
@@ -396,7 +397,7 @@ export const Journey = observer(() => {
                                         </Modal.Body>
                                     </Modal> 
                                     
-
+                                                    
 
                             </Col>
                             <Col xs={24} md={8}>
@@ -437,6 +438,8 @@ export const Journey = observer(() => {
                                     onClick={() => { handleQuiz2Click(); handleOpen2(); handleOpenReward}}>
                                     Reward
                                 </Button>
+                                
+
 
                                 <h4>Chapter 2</h4>
 
