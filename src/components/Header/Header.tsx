@@ -23,6 +23,7 @@ import ListIcon from '@rsuite/icons/List';
 import WechatOutlineIcon from '@rsuite/icons/WechatOutline';
 import {observer} from "mobx-react-lite";
 import {UserAvatarsGroup} from "@/components/Textbook/UserAvatarsGroup";
+import { BsBookmark } from 'react-icons/bs';
 
 const renderAdminSpeaker = ({ onClose, left, top, className }: any, ref) => {
   const handleSelect = eventKey => {
@@ -101,6 +102,7 @@ interface HeaderProps {
     theme: ThemeType;
     onChangeTheme: (theme: ThemeType) => void;
     shouldDisplayCollaborativeTools?: boolean;
+    isBookmarked?: boolean;
 }
 
 const Header = observer((props : HeaderProps) => {
@@ -109,7 +111,8 @@ const Header = observer((props : HeaderProps) => {
     const {
         theme,
         onChangeTheme,
-        shouldDisplayCollaborativeTools
+        shouldDisplayCollaborativeTools,
+        isBookmarked
     } = props;
 
     const { textbookStore } = useStores();
@@ -173,6 +176,15 @@ const Header = observer((props : HeaderProps) => {
                 icon={
                     <Icon
                         as={theme === 'light' ? MdOutlineNightlight : MdOutlineLightMode}
+                        style={{ fontSize: 20 }}
+                    />
+                }
+                onClick={() => onChangeTheme(theme === 'dark' ? 'light' : 'dark')}
+            />
+            <IconButton
+                icon={
+                    <Icon
+                        as={theme === 'light' ? BsBookmark : BsBookmark}
                         style={{ fontSize: 20 }}
                     />
                 }
