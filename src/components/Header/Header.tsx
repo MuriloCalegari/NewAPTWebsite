@@ -1,34 +1,34 @@
 import React, { useRef } from 'react';
 import {
-    Dropdown,
-    Popover,
-    Whisper,
-    WhisperInstance,
-    Stack,
-    Badge,
-    Avatar,
-    IconButton,
-    List,
-    Button
+  Dropdown,
+  Popover,
+  Whisper,
+  WhisperInstance,
+  Stack,
+  Badge,
+  Avatar,
+  IconButton,
+  List,
+  Button
 } from 'rsuite';
 import NoticeIcon from '@rsuite/icons/Notice';
+import { useLocation } from 'react-router-dom';
 import HelpOutlineIcon from '@rsuite/icons/HelpOutline';
 import GithubIcon from '@rsuite/icons/legacy/Github';
-import {Icon} from "@rsuite/icons";
+import { Icon } from "@rsuite/icons";
 import { MdOutlineNightlight, MdOutlineLightMode } from 'react-icons/md';
-import {useStores} from "@/hooks/useStores";
+import { useStores } from "@/hooks/useStores";
 import AdminIcon from '@rsuite/icons/Admin';
 import PeoplesIcon from '@rsuite/icons/Peoples';
 import ListIcon from '@rsuite/icons/List';
 import WechatOutlineIcon from '@rsuite/icons/WechatOutline';
-import {observer} from "mobx-react-lite";
-import {UserAvatarsGroup} from "@/components/Textbook/UserAvatarsGroup";
+import { observer } from "mobx-react-lite";
+import { UserAvatarsGroup } from "@/components/Textbook/UserAvatarsGroup";
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 
 const renderAdminSpeaker = ({ onClose, left, top, className }: any, ref) => {
   const handleSelect = eventKey => {
     onClose();
-    console.log(eventKey);
   };
   return (
     <Popover ref={ref} className={className} style={{ left, top }} full>
@@ -99,124 +99,126 @@ const renderNoticeSpeaker = ({ onClose, left, top, className }: any, ref) => {
 
 type ThemeType = 'dark' | 'light' | 'high-contrast';
 interface HeaderProps {
-    theme: ThemeType;
-    onChangeTheme: (theme: ThemeType) => void;
-    shouldDisplayCollaborativeTools?: boolean;
-    isBookmarked?: boolean;
+  theme: ThemeType;
+  onChangeTheme: (theme: ThemeType) => void;
+  shouldDisplayCollaborativeTools?: boolean;
+  isBookmarked?: boolean;
 }
 
-const Header = observer((props : HeaderProps) => {
-    const trigger = useRef<WhisperInstance>(null);
+const Header = observer((props: HeaderProps) => {
+  const trigger = useRef<WhisperInstance>(null);
+  const location = useLocation();
+  const { pathname } = location
 
-    const {
-        theme,
-        onChangeTheme,
-        shouldDisplayCollaborativeTools,
-        isBookmarked
-    } = props;
+  const {
+    theme,
+    onChangeTheme,
+    shouldDisplayCollaborativeTools,
+    isBookmarked
+  } = props;
 
-    const { textbookStore } = useStores();
-    const { users, isOnCollaborativeMode } = textbookStore;
+  const { textbookStore } = useStores();
+  const { users, isOnCollaborativeMode, bookmark } = textbookStore;
 
-    function handleOnClickThreads() {
-        if(textbookStore.sidebarState === 'threads') {
-            textbookStore.setSidebarState('closed');
-        } else {
-            textbookStore.setSidebarState('threads');
-        }
+  function handleOnClickThreads() {
+    if (textbookStore.sidebarState === 'threads') {
+      textbookStore.setSidebarState('closed');
+    } else {
+      textbookStore.setSidebarState('threads');
     }
+  }
 
-    function handleOnClickChat() {
-        if(textbookStore.sidebarState === 'chat') {
-            textbookStore.setSidebarState('closed');
-        } else {
-            textbookStore.setSidebarState('chat');
-        }
+  function handleOnClickChat() {
+    if (textbookStore.sidebarState === 'chat') {
+      textbookStore.setSidebarState('closed');
+    } else {
+      textbookStore.setSidebarState('chat');
     }
+  }
 
-    return (
-        <Stack className="header" spacing={8}>
-            {
-                shouldDisplayCollaborativeTools && isOnCollaborativeMode && (
-                    [
-                    <UserAvatarsGroup users={users} maxUsersToDisplay={5}/>,
-                    <IconButton
-                        icon={
-                            <Icon
-                                as={ListIcon}
-                                style={{ fontSize: 20 }}
-                            />
-                        }
-                        onClick={handleOnClickThreads}
-                    >
-                        Threads
-                    </IconButton>,
-                        <IconButton
-                            icon={ <Icon
-                                    as={WechatOutlineIcon}
-                                    style={{ fontSize: 20 }}/> }
-                            onClick={handleOnClickChat}
-                        />
-                    ]
-                )
-            }
-
-            { shouldDisplayCollaborativeTools &&
-                <IconButton
-                    icon={
-                        <Icon
-                            as={isOnCollaborativeMode ? AdminIcon : PeoplesIcon}
-                            style={{ fontSize: 20 }}
-                        />
-                    }
-                    onClick={() => textbookStore.setCollaborativeMode(!isOnCollaborativeMode)}
-                />
-            }
-            <IconButton
-                icon={
-                    <Icon
-                        as={theme === 'light' ? MdOutlineNightlight : MdOutlineLightMode}
-                        style={{ fontSize: 20 }}
-                    />
-                }
-                onClick={() => onChangeTheme(theme === 'dark' ? 'light' : 'dark')}
-            />
-            <IconButton
-                icon={
-                    <Icon
-                        as={theme === 'light' ? BsBookmark : BsBookmarkFill}
-                        style={{ fontSize: 20 }}
-                    />
-                }
-                onClick={() => onChangeTheme(theme === 'dark' ? 'light' : 'dark')}
-            />
-          <IconButton
-            icon={<GithubIcon style={{ fontSize: 20 }} />}
-            href="https://github.com/MuriloCalegari/NewAPTWebsite"
-            target="_blank"
-          />
-
-          <Whisper placement="bottomEnd" trigger="click" ref={trigger} speaker={renderNoticeSpeaker}>
+  return (
+    <Stack className="header" spacing={8}>
+      {
+        shouldDisplayCollaborativeTools && isOnCollaborativeMode && (
+          [
+            <UserAvatarsGroup users={users} maxUsersToDisplay={5} />,
             <IconButton
               icon={
-                <Badge content={5}>
-                  <NoticeIcon style={{ fontSize: 20 }} />
-                </Badge>
+                <Icon
+                  as={ListIcon}
+                  style={{ fontSize: 20 }}
+                />
               }
+              onClick={handleOnClickThreads}
+            >
+              Threads
+            </IconButton>,
+            <IconButton
+              icon={<Icon
+                as={WechatOutlineIcon}
+                style={{ fontSize: 20 }} />}
+              onClick={handleOnClickChat}
             />
-          </Whisper>
+          ]
+        )
+      }
 
-          <Whisper placement="bottomEnd" trigger="click" ref={trigger} speaker={renderAdminSpeaker}>
-            <Avatar
-              size="sm"
-              circle
-              src="https://avatars.githubusercontent.com/u/1203827"
-              alt="@simonguo"
-              style={{ marginLeft: 8 }}
+      {shouldDisplayCollaborativeTools &&
+        <IconButton
+          icon={
+            <Icon
+              as={isOnCollaborativeMode ? AdminIcon : PeoplesIcon}
+              style={{ fontSize: 20 }}
             />
-          </Whisper>
-        </Stack>
-    );
+          }
+          onClick={() => textbookStore.setCollaborativeMode(!isOnCollaborativeMode)}
+        />
+      }
+      <IconButton
+        icon={
+          <Icon
+            as={theme === 'light' ? MdOutlineNightlight : MdOutlineLightMode}
+            style={{ fontSize: 20 }}
+          />
+        }
+        onClick={() => onChangeTheme(theme === 'dark' ? 'light' : 'dark')}
+      />
+      <IconButton
+        icon={
+          <Icon
+            as={pathname === bookmark ? BsBookmarkFill : BsBookmark}
+            style={{ fontSize: 20 }}
+          />
+        }
+        onClick={() => textbookStore.setBookmark(pathname)}
+      />
+      <IconButton
+        icon={<GithubIcon style={{ fontSize: 20 }} />}
+        href="https://github.com/MuriloCalegari/NewAPTWebsite"
+        target="_blank"
+      />
+
+      <Whisper placement="bottomEnd" trigger="click" ref={trigger} speaker={renderNoticeSpeaker}>
+        <IconButton
+          icon={
+            <Badge content={5}>
+              <NoticeIcon style={{ fontSize: 20 }} />
+            </Badge>
+          }
+        />
+      </Whisper>
+
+      <Whisper placement="bottomEnd" trigger="click" ref={trigger} speaker={renderAdminSpeaker}>
+        <Avatar
+          size="sm"
+          circle
+          src="https://avatars.githubusercontent.com/u/1203827"
+          alt="@simonguo"
+          style={{ marginLeft: 8 }}
+        />
+      </Whisper>
+    </Stack>
+  );
 });
 
 export default Header;
