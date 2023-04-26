@@ -23,7 +23,7 @@ import ListIcon from '@rsuite/icons/List';
 import WechatOutlineIcon from '@rsuite/icons/WechatOutline';
 import {observer} from "mobx-react-lite";
 import {UserAvatarsGroup} from "@/components/Textbook/UserAvatarsGroup";
-import { BsBookmark } from 'react-icons/bs';
+import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 
 const renderAdminSpeaker = ({ onClose, left, top, className }: any, ref) => {
   const handleSelect = eventKey => {
@@ -184,7 +184,7 @@ const Header = observer((props : HeaderProps) => {
             <IconButton
                 icon={
                     <Icon
-                        as={theme === 'light' ? BsBookmark : BsBookmark}
+                        as={theme === 'light' ? BsBookmark : BsBookmarkFill}
                         style={{ fontSize: 20 }}
                     />
                 }
