@@ -15,24 +15,26 @@ import { Home } from "@/pages/home/Home";
 import { Browse } from "@/pages/browse/Browse";
 import { Friends } from "@/pages/friends/Friends";
 import { ThreadPage } from "@/pages/textbook/threads/ThreadPage";
+import BookmarkRedirect from "@/pages/bookmark/BookmarkRedirect";
 
 const App = () => {
   return useObserver(() => (
     <IntlProvider locale="en" messages={locales.en}>
-        <Routes>
-            <Route index element={<Home/>}/>
-            <Route path="/" element={<Home/>}/>
-            <Route path="browse" element={<Browse/>}/>
-            <Route path="/contents" element={<Frame navs={appNavs}/>}>
-                <Route path="" element={<TextbookChapters/>}/>
-                <Route path="course_apts" element={<CourseApts/>}/>
-                <Route path=":chapter" element={<TextbookContent/>} id={"textbook-content-chapter"}/>
-                <Route path="journey" element={<Journey/>}/>
-                <Route path="friends" element={<Friends/>}/>
-                <Route path="threads" element={<ThreadPage/>}/>
-            </Route>
-            <Route path="*" element={<Error404Page/>}/>
-        </Routes>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="browse" element={<Browse />} />
+        <Route path="/contents" element={<Frame navs={appNavs} />}>
+          <Route path="" element={<TextbookChapters />} />
+          <Route path="course_apts" element={<CourseApts />} />
+          <Route path=":chapter" element={<TextbookContent />} id={"textbook-content-chapter"} />
+          <Route path="journey" element={<Journey />} />
+          <Route path="friends" element={<Friends />} />
+          <Route path="threads" element={<ThreadPage />} />
+          <Route path="bookmark" element={<BookmarkRedirect />} />
+        </Route>
+        <Route path="*" element={<Error404Page />} />
+      </Routes>
     </IntlProvider>
   ));
 };
