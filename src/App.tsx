@@ -12,6 +12,7 @@ import {TextbookChapters} from "@/pages/textbook/TextbookChapters";
 import {TextbookContent} from "@/pages/textbook/TextbookContent";
 import {Journey} from "@/pages/journey/Journey";
 import {Home} from "@/pages/home/Home";
+import {Browse} from "@/pages/browse/Browse";
 import {Friends} from "@/pages/friends/Friends";
 import {ThreadPage} from "@/pages/textbook/threads/ThreadPage";
 
@@ -20,6 +21,7 @@ const App = () => {
     <IntlProvider locale="en" messages={locales.en}>
         <Routes>
             <Route path="/home" element={<Home/>}/>
+            <Route path="/browse" element={<Browse/>}/>
             <Route path="/" element={<Frame navs={appNavs}/>}>
                 <Route index element={<CourseApts/>}/>
                 <Route path="course_apts" element={<CourseApts/>}/>

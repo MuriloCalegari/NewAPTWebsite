@@ -3,7 +3,8 @@ import {observer} from "mobx-react-lite";
 import HomeNavBar from '@/components/HomeNavBar/HomeNavBar';
 import {Progress} from 'rsuite';
 import { useNavigate } from "react-router-dom";
-import { Document, Page } from 'react-pdf';
+import tictactoe from "../../../public/tictactoe.svg";
+import TextbookIcon from '@/components/TextbookIcon';
 
 
 export const Home = observer(() => {
@@ -37,16 +38,16 @@ export const Home = observer(() => {
                     <div className='game'>
                         <div className='game-text'>
                             <h2 style={{fontWeight:"700", fontSize:"16px"}}>Daily Challenge:</h2>
-                            <p style={{fontWeight:"400", fontSize:"16px", marginLeft:"10px"}}>Nine Nine Plus</p>
+                            <p style={{fontWeight:"400", fontSize:"16px", marginLeft:"10px"}}>Tic-Tac-Toe</p>
                         </div>
-                        
-
-                       
+                        <img src={tictactoe} alt="TicTacToe" className='game-img'/>
                     </div>
-
-
                 </div>
 
+                <div className='active-textbooks'>
+                    Active Textbooks:
+                </div>
+                <TextbookIcon/>
 
 
 

@@ -21,14 +21,14 @@ const HomeNavBar = props => {
 
                 <div className="options">
 
-                    <Link to="/" style={{ textDecoration: 'none', color:'var(--black)' }}>
+                    <Link to="/home" style={{ textDecoration: 'none', color:'var(--black)' }}>
                     <div className="icon-container" style={{marginRight:"10px"}}>
                         <Icon as={FaHome} />
                         <div className="icon-text">HOME</div>
                     </div>
                     </Link>
 
-                    <Link to="/" style={{ textDecoration: 'none', color:'var(--black)' }}>
+                    <Link to="/browse" style={{ textDecoration: 'none', color:'var(--black)' }}>
                     <div className="icon-container">
                         <Icon as={ImBook} />
                         <div className="icon-text">BROWSE</div>

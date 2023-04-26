@@ -14,7 +14,7 @@ function useSelectedText(): SelectedTextData {
     const { sidebarState } = textbookStore;
 
 
-
+ 
     useEffect(() => {
         const handleMouseUp = () => {
             const selection = window.getSelection();
@@ -23,7 +23,6 @@ function useSelectedText(): SelectedTextData {
                 const rect = range.getBoundingClientRect();
                 const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
                 const centerX = rect.left + rect.width / 2 + scrollLeft;
                 const centerY = rect.top + rect.height / 2 + scrollTop - 60;
 

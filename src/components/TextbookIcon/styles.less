@@ -1,0 +1,46 @@
+
+
+.book-container{
+    display: flex;
+    flex-direction: column;
+    border-color: var(--gray);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    color: black;
+}
+
+.backdrop{
+    background-color: white;
+    border: 6px solid ;
+    border-radius: 15px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.book-img{
+    width: 90%;
+}
+.title{
+    font-size: 16px;
+    font-weight: 400px;
+    width: 200px;
+    margin-top: 10px;
+}
+
+.clicking{
+    width: 200px;
+    .backdrop{
+        border-color: var(--gray);
+    }
+}
+
+.clicking:hover{
+    cursor: pointer;
+    .backdrop{
+        border-color: var(--black);
+        
+    }
+}

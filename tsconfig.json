@@ -30,6 +30,7 @@
     "src/components/miscQuiz/quizpage/quiz/Quiz.tsx",
     "src/components/miscQuiz/quizpage/quiz/QuizForm.js",
     "src/components/miscQuiz/quizpage/quiz/index.js",
-    "server.ts"
+    "server.ts",
+    "src/components", "src/custom.d.ts"
   ]
 }
