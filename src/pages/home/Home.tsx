@@ -3,7 +3,7 @@ import {observer} from "mobx-react-lite";
 import HomeNavBar from '@/components/HomeNavBar/HomeNavBar';
 import {Progress} from 'rsuite';
 import { useNavigate } from "react-router-dom";
-import tictactoe from "../../../public/tictactoe.svg";
+import tictactoe from "../../media/icons/tictactoe.svg";
 import TextbookIcon from '@/components/TextbookIcon';
 
 
