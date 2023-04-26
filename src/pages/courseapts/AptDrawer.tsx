@@ -102,11 +102,7 @@ const QuizCard = observer((props: { apt?: Apt }) => {
     });
 
     const disableButton = () => {
-        if (isCorrectAnswerSelected) {
-            return true;
-        } else {
-            return false;
-        }
+        return isCorrectAnswerSelected;
     }
 
     const handleCorrectClick = () => {
@@ -155,7 +151,7 @@ const QuizCard = observer((props: { apt?: Apt }) => {
                     {testCase.reasonableWrongOutputs.map((output) => {
                         return (
                             <Col xs={12} md={8}>
-                                <AnswerButton answer={output} onClick={handleIncorrectClick} />
+                                <WrongAnswerButton answer={output} onClick={handleIncorrectClick} />
                             </Col>
                         )
                     })}
