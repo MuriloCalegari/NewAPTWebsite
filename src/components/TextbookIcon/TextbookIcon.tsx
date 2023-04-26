@@ -1,12 +1,11 @@
 import React, {useState} from "react";
-import bookicon from "../../../public/bookicon.svg";
+import bookicon from "../../media/icons/bookIcon.svg";
 import { useNavigate } from "react-router-dom";
 
 
 
 const TextbookIcon = props => {
     const navigate = useNavigate();
-    const[darkness,setDarkness]=useState('light');
 
     function goToTextbook() {
         navigate(`/contents`);

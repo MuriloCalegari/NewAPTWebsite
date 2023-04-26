@@ -122,7 +122,7 @@ const Frame = observer((props: FrameProps) => {
         <Container className={containerClasses} style={{ marginLeft: '30px' }}>
           <FlexboxGrid>
             <FlexboxGrid.Item colspan={sidebarState === "closed" ? 24 : 18}>
-              <Header theme={theme} onChangeTheme={setTheme} shouldDisplayCollaborativeTools={location.pathname.includes("contents/")} />
+              <Header theme={theme} onChangeTheme={setTheme} shouldDisplayCollaborativeTools={isContentPath()} />
               <Content>
                 <Outlet />
               </Content>
