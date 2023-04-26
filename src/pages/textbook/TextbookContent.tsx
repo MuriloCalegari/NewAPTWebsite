@@ -25,7 +25,7 @@ export const TextbookContent = observer(() => {
 
     return (
         <PageContent bodyFill className="textbook-page" header={renderBackButton()}>
-            <Panel>
+            <Panel className="textbook-content">
                 <>
                     <Panel
                         className="textbook-card"

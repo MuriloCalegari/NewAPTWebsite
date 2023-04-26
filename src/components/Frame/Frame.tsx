@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import {Container, Sidebar, Sidenav, Content, Nav, DOMHelper, FlexboxGrid} from 'rsuite';
-import {Outlet, useLocation} from 'react-router-dom';
+import { Container, Sidebar, Sidenav, Content, Nav, DOMHelper, FlexboxGrid } from 'rsuite';
+import { Outlet, useLocation } from 'react-router-dom';
 import NavToggle from './NavToggle';
 import Header from '../Header';
 import NavLink from '../NavLink';
 import Brand from '../Brand';
 import { CustomProvider } from 'rsuite';
 import enGB from 'rsuite/locales/en_GB';
-import {observer} from "mobx-react-lite";
-import {useStores} from "@/hooks/useStores";
-import {TextbookChat} from "@/components/Textbook/TextbookChat";
-import {TextbookThreads} from "@/components/Textbook/TextbookThreads";
-import {TextbookAI} from "@/components/Textbook/TextbookAI";
+import { observer } from "mobx-react-lite";
+import { useStores } from "@/hooks/useStores";
+import { TextbookChat } from "@/components/Textbook/TextbookChat";
+import { TextbookThreads } from "@/components/Textbook/TextbookThreads";
+import { TextbookAI } from "@/components/Textbook/TextbookAI";
 import useSelectedText from "@/utils/useSelectedText";
 import SelectionMenu from "@/pages/textbook/ai/SelectionMenu";
-import {ThreadModal} from "@/components/Textbook/Threads/ThreadModal";
+import { ThreadModal } from "@/components/Textbook/Threads/ThreadModal";
 
 const { getHeight, on } = DOMHelper;
 
@@ -51,10 +51,14 @@ const Frame = observer((props: FrameProps) => {
   const { textbookStore } = useStores();
   const { sidebarState } = textbookStore;
 
-  const { text, top, left } = useSelectedText();
+  const selectedText = useSelectedText();
   const location = useLocation();
 
-  console.log(location);
+  const isContentPath = () => {
+    const pathname = location.pathname
+    const prefix = '/contents/';
+    return pathname.startsWith(prefix) && pathname.length > prefix.length;
+  };
 
   useEffect(() => {
     setWindowHeight(getHeight(window));
@@ -82,7 +86,7 @@ const Frame = observer((props: FrameProps) => {
           collapsible
         >
           <Sidenav.Header >
-            <Brand style={{ display: 'flex', alignItems:'center', justifyContent:'center'}} height={expand ? 50 : 25} width={expand ? 78 : 39} theme={theme} />
+            <Brand style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} height={expand ? 50 : 25} width={expand ? 78 : 39} theme={theme} />
           </Sidenav.Header>
           <Sidenav expanded={expand} appearance="subtle" defaultOpenKeys={['2', '3']}>
             <Sidenav.Body style={navBodyStyle}>
@@ -115,10 +119,10 @@ const Frame = observer((props: FrameProps) => {
           <NavToggle expand={expand} onChange={() => setExpand(!expand)} />
         </Sidebar>
 
-        <Container className={containerClasses} style={{marginLeft:'30px'}}>
+        <Container className={containerClasses} style={{ marginLeft: '30px' }}>
           <FlexboxGrid>
             <FlexboxGrid.Item colspan={sidebarState === "closed" ? 24 : 18}>
-              <Header theme={theme} onChangeTheme={setTheme} shouldDisplayCollaborativeTools={location.pathname.includes("contents/")}/>
+              <Header theme={theme} onChangeTheme={setTheme} shouldDisplayCollaborativeTools={location.pathname.includes("contents/")} />
               <Content>
                 <Outlet />
               </Content>
@@ -127,14 +131,14 @@ const Frame = observer((props: FrameProps) => {
               <div>
                 {sidebarState === "chat" && <TextbookChat />}
                 {sidebarState === "threads" && <TextbookThreads />}
-                {sidebarState === "ask-ai" && text && <TextbookAI text={text} />}
+                {sidebarState === "ask-ai" && selectedText.text && <TextbookAI selectedText={selectedText} />}
               </div>
             </FlexboxGrid.Item>
           </FlexboxGrid>
-          {text && <SelectionMenu top={top} left={left} onHighlight={(top, left, text) => { }} />}
+          {selectedText.text && sidebarState !== 'ask-ai' && isContentPath() && <SelectionMenu selectedText={selectedText} onHighlight={(top, left, text) => { }} />}
         </Container>
       </Container>
-      <ThreadModal/>
+      <ThreadModal />
     </CustomProvider>
   );
 });

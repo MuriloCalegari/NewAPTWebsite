@@ -12,7 +12,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  //overflow-y:scroll;
+  // overflow-y: scroll;
 
   .rs-container {
     position: relative;
@@ -97,7 +97,6 @@
 }
 
 .thread-highlight-content-container {
-
 }
 
 .textbook-thread-container {
@@ -218,7 +217,7 @@
   .thread-message-username {
     font-size: 0.85em;
     font-weight: 500;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
   }
 }
 
@@ -250,9 +249,33 @@
   white-space: pre;
 }
 
+.ai-container {
+  //width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
 .button-content {
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+}
+
+.code-text-panel {
+  background: @B100;
+  border-radius: 8px;
+  margin: 8px 0 8px 0;
+  width: 100%;
+  white-space: pre-wrap;
+  padding: 10px;
+}
+
+.response-panel {
+  width: 100%;
+  white-space: pre-wrap;
+  padding: 10px;
 }
 
 @keyframes rotate360 {

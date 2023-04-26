@@ -6,13 +6,20 @@ import { Icon } from '@rsuite/icons';
 import { AiOutlineHighlight, AiOutlineRobot } from "react-icons/ai"
 import { BsChatDots } from "react-icons/bs"
 
-interface SelectionMenuProps {
+interface SelectedTextData {
+    text: string;
     top: number;
     left: number;
+    className: string;
+}
+
+interface SelectionMenuProps {
+    selectedText: SelectedTextData
     onHighlight: (arg1: number, arg2: number, arg3: string) => void;
 }
 
-export const SelectionMenu = observer(({ top, left, onHighlight }: SelectionMenuProps) => {
+export const SelectionMenu = observer(({ selectedText, onHighlight }: SelectionMenuProps) => {
+    const { top, left } = selectedText
     const { textbookStore } = useStores();
 
     const style: React.CSSProperties = {
