@@ -2,7 +2,7 @@ import React from "react";
 import { observer } from "mobx-react-lite";
 import PageContent from "@/components/PageContent";
 import { Panel, PanelGroup, Progress } from "rsuite";
-import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import { List } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { chapters, Part } from "@/pages/textbook/chapters/chapters";
 import assignments from "@/data/assignments"
@@ -12,7 +12,7 @@ export const TextbookChapters = observer(() => {
     const navigate = useNavigate();
 
     function goToPart(part: Part) {
-        navigate(`/contents/${part.id}`);
+        navigate(`/contents/page/${part.id}`);
     }
 
 

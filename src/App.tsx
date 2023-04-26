@@ -27,7 +27,7 @@ const App = () => {
         <Route path="/contents" element={<Frame navs={appNavs} />}>
           <Route path="" element={<TextbookChapters />} />
           <Route path="course_apts" element={<CourseApts />} />
-          <Route path=":chapter" element={<TextbookContent />} id={"textbook-content-chapter"} />
+          <Route path="page/:chapter" element={<TextbookContent />} id={"textbook-content-chapter"} />
           <Route path="journey" element={<Journey />} />
           <Route path="friends" element={<Friends />} />
           <Route path="threads" element={<ThreadPage />} />

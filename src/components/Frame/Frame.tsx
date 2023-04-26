@@ -56,7 +56,7 @@ const Frame = observer((props: FrameProps) => {
 
   const isContentPath = () => {
     const pathname = location.pathname
-    const prefix = '/contents/';
+    const prefix = '/contents/page';
     return pathname.startsWith(prefix) && pathname.length > prefix.length;
   };
 
