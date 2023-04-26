@@ -11,7 +11,7 @@ npm run dev
 
 #### OPTIONAL: To run with the express server working:
 
-Note: This is only necessary to run the express server locally. It will work using the render server by default.
+Note: This is only necessary to run the express server locally. It will work using the render server by default. You can find the backend for the Fixie API integration [here](https://github.com/silaslenihan/online-textbook-backend)
 
 1. Make an account on [Fixie](app.fixie.ai)
 2. Go to your profile, get the API key

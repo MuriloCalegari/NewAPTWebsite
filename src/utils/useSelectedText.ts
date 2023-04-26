@@ -13,13 +13,12 @@ function useSelectedText(): SelectedTextData {
     const { textbookStore } = useStores();
     const { sidebarState } = textbookStore;
 
-
-
     useEffect(() => {
         const handleMouseUp = () => {
             const selection = window.getSelection();
             if (selection && selection.rangeCount > 0) {
                 const range = selection.getRangeAt(0);
+                const selectedElement = range.startContainer.parentElement;
                 const rect = range.getBoundingClientRect();
                 const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;

@@ -8,8 +8,6 @@ import PageContent from "@/components/PageContent";
 import ArrowBackIcon from '@rsuite/icons/ArowBack';
 
 export const TextbookContent = observer(() => {
-
-
     const { chapter } = useParams();
     const navigate = useNavigate();
     const partToRender = chapterParts.find((part) => part.id === chapter);
