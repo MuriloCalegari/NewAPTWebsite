@@ -16,6 +16,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-shrink:0;
 }
 
 .status {
@@ -27,6 +28,7 @@
     margin: 10px;
     margin-top: 30px;
     border-right: 2px solid var(--light-gray);
+    min-width:fit-content;
 }
 
 .progress-circle {
@@ -34,6 +36,7 @@
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     color: black;
+    flex-shrink:0;
 }
 
 .status-text {
@@ -42,7 +45,10 @@
     align-items: flex-start;
     justify-content: space-between;
     margin-left: 30px;
+    margin-right: 10px;
+    
 }
+
 
 .status-header {
     font-size: 16;
@@ -57,6 +63,8 @@
     border-radius: 10px;
     color: white;
     font-weight: 700;
+    flex-shrink:0;
+    width: 122px;
 }
 
 .button:hover {
@@ -69,9 +77,12 @@
 .game {
     width: 33%;
     margin-top: -10px;
-    margin-left: 40px;
+    margin-left: 30px;
     display: flex;
     flex-direction: column;
+    flex-shrink:0;
+    min-width: 100px;
+
 }
 
 .game-text{
@@ -79,7 +90,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    white-space: nowrap;
 }
+
 
 .game-img {
     width: 200px;
@@ -94,6 +107,7 @@
     font-size: 20px;
     font-weight: 700;
     margin-top: 100px;
+
 }
 
 

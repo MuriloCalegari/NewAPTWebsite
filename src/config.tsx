@@ -17,55 +17,44 @@ export const appNavs = [
     eventKey: 'bookmarked',
     icon: <Icon as={BsBookmark} />,
     title: 'Bookmark',
-    to: '/bookmark'
+    to: '/contents/bookmark'
   },
   {
     eventKey: 'journey',
     icon: <Icon as={AiOutlineTrophy} />,
     title: 'Journey',
-    to: '/journey'
+    to: '/contents/journey'
   },
   {
     eventKey: 'highlights',
     icon: <Icon as={AiOutlineHighlight} />,
     title: 'Highlights',
-    to: '/highlights'
+    to: '/contents/highlights'
   },
   {
     eventKey: 'threads',
     icon: <Icon as={TextImageIcon} />,
     title: 'Threads',
-    to: '/threads'
-  },
-  {
-    eventKey: 'help',
-    icon: <Icon as={AiOutlineQuestionCircle} />,
-    title: 'Help Center',
-    to: '/help'
-  },
-  {
-    eventKey: 'search',
-    icon: <Icon as={AiOutlineSearch} />,
-    title: 'Search Book',
-    to: '/search'
-  },
-  {
-    eventKey: 'home',
-    icon: <Icon as={MdDashboard} />,
-    title: 'Home',
-    to: '/home'
-  },
-  {
-    eventKey: 'course_apts',
-    icon: <Icon as={MdDashboard} />,
-    title: 'Course APTs',
-    to: '/course_apts'
+    to: '/contents/threads'
   },
   {
     eventKey: 'friends',
     icon: <Icon as={AiOutlineUsergroupAdd} />,
     title: 'Friends',
-    to: '/friends'
+    to: '/contents/friends'
   },
+  {
+    eventKey: 'search',
+    icon: <Icon as={AiOutlineSearch} />,
+    title: 'Search',
+    to: '/contents/search'
+  },
+  {
+    eventKey: 'help',
+    icon: <Icon as={AiOutlineQuestionCircle} />,
+    title: 'Help Center',
+    to: '/contents/help'
+  },
+  
   
 ];

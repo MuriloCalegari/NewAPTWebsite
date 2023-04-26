@@ -21,7 +21,7 @@ const HomeNavBar = props => {
 
                 <div className="options">
 
-                    <Link to="/home" style={{ textDecoration: 'none', color:'var(--black)' }}>
+                    <Link to="/" style={{ textDecoration: 'none', color:'var(--black)' }}>
                     <div className="icon-container" style={{marginRight:"10px"}}>
                         <Icon as={FaHome} />
                         <div className="icon-text">HOME</div>

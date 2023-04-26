@@ -30,7 +30,7 @@ export const Home = observer(() => {
                         <Progress.Circle className='progress-circle' trailColor='var(--dark-gray)' strokeWidth={10} strokeColor={"var(--blue)"} percent={70} showInfo={true} />
                         <div className='status-text'>
                             <div className='status-header'>You are 70% done with your assignment due this Friday.</div>
-                            <div>You're doing great so far! Keep it up!</div>
+                            <div style={{whiteSpace:'nowrap'}}>You're doing great so far! Keep it up!</div>
                             <div className='button' onClick={goToContents}>Jump Back In</div>
                         </div>
                     </div>

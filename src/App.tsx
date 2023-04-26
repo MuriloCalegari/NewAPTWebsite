@@ -20,13 +20,13 @@ const App = () => {
   return useObserver(() => (
     <IntlProvider locale="en" messages={locales.en}>
         <Routes>
-            <Route path="/home" element={<Home/>}/>
-            <Route path="/browse" element={<Browse/>}/>
-            <Route path="/" element={<Frame navs={appNavs}/>}>
-                <Route index element={<CourseApts/>}/>
+            <Route index element={<Home/>}/>
+            <Route path="/" element={<Home/>}/>
+            <Route path="browse" element={<Browse/>}/>
+            <Route path="/contents" element={<Frame navs={appNavs}/>}>
+                <Route path="" element={<TextbookChapters/>}/>
                 <Route path="course_apts" element={<CourseApts/>}/>
-                <Route path="contents" element={<TextbookChapters/>}/>
-                <Route path="contents/:chapter" element={<TextbookContent/>} id={"textbook-content-chapter"}/>
+                <Route path=":chapter" element={<TextbookContent/>} id={"textbook-content-chapter"}/>
                 <Route path="journey" element={<Journey/>}/>
                 <Route path="friends" element={<Friends/>}/>
                 <Route path="threads" element={<ThreadPage/>}/>
