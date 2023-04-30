@@ -9,6 +9,7 @@ import Trees from "@/pages/textbook/chapters/trees.mdx";
 import Trees1 from "@/pages/textbook/chapters/trees1.mdx";
 import Trees2 from "@/pages/textbook/chapters/trees2.mdx";
 
+
 export interface Chapter {
     id: string;
     title: string;
