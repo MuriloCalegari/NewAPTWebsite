@@ -30,6 +30,7 @@ const data = [
 
 const App = () => {
   const [list, updateList] = useState([]);
+  const [solution, updateSolution] = useState(false);
   const [pressed, updatePress] = useState(
     new Array(defaultData.length).fill(false)
   );
