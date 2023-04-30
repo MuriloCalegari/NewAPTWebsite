@@ -220,9 +220,10 @@ const Header = observer((props: HeaderProps) => {
         <Avatar
           size="sm"
           circle
-          src="https://avatars.githubusercontent.com/u/1203827"
+          src={theme !== "dark" ? "https://users.cs.duke.edu/~rcd/images/rcd.jpg" : "https://users.cs.duke.edu/~rcd/images/rcd_old.gif"}
           alt="@simonguo"
           style={{ marginLeft: 8 }}
+          imgProps={{style: {objectFit: "cover"}}}
         />
       </Whisper>
     </Stack>
