@@ -18,6 +18,7 @@ import GroupIcon from '@rsuite/icons/legacy/Group';
 import MagicIcon from '@rsuite/icons/legacy/Magic';
 import GearCircleIcon from '@rsuite/icons/legacy/GearCircle';
 import { LessonsData } from "./LessonData";
+import { useState } from "react";
 
 export const Journey = observer(() => {
 
@@ -33,13 +34,6 @@ export const Journey = observer(() => {
     const [isCurrent2, setIsCurrent2] = React.useState(false);
     const [isCurrent3, setIsCurrent3] = React.useState(false);
 
-    //const [isPath1, setIsPath1] = React.useState(false);
-    //const [isPath2, setIsPath2] = React.useState(false);
-    //const [isPath3, setIsPath3] = React.useState(false);
-
-    //const [isPath4, setIsPath4] = React.useState(false);
-    //const [isPath5, setIsPath5] = React.useState(false);
-    //const [isPath6, setIsPath6] = React.useState(false);
 
     const [placeholdQ1, setPlaceholdQ1] = React.useState(false);
     const [placeholdQ2, setPlaceholdQ2] = React.useState(false);
@@ -89,6 +83,10 @@ export const Journey = observer(() => {
     const handleOpenMessage = () => setOpenMessage(true);
     const handleCloseMessage = () => setOpenMessage(false);
   
+    //state function
+
+    const [count, setCount] = useState(0);
+    const handleZero = () => setCount(0);
 
 
     //old 
@@ -107,6 +105,27 @@ export const Journey = observer(() => {
             </IconButton>
         );
     }
+
+    //function renderLesson(LessonsData: Lesson) {
+    //    return (
+    //        <Grid>
+    //            <Row>
+    //                <Col xs={12} md={8}>
+    //                    <Button
+    //                        className={`quiz-answer-option ${isCorrectAnswerSelected ? "correct" : ""}`}
+    //                        onClick={handleLessonOpen}>{testCase.expectedOutput}</Button>
+    //                </Col>
+    //                {testCase.reasonableWrongOutputs.map((output) => {
+    //                    return (
+    //                        <Col xs={12} md={8}>
+    //                            <WrongAnswerButton answer={output} onClick={handleIncorrectClick} />
+    //                        </Col>
+    //                    )
+    //                })}
+    //            </Row>
+    //        </Grid>
+    //    );
+    //}
 
     const UnavailableButton = observer((props: { answer: string, onClick?: () => void }) => {
         const [isUnavailable, setIsUnavailable] = React.useState(false);
@@ -188,7 +207,7 @@ export const Journey = observer(() => {
     };
     //
     // 
-    // users //////////////////////////////////////////////////////////////////////
+    // users and friends list //////////////////////////////////////////////////////////////////////
 
     const users1 = [
         { avatar : 'A', color: '#000', name: 'AP' },
@@ -236,6 +255,65 @@ export const Journey = observer(() => {
 
     const maxAvatars = 4;
 
+    /// friends list /////////////////////////////////////////////////
+    
+    const OnlineFriends = [
+        { avatar : 'A', color: '#000', name: 'AP' },
+        { avatar : 'B', color: '#4f6733', name: 'BL' },
+        { avatar : 'C', color: '#245643', name: 'RG' },
+        { avatar : 'D', color: '#bbb568', name: 'LK' },
+        { avatar : 'E', color: '#4f6733', name: 'BY' },
+        { avatar : 'F', color: '#245643', name: 'RF' },
+        { avatar : 'G', color: '#78dd', name: 'LL' },
+
+        { avatar : 'A', color: '#444aaa', name: 'SS' },
+        { avatar : 'B', color: '#0f6733', name: 'DO' },
+        { avatar : 'C', color: '#245643', name: 'WM' },
+        { avatar : 'D', color: '#78dd', name: 'TN' },
+
+        { avatar : 'A', color: '#D291BC', name: 'EF' },
+        { avatar : 'B', color: '#957DAD', name: 'IH' },
+        { avatar : 'C', color: '#E0BBE4', name: 'XC' },
+  
+
+        { avatar : 'A', color: '#ffb3ba', name: 'AA' },
+        { avatar : 'C', color: '#FFD580', name: 'XC' },
+    
+
+        { avatar : 'A', color: '#000437', name: 'NS' },
+
+
+        { avatar : 'A', color: '#0bb568', name: 'HH' },
+        { avatar : 'yeah', color: '#a7bed3', name: 'JT' },
+    ];
+
+    const OfflineFriends = [
+
+        { avatar : 'G', color: '#78dd', name: 'LL' },
+
+        { avatar : 'A', color: '#444aaa', name: 'SS' },
+        { avatar : 'B', color: '#0f6733', name: 'DO' },
+        { avatar : 'C', color: '#245643', name: 'WM' },
+        { avatar : 'D', color: '#78dd', name: 'TN' },
+
+        { avatar : 'A', color: '#D291BC', name: 'EF' },
+        { avatar : 'B', color: '#957DAD', name: 'IH' },
+        { avatar : 'C', color: '#E0BBE4', name: 'XC' },
+  
+
+        { avatar : 'A', color: '#ffb3ba', name: 'AA' },
+        { avatar : 'C', color: '#FFD580', name: 'XC' },
+    
+
+        { avatar : 'A', color: '#000437', name: 'NS' },
+
+
+        { avatar : 'A', color: '#0bb568', name: 'HH' },
+        { avatar : 'yeah', color: '#a7bed3', name: 'JT' },
+    ];
+
+    //const [expanded, setExpand] = React.useState(false);
+    //const [activeKey, setActiveKey] = React.useState('1');
 
     //<CustomSidenav
     //activeKey={3}
@@ -255,6 +333,7 @@ export const Journey = observer(() => {
 
                     <Grid style={{ width: "100%" }} align="center">
                         <Row>
+                        <h4>Journey</h4>
                             <Col xs={24} md={8}>
                             </Col>
                             <Col xs={24} md={8}>
@@ -262,12 +341,70 @@ export const Journey = observer(() => {
                             <Col xs={24} md={8}>
                             <Button 
                                 size = "lg"
-                                className={`friends`}> 
-                                Friends 
+                                className={`friends`}
+                                onClick={() => { handleLessonOpen(); setCount(-1) }}>
+                                Friends
+
                             </Button>
+                            <Modal autoFocus={true} open={count == -1} size="lg" onClose = {handleZero} 
+                                        backdropClassName="quiz-modal-backdrop"
+                                        style={{
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                            marginLeft: 100,
+                                            marginTop: 100,
+                                    
+                                        }}>
+                                        <Modal.Header>
+                                            <Modal.Title><h2>Friends</h2></Modal.Title>
+                                            <Button> Add Friends </Button>
+                                            <Button> Remove Friends </Button>
+                                        </Modal.Header>
+
+                                        <Modal.Body>
+                                            <h4> Online Friends </h4>
+                                        
+                                        </Modal.Body>
+
+                                        <Modal.Body>
+                                            <h5>Friends</h5>
+                                            {OnlineFriends.length} friend(s) active
+                                            
+                                            {OnlineFriends
+                                                .map((friend) => (
+                                                    <Row>
+                                                    <Modal.Body>
+                                                    <Avatar circle key={friend.name} style={{background: friend.color}}>
+                                                    {friend.name}
+                                                    </Avatar>
+                                                    {friend.name}
+                                                    </Modal.Body>
+                                                    </Row>
+
+                                                ))}
+
+
+                                            <h4> Offline Friends </h4>
+                                            {OfflineFriends.length} friend(s) offline
+                                            
+                                            {OfflineFriends
+                                                .map((friend) => (
+                                                    <Row>
+                                                    <Modal.Body>
+                                                    <Avatar circle key={friend.name} style={{background: friend.color}}>
+                                                    {friend.name}
+                                                    </Avatar>
+                                                    {friend.name}
+                                                    </Modal.Body>
+                                                    </Row>
+
+                                                ))}
+                                        
+                                        </Modal.Body>
+                                    </Modal> 
                             </Col>
                         </Row>
-                        <Row >
+                        <Row>
                             <Col xs={24} md={8}>
                             </Col>
                             <Col xs={24} md={8}>
@@ -354,13 +491,14 @@ export const Journey = observer(() => {
                                                 </Avatar>
                                             </AvatarGroup>
                                     <Button
-                                        className={`lesson-option ${openLesson ? "selected" :  "notselected"}  `}
-                                        onClick={handleLessonOpen}
+                                        className={`lesson-option ${count == 1 ? "selected" :  "notselected"}  `}
+                                        onClick={() => { handleLessonOpen(); setCount(1) }}
                                     
                                         > 
-                                        1.1
+                                        {LessonsData[0].number}
                                     </Button>
-                                    <Modal autoFocus={true} open={openLesson} size="lg" onClose = {handleLessonClose} 
+                                    
+                                    <Modal autoFocus={true} open={count ==1} size="lg" onClose = {handleZero} 
                                         backdropClassName="quiz-modal-backdrop"
                                         style={{
                                             display: "flex",
@@ -368,17 +506,19 @@ export const Journey = observer(() => {
                                             alignItems: "center",
                                         }}>
                                         <Modal.Header>
-                                            <Modal.Title><h2>Lesson 1.1</h2></Modal.Title>
+                                            <Modal.Title><h2>{LessonsData[0].title}</h2></Modal.Title>
                                         </Modal.Header>
                                         <Modal.Body>
-                                            <h4> List Iteration </h4>
-                                            {users1.length} people are active on this lesson right now
+                                            <h4> {LessonsData[0].number} </h4>
+                                        
                                         </Modal.Body>
                                         <Modal.Body>
-                                        Here is a description of this lesson.
+                                        {LessonsData[0].description}
                                         </Modal.Body>
+                                        Link Here?
                                         <Modal.Body>
                                             <h5>Friends</h5>
+                                            {users1.length} friend(s) active on this lesson right now
                                             <AvatarGroup stack size="md">
                                             {users1
                                                 .filter((user, i) => i < maxAvatars)
@@ -410,11 +550,46 @@ export const Journey = observer(() => {
                                 </AvatarGroup>
                                 <Button
                                     
-                                    className={`lesson-option ${openLesson ? "selected" :  "notselected"} `}
-                                    onClick={handleLessonOpen} >
-                                    1.2
+                                    className={`lesson-option ${count == 2 ? "selected" :  "notselected"} `}
+                                    onClick={() => { handleLessonOpen(); setCount(2) }} >
+                                    {LessonsData[1].number}
                                 </Button>
-                                
+                                <Modal autoFocus={true} open={count == 2} size="lg" onClose = {handleZero} 
+                                        backdropClassName="quiz-modal-backdrop"
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                        }}>
+                                        <Modal.Header>
+                                            <Modal.Title><h2>{LessonsData[1].title}</h2></Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                            <h4> {LessonsData[1].number} </h4>
+                                        
+                                        </Modal.Body>
+                                        <Modal.Body>
+                                        {LessonsData[1].description}
+
+                                        </Modal.Body>
+                                        <Modal.Body>
+                                            <h5>Friends</h5>
+                                            {users2.length} friend(s) active on this lesson right now
+                                            <AvatarGroup stack size="md">
+                                            {users2
+                                                .filter((user, i) => i < maxAvatars)
+                                                .map((user) => (
+                                                    <Avatar circle key={user.name} style={{background: user.color}}>
+                                                    {user.name}
+                                                    </Avatar>
+
+                                                ))}
+
+                                            </AvatarGroup>
+                                            
+                                        </Modal.Body>
+                                    </Modal>     
+
                             </Col><Col xs={24} md={8}>
                                 <AvatarGroup stack size="md">
                                         {users3.map((user) => (
@@ -424,9 +599,43 @@ export const Journey = observer(() => {
                                         ))}
                                 </AvatarGroup>
                                 <Button
-                                    className={`lesson-option ${openLesson ? "selected" :  "notselected"}  `}
-                                    onClick={handleLessonOpen}> 
-                                    1.3 </Button>
+                                    className={`lesson-option ${count == 3 ? "selected" :  "notselected"}  `}
+                                    onClick={() => { handleLessonOpen(); setCount(3) }} >
+                                    {LessonsData[2].number} </Button>
+                                <Modal autoFocus={true} open={count == 3} size="lg" onClose = {handleZero} 
+                                        backdropClassName="quiz-modal-backdrop"
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                        }}>
+                                        <Modal.Header>
+                                            <Modal.Title><h2>{LessonsData[2].title}</h2></Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                            <h4> {LessonsData[2].number} </h4>
+                                        
+                                        </Modal.Body>
+                                        <Modal.Body>
+                                        {LessonsData[2].description}
+                                        </Modal.Body>
+                                        <Modal.Body>
+                                            <h5>Friends</h5>
+                                            {users3.length} friend(s) active on this lesson right now
+                                            <AvatarGroup stack size="md">
+                                            {users3
+                                                .filter((user, i) => i < maxAvatars)
+                                                .map((user) => (
+                                                    <Avatar circle key={user.name} style={{background: user.color}}>
+                                                    {user.name}
+                                                    </Avatar>
+
+                                                ))}
+
+                                            </AvatarGroup>
+                                            
+                                        </Modal.Body>
+                                    </Modal>     
                             </Col>
                         </Row>
                         <Row>
@@ -439,8 +648,6 @@ export const Journey = observer(() => {
                                     Reward
                                 </Button>
                                 
-
-
                                 <h4>Chapter 2</h4>
 
                                 <Modal autoFocus={true} open={open2} backdrop="static" size="lg" onClose={handleCloseReward}
@@ -487,12 +694,43 @@ export const Journey = observer(() => {
                                       ))}
                                 </AvatarGroup>
                                 <Button
-                                    className={`lesson-option ${openLesson ? "selected" :  "notselected"}  `}
-                                    onClick={handleLessonOpen}
-                                    
-                                    > 
-                                    2.1
-                                    </Button>
+                                    className={`lesson-option ${count == 4 ? "selected" :  "notselected"}  `}
+                                    onClick={() => {setCount(4) }} >
+                                    {LessonsData[3].number} </Button>
+                                <Modal autoFocus={true} open={count == 4} size="lg" onClose={handleZero} 
+                                        backdropClassName="quiz-modal-backdrop"
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                        }}>
+                                        <Modal.Header>
+                                            <Modal.Title><h2>{LessonsData[3].title}</h2></Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                            <h4> {LessonsData[3].number} </h4>
+                                            
+                                        </Modal.Body>
+                                        <Modal.Body>
+                                        {LessonsData[3].description}
+                                        </Modal.Body>
+                                        <Modal.Body>
+                                            <h5>Friends</h5>
+                                            {users4.length} friend(s) active on this lesson right now
+                                            <AvatarGroup stack size="md">
+                                            {users4
+                                                .filter((user, i) => i < maxAvatars)
+                                                .map((user) => (
+                                                    <Avatar circle key={user.name} style={{background: user.color}}>
+                                                    {user.name}
+                                                    </Avatar>
+
+                                                ))}
+
+                                            </AvatarGroup>
+                                            
+                                        </Modal.Body>
+                                    </Modal>
 
                                 
                             </Col>
@@ -505,10 +743,42 @@ export const Journey = observer(() => {
                                       ))}
                                 </AvatarGroup>
                                 <Button
-                                    className={`lesson-option ${openLesson ? "selected" :  "notselected"}  `}
-                                    onClick={handleLessonOpen}> 
-                                    2.2
-                                    </Button>
+                                    className={`lesson-option ${count == 5 ? "selected" :  "notselected"}  `}
+                                    onClick={() => { handleLessonOpen(); setCount(5) }} >
+                                    {LessonsData[4].number} </Button>
+                                <Modal autoFocus={true} open={count == 5} size="lg" onClose = {handleZero}  
+                                        backdropClassName="quiz-modal-backdrop"
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                        }}>
+                                        <Modal.Header>
+                                            <Modal.Title><h2>{LessonsData[4].title}</h2></Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                            <h4> {LessonsData[4].number} </h4>
+                                        
+                                        </Modal.Body>
+                                        <Modal.Body>
+                                        {LessonsData[4].description}
+                                        </Modal.Body>
+                                        <Modal.Body>
+                                            <h5>Friends</h5>
+                                            {users5.length} friend(s) active on this lesson right now    
+                                            <AvatarGroup stack size="md">
+                                            {users5
+                                                .filter((user, i) => i < maxAvatars)
+                                                .map((user) => (
+                                                    <Avatar circle key={user.name} style={{background: user.color}}>
+                                                    {user.name}
+                                                    </Avatar>
+
+                                                ))}
+                                            </AvatarGroup>
+                                            
+                                        </Modal.Body>
+                                    </Modal>
                                     
                                     
                             </Col><Col xs={24} md={8}>
@@ -522,32 +792,48 @@ export const Journey = observer(() => {
                                 <h4>    </h4>
 
                                 <Button
-                                    className={`lesson-option ${openLesson ? "selected" :  "notselected"}  `}
-                                    onClick={handleLessonOpen}
-                                    > 
-                                    2.3
-                                    </Button>
+                                    className={`lesson-option ${count == 6 ? "selected" :  "notselected"}  `}
+                                    onClick={() => {setCount(6) }} >
+                                    {LessonsData[5].number} </Button>
+                                <Modal autoFocus={true} open={count == 6} size="lg" onClose={handleZero} 
+                                        backdropClassName="quiz-modal-backdrop"
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                        }}>
+                                        <Modal.Header>
+                                            <Modal.Title><h2>{LessonsData[5].title}</h2></Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                            <h4> {LessonsData[5].number} </h4>
+                                        
+                                        </Modal.Body>
+                                        <Modal.Body>
+                                        {LessonsData[5].description}
+                                        </Modal.Body>
+                                        <Modal.Body>
+                                            <h5>Friends</h5>
+                                            {users6.length} friend(s) active on this lesson right now
+                                            <AvatarGroup stack size="md">
+                                            {users6
+                                                .filter((user, i) => i < maxAvatars)
+                                                .map((user) => (
+                                                    <Avatar circle key={user.name} style={{background: user.color}}>
+                                                    {user.name}
+                                                    </Avatar>
+
+                                                ))}
+
+                                            </AvatarGroup>
+                                            
+                                        </Modal.Body>
+                                    </Modal>
                                     
                                         
                             </Col>
                             <Col xs={24} md={8}></Col>
-                            <Col xs={24} md={8}>
-                            <AvatarGroup stack size="md">
-                                        {users7.map((user) => (
-                                      <Avatar circle key={user.name} style={{background: user.color}} >
-                                      {user.name}
-                                      </Avatar>
-                                      ))}
-                                </AvatarGroup>
-                                <h4>    </h4>
-                            
-                                <Button
-                                    className={`lesson-option ${openLesson ? "selected" :  "notselected"}  `}
-                                    onClick={handleLessonOpen}
-                                    > 
-                                    2.4
-                                    </Button>
-                            </Col>
+
                         </Row>
                         <Row>
                             <Col xs={24} md={8}>
