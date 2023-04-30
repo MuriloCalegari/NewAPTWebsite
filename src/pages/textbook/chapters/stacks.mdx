@@ -1,90 +1,150 @@
-import React, { useState } from 'react';
-import { Panel } from 'rsuite';
-import { Col, Grid, Row, Divider } from 'rsuite';
-import { CodeEditor } from './components/CodeEditor';
-import { CodeRunner } from './components/CodeRunner';
+import React from "react";
+import { CodeEditor } from "./components/CodeEditor";
+import { CodeRunner } from "./components/CodeRunner";
+import { Panel } from "rsuite";
+import { Col, Grid, Row, Divider } from "rsuite";
 import CodeSandboxer from 'react-codesandboxer';
 
-function StackLesson() {
-  const [stack, setStack] = useState([]);
-  const [inputValue, setInputValue] = useState('');
-
-  const pushItem = () => {
-    const newStack = [...stack];
-    newStack.push(inputValue);
-    setStack(newStack);
-    setInputValue('');
-  };
-
-  const popItem = () => {
-    const newStack = [...stack];
-    newStack.pop();
-    setStack(newStack);
-  };
-
-  const peekItem = () => {
-    alert(`The top item is ${stack[stack.length - 1]}`);
-  };
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
+const Stacks = () => {
   return (
-    <>
-      <h1>Stacks Lesson</h1>
+    <div>
+      <h1>Stacks</h1>
+      <br />
+
       <p>
-        A stack is a data structure that follows the Last-In/First-Out (LIFO)
-        principle. The last item added to the stack is the first item to be
-        removed. Think of it like a stack of plates - you always remove the top
-        plate first.
+        A stack is a linear data structure that follows the Last In First Out
+        (LIFO) principle, meaning that the most recently added element is the
+        first one to be removed. Stacks are used in various programming tasks,
+        such as parsing expressions, managing function calls, and undo/redo
+        functionality in applications.
       </p>
+
       <p>
-        In programming, stacks are commonly used for keeping track of function
-        calls, undo/redo functionality, and in algorithms such as depth-first
-        search.
+        A stack can be implemented using an array or a list. The primary
+        operations performed on a stack are:
       </p>
-      <h2>Stack Operations</h2>
-      <p>Here are the basic operations that can be performed on a stack:</p>
+
       <ul>
-        <li>
-          <strong>Push:</strong> Add an item to the top of the stack.
-        </li>
-        <li>
-          <strong>Pop:</strong> Remove the top item from the stack.
-        </li>
-        <li>
-          <strong>Peek:</strong> Look at the top item without removing it.
-        </li>
+        <li>Push: Add an element to the top of the stack</li>
+        <li>Pop: Remove the top element from the stack</li>
+        <li>Peek: Get the value of the top element without removing it</li>
       </ul>
-      <h2>Stack Example</h2>
-      <p>Here's an example of a stack that you can interact with:</p>
-      <div>
-        <label htmlFor="stack-input">Enter a new item to add to the stack:</label>
-        <input
-          type="text"
-          id="stack-input"
-          value={inputValue}
-          onChange={handleInputChange}
-        />
-        <button onClick={pushItem}>Push</button>
-        <button onClick={popItem}>Pop</button>
-        <button onClick={peekItem}>Peek</button>
-      </div>
-      <div>
-        <p>The current stack:</p>
-        {stack.length === 0 ? (
-          <p>The stack is empty.</p>
-        ) : (
-          <ul>
-            {stack.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </>
-  );
+
+      <br />
+
+      <h2>Stack Implementation</h2>
+
+      <p>
+        Here's a simple stack implementation using a list in Python:
+      </p>
+
+      <Panel className={"code-text-panel"}>
+        class Stack: {'\n'}
+        {'    '}def __init__(self): {'\n'}
+        {'        '}self.items = [] {'\n'}
+        {'\n'}
+        {'    '}def push(self, item): {'\n'}
+        {'        '}self.items.append(item) {'\n'}
+        {'\n'}
+        {'    '}def pop(self): {'\n'}
+        {'        '}if not self.is_empty(): {'\n'}
+        {'            '}return self.items.pop() {'\n'}
+        {'\n'}
+        {'    '}def peek(self): {'\n'}
+        {'        '}if not self.is_empty(): {'\n'}
+        {'            '}return self.items[-1] {'\n'}
+        {'\n'}
+        {'    '}def is_empty(self): {'\n'}
+        {'        '}return len(self.items) == 0 {'\n'}
+        {'\n'}
+        {'    '}def size(self): {'\n'}
+        {'        '}return len(self.items) {'\n'}
+      </Panel>
+
+      <br />
+
+      <h2>Using the Stack</h2>
+
+      <p>
+        Here's an example of using the stack to reverse a string:
+      </p>
+
+      <Panel className={"code-text-panel"}>
+        def reverse_string(s): {'\n'}
+        {'    '}stack = Stack() {'\n'}
+        {'    '}for char in s: {'\n'}
+        {'        '}stack.push(char) {'\n'}
+        {'\n'}
+        {'    '}reversed_string = "" {'\n'}
+        {'    '}while not stack.is_empty(): {'\n'}
+        {'        '}reversed_string += stack.pop() {'\n'}
+        {'\n'}
+        {'    '}return reversed_string {'\n'}
+      </Panel>
+
+      <br />
+
+      <h3>Try it!</h3>
+
+<p>
+  Write code to use the stack implementation to check if a given string
+  has balanced parentheses:
+</p>
+
+<Panel className={"code-text-panel"}>
+  def is_balanced_parentheses(s): {'\n'}
+  {'    '}stack = Stack() {'\n'}
+  {'    '}# Your code here {'\n'}
+</Panel>
+
+<CodeRunner
+  javaScriptCode={`
+export function isBalancedParentheses(s) {
+const stack = new Stack();
+// Your code here
 }
 
-export default StackLesson;
+const output = isBalancedParentheses("(())");
+console.log(output);
+`}
+  testCode={`
+import { isBalancedParentheses } from ".";
+
+it("returns true if the string has balanced parentheses", () => {
+const input = "(())";
+const expectedOutput = true;
+const actualOutput = isBalancedParentheses(input);
+
+expect(actualOutput).toEqual(expectedOutput);
+});
+
+it("returns false if the string has unbalanced parentheses", () => {
+const input = "(()";
+const expectedOutput = false;
+const actualOutput
+isBalancedParentheses(input);
+
+expect(actualOutput).toEqual(expectedOutput);
+});
+`}
+/>
+
+<br />
+<br />
+
+<h2>Time and Space Complexity</h2>
+
+<p>
+  The time complexity of stack operations (push, pop, and peek) is O(1),
+  as these operations are performed in constant time. The space complexity
+  of a stack depends on the number of elements stored in it, so it is
+  O(n) in the worst case.
+</p>
+
+<br />
+</div>
+);
+};
+
+export default Stacks;
+
