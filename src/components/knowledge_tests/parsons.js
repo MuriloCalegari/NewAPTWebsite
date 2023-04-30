@@ -32,7 +32,7 @@ const App = () => {
   const [list, updateList] = useState([]);
   const [solution, updateSolution] = useState(false);
   const [pressed, updatePress] = useState(
-    new Array(defaultData.length).fill(false)
+    new Array((data[0].code).length).fill(false)
   );
   
   //Inserting Data into Sortable List
@@ -81,11 +81,12 @@ const App = () => {
 
   return (
     <div>
+      <h2>{(data[0].question)}</h2>
       <List>
-        {defaultData.map(({ text }, index) => (
+        {(data[0].code).map(({ text, position }, index) => (
           <List.Item key={index} index={index}>
             {text}
-            <button onClick={() => insertData(text)} disabled = {pressed[index]}> 
+            <button onClick={() => insertData(text, position, index)} disabled = {pressed[index]}> 
               Insert 
             </button>
           </List.Item>
@@ -93,12 +94,13 @@ const App = () => {
       </List>
       <Divider> sortable below </Divider>
       <List sortable onSort={handleSortEnd}>
-        {list.map(({ text }, index) => (
+        {list.map(({ text}, index) => (
           <List.Item key={index} index={index}>
             {text}
           </List.Item>
         ))}
       </List>
+      <button onClick={() => handleSubmission(data[0].answerLength())}></button>
     </div>
   );
 };
