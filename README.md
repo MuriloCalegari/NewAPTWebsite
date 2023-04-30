@@ -74,11 +74,11 @@ It was not used for the website's architecture and component design.
 
 ### Work breakdown
 
-* Alice Hu: Core textbook content and Highlight's page
-* Annie Sawers: UI/UX design, Table of Contents, Home Page, Browse, and some of the general textbook styles
-* Murilo Calegari: Base website architecture, Course APTs and file submission, Chat & Threads sidebar + page, CodeSandBox integration
-* Silas Lenihan: Fixie API integration, AI Assistant, bookmark & highlight features
-* Teya Evans: Journey page and Friends Center
+* [Alice Hu](https://github.com/aliceyuhehu): Core textbook content and Highlight's page
+* [Annie Sawers](https://github.com/teyaevans: UI/UX design, Table of Contents, Home Page, Browse, and some of the general textbook styles
+* [Murilo Calegari](https://github.com/MuriloCalegari): Base website architecture, Course APTs and file submission, Chat & Threads sidebar + page, CodeSandBox integration
+* [Silas Lenihan](https://github.com/silaslenihan): Fixie API integration, AI Assistant, bookmark & highlight features
+* [Teya Evans](https://github.com/teyaevans): Journey page and Friends Center
 * Trinity Johnson: Parson's problems
 
 ### Future work
