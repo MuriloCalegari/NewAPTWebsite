@@ -17,6 +17,7 @@ import { Friends } from "@/pages/friends/Friends";
 import { ThreadPage } from "@/pages/textbook/threads/ThreadPage";
 import BookmarkRedirect from "@/pages/bookmark/BookmarkRedirect";
 import { StyleGuide } from "@/pages/styleguide/StyleGuide";
+import {Highlights} from "@/pages/highlights/Highlights";
 
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="threads" element={<ThreadPage />} />
           <Route path="bookmark" element={<BookmarkRedirect />} />
           <Route path="page/styleguide" element={<StyleGuide />} />
+          <Route path="highlights" element={<Highlights />} />
         </Route>
         <Route path="*" element={<Error404Page />} />
       </Routes>
