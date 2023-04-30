@@ -1,4 +1,27 @@
-.highlights-container{
-    margin: 30px;
-    margin-top: 90px;
+@highlight-background: #f4eca6;
+
+.highlights-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+}
+
+.highlights-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.highlight-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.highlight-text {
+  background-color: @highlight-background;
+  padding: 2px 4px;
+  border-radius: 3px;
 }
