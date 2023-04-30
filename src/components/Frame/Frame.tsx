@@ -58,7 +58,7 @@ const Frame = observer((props: FrameProps) => {
     const pathname = location.pathname
     const prefix = '/contents/page';
     return pathname.startsWith(prefix) && pathname.length > prefix.length;
-  }; 
+  };
 
   useEffect(() => {
     setWindowHeight(getHeight(window));
@@ -113,7 +113,7 @@ const Frame = observer((props: FrameProps) => {
                     );
                   }
                   console.log(rest.eventKey);
-                  return <NavItem key={rest.eventKey} {...rest} className='turn-blue'/>;
+                  return <NavItem key={rest.eventKey} {...rest} className='turn-blue' />;
                 })}
               </Nav>
             </Sidenav.Body>

@@ -16,8 +16,8 @@ export const appNavs = [
   {
     eventKey: 'bookmarked',
     icon: <Icon as={BsBookmark} />,
-    title: 'Bookmark',
-    to: '/contents/bookmark'
+    title: 'Bookmarks',
+    to: '/contents/bookmarks'
   },
   {
     eventKey: 'journey',
@@ -55,6 +55,4 @@ export const appNavs = [
     title: 'Help Center',
     to: '/contents/help'
   },
-  
-  
 ];

@@ -30,6 +30,7 @@ const renderAdminSpeaker = ({ onClose, left, top, className }: any, ref) => {
   const handleSelect = eventKey => {
     onClose();
   };
+
   return (
     <Popover ref={ref} className={className} style={{ left, top }} full>
       <Dropdown.Menu onSelect={handleSelect}>
@@ -118,7 +119,13 @@ const Header = observer((props: HeaderProps) => {
   } = props;
 
   const { textbookStore } = useStores();
-  const { users, isOnCollaborativeMode, bookmark } = textbookStore;
+  const { users, isOnCollaborativeMode, bookmarks } = textbookStore;
+
+  const isContentPath = () => {
+    const pathname = location.pathname
+    const prefix = '/contents/page';
+    return pathname.startsWith(prefix) && pathname.length > prefix.length;
+  };
 
   function handleOnClickThreads() {
     if (textbookStore.sidebarState === 'threads') {
@@ -183,15 +190,16 @@ const Header = observer((props: HeaderProps) => {
         }
         onClick={() => onChangeTheme(theme === 'dark' ? 'light' : 'dark')}
       />
-      <IconButton
+      {isContentPath() && (<IconButton
         icon={
           <Icon
-            as={pathname === bookmark ? BsBookmarkFill : BsBookmark}
+            as={bookmarks.some(bookmark => bookmark === pathname) ? BsBookmarkFill : BsBookmark}
             style={{ fontSize: 20 }}
           />
         }
         onClick={() => textbookStore.setBookmark(pathname)}
-      />
+      />)}
+
       <IconButton
         icon={<GithubIcon style={{ fontSize: 20 }} />}
         href="https://github.com/MuriloCalegari/NewAPTWebsite"

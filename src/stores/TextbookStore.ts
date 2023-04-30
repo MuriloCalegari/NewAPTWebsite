@@ -10,7 +10,7 @@ export default class CourseAptsStore {
     rootStore: RootStore;
     isOnCollaborativeMode = false;
     sidebarState: "closed" | "chat" | "ask-ai" | "threads" = "closed";
-    bookmark: string;
+    bookmarks: string[];
 
     messages: Message[] = mockMessages(10);
     threads: Thread[] = mockThreads(10);
@@ -22,7 +22,7 @@ export default class CourseAptsStore {
     constructor(rootStore) {
         makeAutoObservable(this);
         this.rootStore = rootStore;
-        this.bookmark = '/';
+        this.bookmarks = [];
     }
 
     @action
@@ -41,10 +41,10 @@ export default class CourseAptsStore {
 
     @action
     setBookmark = (pathname: string) => {
-        if (pathname === this.bookmark) {
-            this.bookmark = "/"
+        if (this.bookmarks.some(bookmark => bookmark === pathname)) {
+            this.bookmarks = this.bookmarks.filter(item => item !== pathname);
         } else {
-            this.bookmark = pathname
+            this.bookmarks.push(pathname)
         }
     }
 

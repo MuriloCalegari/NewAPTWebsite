@@ -15,7 +15,7 @@ import { Home } from "@/pages/home/Home";
 import { Browse } from "@/pages/browse/Browse";
 import { Friends } from "@/pages/friends/Friends";
 import { ThreadPage } from "@/pages/textbook/threads/ThreadPage";
-import BookmarkRedirect from "@/pages/bookmark/BookmarkRedirect";
+import Bookmarks from "@/pages/bookmark/Bookmarks";
 
 const App = () => {
   return useObserver(() => (
@@ -31,7 +31,7 @@ const App = () => {
           <Route path="journey" element={<Journey />} />
           <Route path="friends" element={<Friends />} />
           <Route path="threads" element={<ThreadPage />} />
-          <Route path="bookmark" element={<BookmarkRedirect />} />
+          <Route path="bookmarks" element={<Bookmarks />} />
         </Route>
         <Route path="*" element={<Error404Page />} />
       </Routes>
