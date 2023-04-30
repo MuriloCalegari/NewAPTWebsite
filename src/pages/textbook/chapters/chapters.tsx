@@ -4,7 +4,10 @@ import ListsInClass from "@/pages/textbook/chapters/ListsInClass.mdx";
 import ListsPostClass from "@/pages/textbook/chapters/ListsPostClass.mdx";
 import Debugging from "@/pages/textbook/chapters/Debugging.mdx";
 import Stacks from "@/pages/textbook/chapters/stacks.mdx";
-import StacksExample from "@/pages/textbook/chapters/stacksEx.mdx";
+import Stacks1 from "@/pages/textbook/chapters/stacks1.mdx";
+import Trees from "@/pages/textbook/chapters/trees.mdx";
+import Trees1 from "@/pages/textbook/chapters/trees1.mdx";
+import Trees2 from "@/pages/textbook/chapters/stacks2.mdx";
 
 export interface Chapter {
     id: string;
@@ -20,6 +23,47 @@ export interface Part {
 
 export const chapters : Chapter[] =
     [
+        {
+            id: "stacks",
+            title: "Stacks",
+            parts: [
+
+                {
+                    id: "stacks",
+                    title: "Stacks - Traditional Textbook Chapter",
+                    content: <Stacks/>,
+                },
+                {
+                    id: "stacks1",
+                    title: "Stacks1 - Problem-Solving Chapter",
+                    content: <Stacks1/>,
+                },
+               
+            ]
+        },
+        {
+            id: "trees",
+            title: "Trees",
+            parts: [
+
+                {
+                    id: "trees",
+                    title: "Trees - Traditional Textbook Chapter",
+                    content: <Trees/>,
+                },
+                {
+                    id: "trees1",
+                    title: "Trees - Problem-Solving Chapter",
+                    content: <Trees1/>,
+                },
+                {
+                    id: "trees2",
+                    title: "Trees- Visualizer",
+                    content: <Trees2/>,
+                },
+               
+            ]
+        },
         {
             id: "lists",
             title: "Lists",
@@ -41,11 +85,6 @@ export const chapters : Chapter[] =
                     content: <ListsPostClass/>,
                 },
 
-                {
-                    id: "stacks",
-                    title: "Stacks",
-                    content: <Stacks/>,
-                },
             ]
         },
         
@@ -57,17 +96,6 @@ export const chapters : Chapter[] =
                     id: "debugging",
                     title: "Debugging",
                     content: <Debugging/>,
-                },
-                {
-                    id: "lists_inclass",
-                    title: "In Class",
-                    content: <ListsInClass/>,
-                },
-
-                {
-                    id: "lists_postclass",
-                    title: "Post Class",
-                    content: <ListsPostClass/>,
                 },
             ]
         },
@@ -110,23 +138,7 @@ export const chapters : Chapter[] =
                 },
             ]
         },
-        {
-            id: "stacks",
-            title: "Stacks",
-            parts: [
-
-                {
-                    id: "stacks",
-                    title: "Stacks - Traditional",
-                    content: <Stacks/>,
-                },
-                {
-                    id: "stacks_ex",
-                    title: "Stacks - Example",
-                    content: <StacksExample/>,
-                },
-            ]
-        },
+        
 
         
     ];

@@ -1,0 +1,120 @@
+import { CodeVisualizer } from "./components/CodeVisualizerStacks";
+
+# Stack Implementation
+
+Here is an example of how a stack can be implemented in JavaScript:
+
+<CodeVisualizer
+  value={`class Stack {
+  constructor() {
+    this.items = [];
+  }
+
+  push(element) {
+    this.items.push(element);
+  }
+
+  pop() {
+    return this.items.pop();
+  }
+
+  peek() {
+    return this.items[this.items.length - 1];
+  }
+
+  isEmpty() {
+    return this.items.length === 0;
+  }
+
+  size() {
+    return this.items.length;
+  }
+}`}
+/>
+
+To visualize how the `Stack` class works, we can use the `VisJsGraphViewer` component, which displays a graph representation of the stack. In the following example, we create a stack and add some elements to it:
+
+<CodeVisualizer
+  value={`class Stack {
+  constructor() {
+    this.items = [];
+  }
+
+  push(element) {
+    this.items.push(element);
+  }
+
+  pop() {
+    return this.items.pop();
+  }
+
+  peek() {
+    return this.items[this.items.length - 1];
+  }
+
+  isEmpty() {
+    return this.items.length === 0;
+  }
+
+  size() {
+    return this.items.length;
+  }
+}
+
+const myStack = new Stack();
+
+myStack.push(1);
+myStack.push(2);
+myStack.push(3);
+`}
+/>
+
+The resulting graph looks like this:
+
+<CodeVisualizer
+  value={`const edges = [
+    { "from": "1", "to": "2", "color": "red" },
+    { "from": "2", "to": "3", "color": "orange" },
+    { "from": "3", "to": "null", "color": "gray" }
+];
+
+const nodes = [
+    { "id": "1", "label": "1" },
+    { "id": "2", "label": "2" },
+    { "id": "3", "label": "3" },
+    { "id": "null", "label": "null" }
+];
+
+<VisJsGraphViewer
+  style={{ height: "200px" }}
+  nodes={nodes}
+  edges={edges}
+/>`}
+/>
+
+As you can see, the top element in the stack is represented by the node labeled "3", while the bottom element is represented by the node labeled "1". When we call the `pop` method, the top element is removed from the stack, and the graph is updated accordingly:
+
+<CodeVisualizer
+  value={`myStack.pop();`}
+/>
+
+<CodeVisualizer
+  value={`const edges = [
+    { "from": "1", "to": "2", "color": "red" },
+    { "from": "2", "to": "null", "color": "gray" }
+];
+
+const nodes = [
+    { "id": "1", "label": "1" },
+    { "id": "2", "label": "2" },
+    { "id": "null", "label": "null" }
+];
+
+<VisJsGraphViewer
+  style={{ height: "200px" }}
+  nodes={nodes}
+  edges={edges}
+/>`}
+/>
+
+As you can see, the top element is now the node labeled "2", and the node labeled "3" has been removed from the graph. This process can be repeated as many times as needed, and the graph will be updated accordingly.

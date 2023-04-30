@@ -1,0 +1,127 @@
+import { CodeRunner } from "./components/CodeRunner";
+import {Panel} from "rsuite";
+import {Col, Grid, Row, Divider} from "rsuite";
+import {MultipleChoiceQuestion} from "./components/MultipleChoiceQuestion";
+import {stacks_questions} from "./stacks/questions";
+import {Highlight} from "./components/Highlight";
+
+# Warmup
+>
+For this exercise, you are given most of the code.
+All that is left to do is fill in the blanks.
+
+>
+### Stack Operations
+>
+You have been given a task to implement a stack using an array in Javascript. The stack should support the following operations: 
+- Push: Add an element to the top of the stack
+- Pop: Remove the top element from the stack and return its value
+- Peek: Return the top element of the stack without removing it
+- isEmpty: Return true if the stack is empty, false otherwise
+
+<Highlight>Note: The stack should be implemented using an array and the operations should be implemented using array methods.</Highlight>
+
+
+<Grid style={{width: "100%"}}>
+    <Row>
+        <Col xs={24} md={12}> 
+            <Panel
+                header={<b>Example 1</b>}
+                className={"code-text-panel"}
+            >
+                const myStack = new Stack();
+                myStack.push(10); // stack is now [10]
+                myStack.push(20); // stack is now [10, 20]
+                myStack.push(30); // stack is now [10, 20, 30]
+                console.log(myStack.pop()); // output 30 and stack is now [10, 20]
+                console.log(myStack.peek()); // output 20 and stack is still [10, 20]
+                console.log(myStack.isEmpty()); // output false
+            </Panel>
+        </Col>
+        <Col xs={24} md={12}>
+            <Panel
+                header={<b>Example 2</b>}
+                className={"code-text-panel"}
+            >
+                const myStack = new Stack();
+                console.log(myStack.isEmpty()); // output true
+                console.log(myStack.pop()); // output null
+                console.log(myStack.peek()); // output null
+                myStack.push(10); // stack is now [10]
+            </Panel>
+        </Col>
+    </Row>
+</Grid>
+
+### Complete the code below
+
+>
+
+<CodeRunner
+    javaScriptCode={`
+class Stack {
+    constructor() {
+        this.items = [];
+    }
+    
+    push(element) {
+        // add element to the top of the stack
+        this.items.______(element);
+    }
+    
+    pop() {
+        // remove the top element from the stack and return its value
+        if (this.items.length === 0)
+            return null;
+        return this.items.______();
+    }
+    
+    peek() {
+        // return the top element of the stack without removing it
+        if (this.items.length === 0)
+            return null;
+        return this.items.______;
+    }
+    
+    isEmpty() {
+        // return true if the stack is empty, false otherwise
+        return this.items.______ === 0;
+    }
+}
+
+const myStack = new Stack();
+myStack.push(10);
+myStack.push(20);
+myStack.push(30);
+console.log(myStack.pop());
+console.log(myStack.peek());
+console.log(myStack.isEmpty());
+`}
+    testCode={`
+it("Example 1", () => {
+    const myStack = new Stack();
+    myStack.push(10);
+    myStack.push(20);
+    myStack.push(30);
+    expect(myStack.pop()).toBe(30);
+    expect(myStack.peek()).toBe
+    expect(myStack.isEmpty()).toBe(false);
+});
+
+it("Example 2", () => {
+    const myStack = new Stack();
+    expect(myStack.isEmpty()).toBe(true);
+    expect(myStack.pop()).toBe(null);
+    expect(myStack.peek()).toBe(null);
+    myStack.push(10);
+    expect(myStack.isEmpty()).toBe(false);
+});`}
+/>
+
+<Divider/>
+
+<MultipleChoiceQuestion
+    title={"Quick check"}
+    subtitle={"What do you currently know about stacks?"}
+    questions={stacks_questions}
+/>
