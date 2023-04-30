@@ -12,7 +12,7 @@ import Trees2 from "@/pages/textbook/chapters/trees2.mdx";
 export interface Chapter {
     id: string;
     title: string;
-    parts : Part[];
+    parts: Part[];
 }
 
 export interface Part {
@@ -21,24 +21,24 @@ export interface Part {
     content: any;
 }
 
-export const chapters : Chapter[] =
+export const chapters: Chapter[] =
     [
         {
             id: "stacks",
             title: "Learning about Stacks",
             parts: [
 
-                // {
-                //     id: "stacks",
-                //     title: "Stacks - Traditional Textbook Chapter",
-                //     content: <Stacks/>,
-                // },
+                {
+                    id: "stacks",
+                    title: "Stacks - Traditional Textbook Chapter",
+                    content: <Stacks />,
+                },
                 {
                     id: "stacks1",
                     title: "Stacks1 - Problem-Solving Chapter",
-                    content: <Stacks1/>,
+                    content: <Stacks1 />,
                 },
-               
+
             ]
         },
         {
@@ -46,22 +46,22 @@ export const chapters : Chapter[] =
             title: "Learning about Trees",
             parts: [
 
-                // {
-                //     id: "trees",
-                //     title: "Trees - Traditional Textbook Chapter",
-                //     content: <Trees/>,
-                // },
-                // {
-                //     id: "trees1",
-                //     title: "Trees - Problem-Solving Chapter",
-                //     content: <Trees1/>,
-                // },
-                // {
-                //     id: "trees2",
-                //     title: "Trees - Visualizer",
-                //     content: <Trees2/>,
-                // },
-               
+                {
+                    id: "trees",
+                    title: "Trees - Traditional Textbook Chapter",
+                    content: <Trees />,
+                },
+                {
+                    id: "trees1",
+                    title: "Trees - Problem-Solving Chapter",
+                    content: <Trees1 />,
+                },
+                {
+                    id: "trees2",
+                    title: "Trees - Visualizer",
+                    content: <Trees2 />,
+                },
+
             ]
         },
         {
@@ -71,23 +71,23 @@ export const chapters : Chapter[] =
                 {
                     id: "lists_warmup",
                     title: "Lists - Traditional Chapter",
-                    content: <ListsWarmup/>,
+                    content: <ListsWarmup />,
                 },
                 {
                     id: "lists_inclass",
                     title: "Lists - Collaboration Chapter",
-                    content: <ListsInClass/>,
+                    content: <ListsInClass />,
                 },
 
                 {
                     id: "lists_postclass",
                     title: "Lists - Problem-Solving Chapter",
-                    content: <ListsPostClass/>,
+                    content: <ListsPostClass />,
                 },
 
             ]
         },
-        
+
         {
             id: "arraylists",
             title: "Learning about ArrayLists",
@@ -95,7 +95,7 @@ export const chapters : Chapter[] =
                 {
                     id: "debugging",
                     title: "Debugging",
-                    content: <Debugging/>,
+                    content: <Debugging />,
                 },
             ]
         },
@@ -107,34 +107,34 @@ export const chapters : Chapter[] =
                 {
                     id: "lists_warmup",
                     title: "Warmup",
-                    content: <ListsWarmup/>,
+                    content: <ListsWarmup />,
                 },
                 {
                     id: "lists_inclass",
                     title: "In Class",
-                    content: <ListsInClass/>,
+                    content: <ListsInClass />,
                 },
 
                 {
                     id: "lists_postclass",
                     title: "Post Class",
-                    content: <ListsPostClass/>,
+                    content: <ListsPostClass />,
                 },
-              /* {
-                    id: "exercises",
-                    title: "Exercises",
-              //      content: <Dictionaries/>,
-                },*/
+                /* {
+                      id: "exercises",
+                      title: "Exercises",
+                //      content: <Dictionaries/>,
+                  },*/
                 {
                     id: "lists_inclass",
                     title: "In Class",
-                    content: <ListsInClass/>,
+                    content: <ListsInClass />,
                 },
             ]
         },
-        
 
-        
+
+
     ];
 
-export const chapterParts : Part[] = chapters.flatMap((chapter) => chapter.parts);
+export const chapterParts: Part[] = chapters.flatMap((chapter) => chapter.parts);

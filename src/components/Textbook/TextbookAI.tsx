@@ -32,7 +32,7 @@ export const TextbookAI = observer(({ selectedText }: TextbookAIProps) => {
         if (type === "summary") {
             query = `Please summarize the following ${['rs-panel-body', 'code-text-panel'].includes(className) ? "python code" : "text"}: ${text}`
         } else if (type === "expand") {
-            query = `Please expand upon the following text: ${text}`
+            query = `Please expand upon the following ${['rs-panel-body', 'code-text-panel'].includes(className) ? "python code" : "text"}: ${text}`
         } else {
             query = `Please give a comprehensive, multi-faceted, code example of the following python concept: ${text}. For the code you provide, please add newline characters between each line of the code.`
         }
