@@ -4,7 +4,7 @@ import ListsInClass from "@/pages/textbook/chapters/ListsInClass.mdx";
 import ListsPostClass from "@/pages/textbook/chapters/ListsPostClass.mdx";
 import Debugging from "@/pages/textbook/chapters/Debugging.mdx";
 import Stacks from "@/pages/textbook/chapters/stacks.mdx";
-
+import StacksExample from "@/pages/textbook/chapters/stacksEx.mdx";
 
 export interface Chapter {
     id: string;
@@ -109,7 +109,24 @@ export const chapters : Chapter[] =
                     content: <ListsInClass/>,
                 },
             ]
-        }
+        },
+        {
+            id: "stacks",
+            title: "Stacks",
+            parts: [
+
+                {
+                    id: "stacks",
+                    title: "Stacks - Traditional",
+                    content: <Stacks/>,
+                },
+                {
+                    id: "stacks_ex",
+                    title: "Stacks - Example",
+                    content: <StacksExample/>,
+                },
+            ]
+        },
 
         
     ];
