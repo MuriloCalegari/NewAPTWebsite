@@ -10,14 +10,31 @@ const defaultData = [
   { text: "Sugar is sweet" },
   { text: "And so are you" }
 ];
-let nextId = 0;
 
 const App = () => {
   const [list, updateList] = useState([]);
-  const insertData = (text) => {
-    updateList([...list, {text: text}]);
+  const [pressed, updatePress] = useState(
+    new Array(defaultData.length).fill(false)
+  );
+  
+  //Inserting Data into Sortable List
+  const insertData = (text, position, index) => {
+    if (!pressed[index]) {
+      updateList([...list, { text: text, position: position }]);
+      handlePressed(index);
+    }
   };
 
+  //Updating whether Button has been pressed
+  const handlePressed = (index) => {
+    updatePress((prevState) => {
+      const newPress = [...prevState];
+      newPress[index] = !newPress[index];
+      return newPress;
+    });
+  };
+
+  //How List is Sorted 
   const handleSortEnd = ({ oldIndex, newIndex }) =>
     updateList((prvData) => {
       const moveData = prvData.splice(oldIndex, 1);
@@ -26,13 +43,17 @@ const App = () => {
       return newData;
     }, []);
 
+
+
   return (
     <div>
       <List>
         {defaultData.map(({ text }, index) => (
           <List.Item key={index} index={index}>
             {text}
-            <button onClick={() => insertData(text)}> Insert </button>
+            <button onClick={() => insertData(text)} disabled = {pressed[index]}> 
+              Insert 
+            </button>
           </List.Item>
         ))}
       </List>
