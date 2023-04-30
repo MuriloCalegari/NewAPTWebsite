@@ -58,7 +58,7 @@ const Frame = observer((props: FrameProps) => {
     const pathname = location.pathname
     const prefix = '/contents/';
     return pathname.startsWith(prefix) && pathname.length > prefix.length;
-  };
+  }; 
 
   useEffect(() => {
     setWindowHeight(getHeight(window));
@@ -89,11 +89,12 @@ const Frame = observer((props: FrameProps) => {
             <Brand style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} height={expand ? 50 : 25} width={expand ? 78 : 39} theme={theme} />
           </Sidenav.Header>
           <Sidenav expanded={expand} appearance="subtle" defaultOpenKeys={['2', '3']}>
-            <Sidenav.Body style={navBodyStyle}>
+            <Sidenav.Body style={navBodyStyle} >
               <Nav>
                 {navs.map(item => {
                   const { children, ...rest } = item;
                   if (children) {
+                    console.log("annie1");
                     return (
                       <Nav.Menu key={item.eventKey} placement="rightStart" trigger="hover" {...rest}>
                         {children.map(child => {
@@ -104,14 +105,15 @@ const Frame = observer((props: FrameProps) => {
                   }
 
                   if (rest.target === '_blank') {
+                    console.log("annie2");
                     return (
                       <Nav.Item key={item.eventKey} {...rest}>
                         {item.title}
                       </Nav.Item>
                     );
                   }
-
-                  return <NavItem key={rest.eventKey} {...rest} />;
+                  console.log(rest.eventKey);
+                  return <NavItem key={rest.eventKey} {...rest} className='turn-blue'/>;
                 })}
               </Nav>
             </Sidenav.Body>
