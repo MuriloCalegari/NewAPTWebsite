@@ -60,7 +60,23 @@ const App = () => {
       return newData;
     }, []);
 
-
+  //Checking Answer
+  const handleSubmission = (answerLen) => {
+    if (list.length === answerLen) {
+      for (let i = 0; i < list.length; i++) {
+        console.log(list[i])
+        if (list[i].position !== i){
+          console.log("Incorrect");
+          updateSolution(false);
+          return;
+        }
+      }
+      console.log("Correct");
+      updateSolution(true);
+    } else {
+      console.log("Incorrect");
+      updateSolution(false);
+    }};
 
   return (
     <div>
