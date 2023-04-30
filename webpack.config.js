@@ -28,9 +28,19 @@ module.exports = {
     filename: "bundle.js",
     publicPath: "./",
   },
+  
 
   module: {
     rules: [
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
+
       {
         test: /\.tsx?$/,
         use: ["babel-loader"],

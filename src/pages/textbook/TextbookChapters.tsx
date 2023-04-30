@@ -15,6 +15,10 @@ export const TextbookChapters = observer(() => {
         navigate(`/contents/page/${part.id}`);
     }
 
+    function goToStyleGuide() {
+        navigate(`/contents/page/styleguide`);
+    }
+
 
     return (
 
@@ -37,18 +41,16 @@ export const TextbookChapters = observer(() => {
             }>
 
                 <div>
-                    {assignments.map((assignment) => {
-                        return (
-                            <div className="assignment">
-                                <div>
-                                    <Progress.Circle trailColor='var(--dark-gray)' strokeWidth={20} strokeColor={assignment.tests == 100 ? ("var(--green)") : "var(--red)"} style={{ width: 15, marginLeft: '5px' }} percent={assignment.tests} showInfo={false} />
-                                </div>
-                                <div className="assignment-title">
-                                    {assignment.name}
-                                </div>
-                            </div>
-                        )
-                    })}
+
+                    <div className="assignment">
+                        <div>
+                            <Progress.Circle trailColor='var(--dark-gray)' strokeWidth={20} strokeColor={"var(--green)"} style={{ width: 15, marginLeft: '5px' }} percent={100} showInfo={false} />
+                        </div>
+                        <div className="assignment-title" onClick={goToStyleGuide}>
+                            <div>Style Guide</div>
+                        </div>
+                    </div>
+
                 </div>
             </Panel>
 
