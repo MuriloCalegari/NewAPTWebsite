@@ -7,7 +7,6 @@ import { User } from "@/data/model/User";
 import { Thread } from "@/data/model/Thread";
 
 export default class CourseAptsStore {
-
     rootStore: RootStore;
     isOnCollaborativeMode = false;
     sidebarState: "closed" | "chat" | "ask-ai" | "threads" = "closed";
