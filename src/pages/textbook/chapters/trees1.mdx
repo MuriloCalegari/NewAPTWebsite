@@ -1,0 +1,104 @@
+import { CodeRunner } from "./components/CodeRunner";
+import {Panel} from "rsuite";
+import {Col, Grid, Row, Divider} from "rsuite";
+import {MultipleChoiceQuestion} from "./components/MultipleChoiceQuestion";
+import {binarytree_questions} from "./binarytree/questions";
+import {Highlight} from "./components/Highlight";
+
+# Warmup
+>
+For this exercise, you are given most of the code. All that is left to do is fill in the blanks.
+
+>
+### Binary Tree Depth
+>
+As part of analyzing binary trees, you've been asked to compute the depth of a binary tree.
+The depth of a binary tree is the number of nodes along the longest path from the root node down to the farthest leaf node.
+See the examples for details. 
+
+<Grid style={{width: "100%"}}>
+    <Row>
+        <Col xs={24} md={12}> 
+            <Panel
+                header={<b>Example 1</b>}
+                className={"code-text-panel"}
+            >
+                // Input: [3,9,20,null,null,15,7]
+                //      3
+                //     / \
+                //    9  20
+                //      /  \
+                //     15   7
+                // Output: 3
+                
+                Explanation: The longest path is 3 -> 20 -> 7, which has a length of 3.
+            </Panel>
+        </Col>
+        <Col xs={24} md={12}>
+            <Panel
+                header={<b>Example 2</b>}
+                className={"code-text-panel"}
+            >
+                // Input: [1,null,2]
+                //      1
+                //       \
+                //        2
+                // Output: 2
+                
+                Explanation: The longest path is 1 -> 2, which has a length of 2.
+            </Panel>
+        </Col>
+    </Row>
+</Grid>
+
+### Complete the code below
+
+>
+
+<CodeRunner
+    javaScriptCode={`
+function depthOfBinaryTree(tree) {
+  if (tree == null) {
+    return 0;
+  }
+  const leftDepth = depthOfBinaryTree(tree.left);
+  const rightDepth = depthOfBinaryTree(tree.right);
+  // MODIFY HERE ... WHAT IS NECESSARY TO RETURN?
+}
+
+// Sample Input
+const tree = {
+  val: 3,
+  left: { val: 9, left: null, right: null },
+  right: {
+    val: 20,
+    left: { val: 15, left: null, right: null },
+    right: { val: 7, left: null, right: null },
+  },
+};
+
+depthOfBinaryTree(tree);
+`}
+    testCode={`
+it("Example 1", () => {
+  const tree = {
+    val: 3,
+    left: { val: 9, left: null, right: null },
+    right: {
+      val: 20,
+      left: { val: 15, left: null, right: null },
+      right: { val: 7, left: null, right: null },
+    },
+  };
+  expect(depthOfBinaryTree(tree)).toBe(3);
+});
+`}
+/>
+
+<Divider/>
+
+<MultipleChoiceQuestion
+    title={"Quick check"}
+    subtitle={"What do you currently know about binary trees?"}
+    questions={binarytree_questions}
+/>

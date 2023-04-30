@@ -1,0 +1,34 @@
+import React from "react";
+import {observer} from "mobx-react-lite";
+import {ProblemSetItem} from "@/pages/courseapts/ProblemSetItem";
+import {List} from "@mui/material";
+import {useStores} from "@/hooks/useStores";
+import {AptDrawer} from "@/pages/courseapts/AptDrawer";
+import {Lessons} from "./LessonParams";
+//import {SubmitFileModal} from "@/pages/courseapts/filesubmission/SubmitFileModal";
+import {Modal} from "rsuite"
+
+interface LessonProps {
+    LessonsList: Lessons[];
+}
+
+export const LessonDataList = observer((props : LessonProps) => {
+
+    const { courseAptsStore } = useStores();
+
+    return (
+        <>
+            <Modal>
+                {props.LessonsList.map((chapters, index) => {
+                    return <LessonList Lessons={chapter} index={index}/>
+                })}
+            </Modal>
+            <AptDrawer
+                open={courseAptsStore.isDrawerOpen}
+                apt={courseAptsStore.currentLoadedApt}
+                shouldAnimateSubmissions={courseAptsStore.shouldAnimateSubmissions}
+            />
+            <SubmitFileModal open={courseAptsStore.isSubmitFileOpen}/>
+        </>
+    );
+});

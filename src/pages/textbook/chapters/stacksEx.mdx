@@ -1,0 +1,48 @@
+import { CodeEditor } from "./components/CodeEditor";
+import { CodeRunner } from "./components/CodeRunner";
+import { Panel } from "rsuite";
+import { Col, Grid, Row, Divider } from "rsuite";
+import CodeSandboxer from 'react-codesandboxer';
+import CodeWithExplanations from './components/CodeWithExplanations';
+
+# Stacks
+
+## Simple Stack Implementation Example
+
+Here's an example of a simple stack implementation using an array in JavaScript:
+
+<CodeWithExplanations
+  codeLines={[
+    "class Stack {",
+    "  constructor() {",
+    "    this.items = [];",
+    "  }",
+    "",
+    "  push(item) {",
+    "    this.items.push(item);",
+    "  }",
+    "",
+    "  pop() {",
+    "    return this.items.pop();",
+    "  }",
+    "",
+    "  peek() {",
+    "    return this.items[this.items.length - 1];",
+    "  }",
+    "}"
+  ]}
+  explanations={[
+    "Define the Stack class.",
+    "Create a constructor for the class.",
+    "Initialize the items array.",
+    "",
+    "Define the push method.",
+    "Add the item to the top of the stack.",
+    "",
+    "Define the pop method.",
+    "Remove and return the item from the top of the stack.",
+    "",
+    "Define the peek method.",
+    "Return the item at the top of the stack without removing it."
+  ]}
+/>
