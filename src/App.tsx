@@ -17,6 +17,7 @@ import { Friends } from "@/pages/friends/Friends";
 import { ThreadPage } from "@/pages/textbook/threads/ThreadPage";
 import Bookmarks from "@/pages/bookmark/Bookmarks";
 import { StyleGuide } from "@/pages/styleguide/StyleGuide";
+import {Highlights} from "@/pages/highlights/Highlights";
 
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="threads" element={<ThreadPage />} />
           <Route path="bookmarks" element={<Bookmarks />} />
           <Route path="page/styleguide" element={<StyleGuide />} />
+          <Route path="highlights" element={<Highlights />} />
         </Route>
         <Route path="*" element={<Error404Page />} />
       </Routes>
