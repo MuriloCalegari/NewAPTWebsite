@@ -66,7 +66,7 @@ export const chapters : Chapter[] =
         },
         {
             id: "lists",
-            title: "Lists",
+            title: "Learning about Lists",
             parts: [
                 {
                     id: "lists_warmup",
@@ -90,7 +90,7 @@ export const chapters : Chapter[] =
         
         {
             id: "arraylists",
-            title: "ArrayLists",
+            title: "Learning about ArrayLists",
             parts: [
                 {
                     id: "debugging",
@@ -102,7 +102,7 @@ export const chapters : Chapter[] =
 
         {
             id: "linkedlists",
-            title: "LinkedLists",
+            title: "Learning about LinkedLists",
             parts: [
                 {
                     id: "lists_warmup",
