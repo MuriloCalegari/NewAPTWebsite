@@ -28,15 +28,6 @@ export const CodeRunner = observer((props: { javaScriptCode: string, testCode: s
 
     const url = `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}&embed=1&query=previewwindow=tests%26fontsize=12%26editorsize=70%26codemirror=0`;
 
-    const getJson = async (url: string) => {
-        const response = await fetch(url + '&json=1');
-        const result = await response.json()
-        console.log(result)
-    }
-
-    getJson(url)
-
-
     return (
         <div>
             <iframe
