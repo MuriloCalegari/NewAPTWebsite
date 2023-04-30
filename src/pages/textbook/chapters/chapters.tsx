@@ -7,7 +7,7 @@ import Stacks from "@/pages/textbook/chapters/stacks.mdx";
 import Stacks1 from "@/pages/textbook/chapters/stacks1.mdx";
 import Trees from "@/pages/textbook/chapters/trees.mdx";
 import Trees1 from "@/pages/textbook/chapters/trees1.mdx";
-import Trees2 from "@/pages/textbook/chapters/stacks2.mdx";
+import Trees2 from "@/pages/textbook/chapters/trees2.mdx";
 
 export interface Chapter {
     id: string;
@@ -25,7 +25,7 @@ export const chapters : Chapter[] =
     [
         {
             id: "stacks",
-            title: "Stacks",
+            title: "Learning about Stacks",
             parts: [
 
                 {
@@ -43,7 +43,7 @@ export const chapters : Chapter[] =
         },
         {
             id: "trees",
-            title: "Trees",
+            title: "Learning about Trees",
             parts: [
 
                 {
@@ -58,7 +58,7 @@ export const chapters : Chapter[] =
                 },
                 {
                     id: "trees2",
-                    title: "Trees- Visualizer",
+                    title: "Trees - Visualizer",
                     content: <Trees2/>,
                 },
                
@@ -70,18 +70,18 @@ export const chapters : Chapter[] =
             parts: [
                 {
                     id: "lists_warmup",
-                    title: "Warmup",
+                    title: "Lists - Traditional Chapter",
                     content: <ListsWarmup/>,
                 },
                 {
                     id: "lists_inclass",
-                    title: "In Class",
+                    title: "Lists - Collaboration Chapter",
                     content: <ListsInClass/>,
                 },
 
                 {
                     id: "lists_postclass",
-                    title: "Post Class",
+                    title: "Lists - Problem-Solving Chapter",
                     content: <ListsPostClass/>,
                 },
 
@@ -118,12 +118,6 @@ export const chapters : Chapter[] =
                 {
                     id: "lists_postclass",
                     title: "Post Class",
-                    content: <ListsPostClass/>,
-                },
-
-                {
-                    id: 'runestone-chapter2',
-                    title: 'Runestone Chapter 2: Your Chapter Title',
                     content: <ListsPostClass/>,
                 },
               /* {

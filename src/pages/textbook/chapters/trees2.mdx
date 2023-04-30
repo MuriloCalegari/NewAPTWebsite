@@ -1,0 +1,123 @@
+import { CodeVisualizerTrees } from "./components/CodeVisualizerTrees";
+import { Panel } from "rsuite";
+import { Col, Grid, Row } from "rsuite";
+import { Highlight } from "./components/Highlight";
+
+# Binary Trees
+>
+>
+>
+A binary tree is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child.
+
+## Example Binary Tree
+
+Here's an example binary tree:
+
+<CodeVisualizerTrees
+  height="300px"
+  width="100%"
+  value={`
+    const tree = {
+      value: 1,
+      left: {
+        value: 2,
+        left: { value: 4 },
+        right: { value: 5 },
+      },
+      right: {
+        value: 3,
+        left: { value: 6 },
+        right: { value: 7 },
+      },
+    };
+  `}
+/>
+
+This binary tree has a root node with the value `1`. The left child of the root node has a value of `2`, and has two children of its own with values `4` and `5`. The right child of the root node has a value of `3`, and has two children of its own with values `6` and `7`.
+
+>
+>
+>
+
+## Traversing a Binary Tree
+
+There are several ways to traverse a binary tree, including pre-order traversal, in-order traversal, and post-order traversal.
+
+>
+>
+>
+
+### Pre-order Traversal
+
+In a pre-order traversal of a binary tree, the root node is visited first, followed by the left child, and then the right child.
+
+Here's an example of pre-order traversal of the binary tree:
+
+<CodeVisualizerTrees
+  height="300px"
+  width="100%"
+  value={`
+    function preOrderTraversal(node) {
+      if (node === null) {
+        return;
+      }
+      console.log(node.value);
+      preOrderTraversal(node.left);
+      preOrderTraversal(node.right);
+    }
+
+    preOrderTraversal(tree);
+  `}
+/>
+
+This will output the values of the nodes in pre-order: `1 2 4 5 3 6 7`.
+
+### In-order Traversal
+
+In an in-order traversal of a binary tree, the left child is visited first, followed by the root node, and then the right child.
+
+Here's an example of in-order traversal of the binary tree:
+
+<CodeVisualizerTrees
+  height="300px"
+  width="100%"
+  value={`
+    function inOrderTraversal(node) {
+      if (node === null) {
+        return;
+      }
+      inOrderTraversal(node.left);
+      console.log(node.value);
+      inOrderTraversal(node.right);
+    }
+
+    inOrderTraversal(tree);
+  `}
+/>
+
+This will output the values of the nodes in in-order: `4 2 5 1 6 3 7`.
+
+### Post-order Traversal
+
+In a post-order traversal of a binary tree, the left child is visited first, followed by the right child, and then the root node.
+
+Here's an example of post-order traversal of the binary tree:
+
+<CodeVisualizerTrees
+  height="300px"
+  width="100%"
+  value={`
+    function postOrderTraversal(node) {
+      if (node === null) {
+        return;
+      }
+      postOrderTraversal(node.left);
+      postOrderTraversal(node.right);
+      console.log(node.value);
+    }
+
+    postOrderTraversal(tree);
+  `}
+/>
+
+This will output the values of the nodes in post-order: `4 5 2 6 

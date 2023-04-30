@@ -1,0 +1,124 @@
+import { CodeEditor } from "./components/CodeEditor";
+import { CodeRunner } from "./components/CodeRunner";
+import { Panel } from "rsuite";
+import { Col, Grid, Row, Divider } from "rsuite";
+import CodeSandboxer from 'react-codesandboxer';
+import { Tree } from 'react-d3-tree';
+
+# Binary Trees
+
+<br/>
+
+A binary tree is a tree data structure in which each node has at most
+two children, referred to as the left child and the right child.
+Binary trees are used in various programming tasks, such as searching,
+sorting, and indexing data.
+
+A binary tree can be implemented using classes in Python. The primary
+operations performed on a binary tree are:
+
+- Insert: Add a new node to the tree
+- Delete: Remove a node from the tree
+- Search: Find a node in the tree
+- Traverse: Visit each node in the tree
+
+>
+>
+>
+
+## Binary Tree Implementation
+
+Here's a simple binary tree implementation using classes in Python:
+
+<Panel className={"code-text-panel"}>
+{`
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+
+class BinaryTree:
+    def __init__(self, root):
+        self.root = Node(root)
+
+    def print_tree(self, traversal_type):
+        if traversal_type == "preorder":
+            return self.preorder_print(self.root, "")
+        elif traversal_type == "inorder":
+            return self.inorder_print(self.root, "")
+        elif traversal_type == "postorder":
+            return self.postorder_print(self.root, "")
+        else:
+            print("Traversal type " + str(traversal_type) + " is not supported.")
+            return False
+
+    def preorder_print(self, start, traversal):
+        """Root -> Left -> Right"""
+        if start:
+            traversal += (str(start.data) + "-")
+            traversal = self.preorder_print(start.left, traversal)
+            traversal = self.preorder_print(start.right, traversal)
+        return traversal
+
+    def inorder_print(self, start, traversal):
+        """Left -> Root -> Right"""
+        if start:
+            traversal = self.inorder_print(start.left, traversal)
+            traversal += (str(start.data) + "-")
+            traversal = self.inorder_print(start.right, traversal)
+        return traversal
+
+    def postorder_print(self, start, traversal):
+        """Left -> Right -> Root"""
+        if start:
+            traversal = self.postorder_print(start.left, traversal)
+            traversal = self.postorder_print(start.right, traversal)
+            traversal += (str(start.data) + "-")
+        return traversal
+`}
+</Panel>
+
+## Traversing Binary Trees
+One important aspect of working with binary trees is traversing them.
+Traversing a binary tree means visiting each node in a specific order.
+
+There are three main types of binary tree traversal:
+
+In-order: Visit the left subtree, then the root, then the right subtree.
+Pre-order: Visit the root, then the left subtree, then the right subtree.
+Post-order: Visit the left subtree, then the right subtree, then the root.
+The traversal type you choose will depend on the problem you are trying
+to solve.
+
+>
+>
+>
+>
+>
+>
+
+
+## Time and Space Complexity
+The time complexity of binary tree operations depends on the type of
+operation and the structure of the tree. For example, searching a
+balanced binary tree takes O(log n) time on average, while searching an
+unbalanced binary tree takes O(n) time in the worst case.
+
+The space complexity of a binary tree depends on the number of nodes in
+the tree. In the worst case, a binary tree with n nodes has a space
+complexity of O(n).
+
+>
+>
+>
+>
+>
+>
+
+##Conclusion
+Binary trees are a powerful data structure that can be used in a wide
+variety of programming tasks. By understanding how to implement and
+traverse binary trees, you'll be able to tackle complex problems more
+efficiently and effectively.
