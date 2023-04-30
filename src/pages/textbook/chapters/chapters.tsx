@@ -28,11 +28,11 @@ export const chapters : Chapter[] =
             title: "Learning about Stacks",
             parts: [
 
-                {
-                    id: "stacks",
-                    title: "Stacks - Traditional Textbook Chapter",
-                    content: <Stacks/>,
-                },
+                // {
+                //     id: "stacks",
+                //     title: "Stacks - Traditional Textbook Chapter",
+                //     content: <Stacks/>,
+                // },
                 {
                     id: "stacks1",
                     title: "Stacks1 - Problem-Solving Chapter",
@@ -46,21 +46,21 @@ export const chapters : Chapter[] =
             title: "Learning about Trees",
             parts: [
 
-                {
-                    id: "trees",
-                    title: "Trees - Traditional Textbook Chapter",
-                    content: <Trees/>,
-                },
-                {
-                    id: "trees1",
-                    title: "Trees - Problem-Solving Chapter",
-                    content: <Trees1/>,
-                },
-                {
-                    id: "trees2",
-                    title: "Trees - Visualizer",
-                    content: <Trees2/>,
-                },
+                // {
+                //     id: "trees",
+                //     title: "Trees - Traditional Textbook Chapter",
+                //     content: <Trees/>,
+                // },
+                // {
+                //     id: "trees1",
+                //     title: "Trees - Problem-Solving Chapter",
+                //     content: <Trees1/>,
+                // },
+                // {
+                //     id: "trees2",
+                //     title: "Trees - Visualizer",
+                //     content: <Trees2/>,
+                // },
                
             ]
         },

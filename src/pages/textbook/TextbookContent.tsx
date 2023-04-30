@@ -22,7 +22,7 @@ export const TextbookContent = observer(() => {
             </IconButton>
         );
     }
-
+ 
     return (
         <PageContent bodyFill className="textbook-page" header={renderBackButton()}>
             <Panel className="textbook-content">
@@ -30,6 +30,7 @@ export const TextbookContent = observer(() => {
                     <Panel
                         className="textbook-card"
                     >
+                        
                         <MDXProvider>
                             {partToRender?.content}
                         </MDXProvider>

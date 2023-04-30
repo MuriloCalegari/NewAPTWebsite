@@ -5,7 +5,6 @@ function SearchBar(props) {
 
   const handleInputChange = (event) => {
     setQuery(event.target.value);
-    console.log(query);
   };
 
   const handleFormSubmit = (event) => {
