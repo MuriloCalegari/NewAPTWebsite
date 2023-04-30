@@ -11,6 +11,23 @@ const defaultData = [
   { text: "And so are you" }
 ];
 
+//How to format Question Data for Problem
+const data = [
+  {
+    question: "Question Prompt",
+    code: [
+      { text: "Roses are red", position: 0 },
+      { text: "Violets are blue", position: -1 },
+      { text: "Sugar is sweet", position: 1 },
+      { text: "And so are you", position: -1 }
+    ],
+    answerLength: function(){
+      let exclude = (this.code).filter(line => line.position === -1);
+      return (this.code).length - exclude.length
+    }
+}
+];
+
 const App = () => {
   const [list, updateList] = useState([]);
   const [pressed, updatePress] = useState(
