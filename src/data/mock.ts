@@ -97,7 +97,7 @@ export function mockMessages(length : number) : Message[] {
   const createMessage = (index : number) : Message => {
     const fullName = faker.name.fullName();
     const avatar = faker.image.avatar();
-    const message = faker.lorem.sentence();
+    const message = faker.hacker.phrase();
 
     return {
         id: index + 1,
@@ -142,25 +142,25 @@ function generateFakeMarkdown() {
     let markdown = "";
 
     for (let i = 0; i < 2; i++) {
-        markdown += faker.lorem.paragraph() + "\n\n";
+        markdown += generateHackerParagraph(5) + "\n\n";
     }
 
     // Include bullet point list
     markdown += `\n\n
-        - ${faker.lorem.sentence(3)}
-        - ${faker.lorem.sentence(3)}
-        - ${faker.lorem.sentence(3)}
+        - ${generateHackerParagraph(1)}
+        - ${generateHackerParagraph(1)}
+        - ${generateHackerParagraph(1)}
     `
 
     return markdown;
 }
 
 export function mockThread(index : number | undefined) : Thread {
-  const title = faker.lorem.sentence();
-  let content = faker.lorem.sentence(3);
+  const title = `${firstLetterUpperCase(faker.hacker.ingverb())} ${faker.hacker.noun()}`;
+  let content = generateHackerParagraph(2);
 
   content = "... " + content;
-  content = content +  ` <Highlight>${faker.lorem.sentence(1)}</Highlight> ` + faker.lorem.sentence(1);
+  content = content +  ` <Highlight>${faker.hacker.phrase()}</Highlight> ` + faker.hacker.phrase();
   content = content + " ...";
 
   let mockedThread : Thread = {
@@ -178,8 +178,24 @@ export function mockThread(index : number | undefined) : Thread {
   return mockedThread;
 }
 
+function firstLetterUpperCase(str: string) : string {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 export function mockThreads(length: number) : Thread[] {
     return Array.from({ length }).map((_, index) => {
         return mockThread(index);
     });
+}
+
+function generateHackerParagraph(sentenceNumber: number) : string {
+    let paragraph = "";
+
+    for (let i = 0; i < sentenceNumber; i++) {
+        paragraph += faker.hacker.phrase() + " ";
+    }
+
+    paragraph.replace("!", ".");
+
+    return paragraph;
 }
