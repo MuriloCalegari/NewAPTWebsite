@@ -113,7 +113,7 @@ const Frame = observer((props: FrameProps) => {
                     );
                   }
 
-                  return <NavItem key={rest.eventKey} {...rest} className={rest.to === location.pathname ? "turn-blue" : "no-turn-blue"} />;
+                  return <NavItem key={rest.eventKey} {...rest} className={rest.to === location.pathname ? "turn-blue" : (theme==='dark' ? 'white' : "no-turn-blue")} />;
                 })}
                 {console.log("done")}
               </Nav>
