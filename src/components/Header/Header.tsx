@@ -13,7 +13,6 @@ import {
 } from 'rsuite';
 import NoticeIcon from '@rsuite/icons/Notice';
 import { useLocation } from 'react-router-dom';
-import HelpOutlineIcon from '@rsuite/icons/HelpOutline';
 import GithubIcon from '@rsuite/icons/legacy/Github';
 import { Icon } from "@rsuite/icons";
 import { MdOutlineNightlight, MdOutlineLightMode } from 'react-icons/md';
@@ -36,7 +35,7 @@ const renderAdminSpeaker = ({ onClose, left, top, className }: any, ref) => {
       <Dropdown.Menu onSelect={handleSelect}>
         <Dropdown.Item panel style={{ padding: 10, width: 160 }}>
           <p>Signed in as</p>
-          <strong>Administrator</strong>
+          <strong>Robert Duvall</strong>
         </Dropdown.Item>
         <Dropdown.Item divider />
         <Dropdown.Item>Set status</Dropdown.Item>
@@ -45,14 +44,6 @@ const renderAdminSpeaker = ({ onClose, left, top, className }: any, ref) => {
         <Dropdown.Item divider />
         <Dropdown.Item>Settings</Dropdown.Item>
         <Dropdown.Item>Sign out</Dropdown.Item>
-        <Dropdown.Item
-          icon={<HelpOutlineIcon />}
-          href="https://rsuitejs.com"
-          target="_blank"
-          as="a"
-        >
-          Help{' '}
-        </Dropdown.Item>
       </Dropdown.Menu>
     </Popover>
   );
@@ -61,17 +52,13 @@ const renderAdminSpeaker = ({ onClose, left, top, className }: any, ref) => {
 const renderNoticeSpeaker = ({ onClose, left, top, className }: any, ref) => {
   const notifications = [
     [
-      '7 hours ago',
-      'The charts of the dashboard have been fully upgraded and are more visually pleasing.'
+      'Recently',
+      'Added all new features for textbook'
     ],
+    ['4 weeks ago', 'Added first textbook proof of concept.'],
     [
-      '13 hours ago',
-      'The function of virtualizing large lists has been added, and the style of the list can be customized as required.'
-    ],
-    ['2 days ago', 'Upgraded React 18 and Webpack 5.'],
-    [
-      '3 days ago',
-      'Upgraded React Suite 5 to support TypeScript, which is more concise and efficient.'
+      '2 months ago',
+      'We started the base website with the course APTs feature.'
     ]
   ];
 
