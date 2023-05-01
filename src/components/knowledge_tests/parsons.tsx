@@ -78,7 +78,7 @@ export const Parsons = observer(() => {
 
   return (
     <div className="blue">
-      <h2>{(data[0].question)}</h2>
+      
       <div className="parsons">
         <List>
           {(data[0].code).map(({ text, position }, index) => (

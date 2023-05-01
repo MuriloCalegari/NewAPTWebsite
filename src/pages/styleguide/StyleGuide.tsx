@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {observer} from "mobx-react-lite";
 import { useNavigate } from "react-router-dom";
 // @ts-ignore
@@ -26,8 +26,14 @@ const data = [
       }
   }
   ];
+  
 
 export const StyleGuide = observer(() => {
+    
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []) 
+
     const navigate = useNavigate();
     const [view, setView] = React.useState('eye');
 
@@ -112,10 +118,11 @@ export const StyleGuide = observer(() => {
         </MDXProvider>
         </div>
 
-        <div className='textbook-header'>Check Your Understanding</div>
+        
 
-        <div>parsons problems</div>
+        <div className='textbook-header'>Check Your Understanding</div>
             <Parsons/>
+        
 
         </div>
 
