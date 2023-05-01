@@ -73,7 +73,7 @@ npm run dev:proxy
 
 ### Work breakdown
 
-- [Alice Hu](https://github.com/aliceyuhehu): Core textbook content and Highlight's page
+- [Alice Hu](https://github.com/aliceyuhehu): Highlight's Page and Core Textbook Content
 - [Annie Sawers](https://github.com/anniesawers): UI/UX design, Table of Contents, Home Page, Browse, and some of the general textbook styles
 - [Murilo Calegari](https://github.com/MuriloCalegari): Base website architecture, Course APTs and file submission, Chat & Threads sidebar + page, CodeSandBox integration
 - [Silas Lenihan](https://github.com/silaslenihan): Fixie API integration hosted on custom external web server. AI Assistant and code helper, bookmark & highlight features.
