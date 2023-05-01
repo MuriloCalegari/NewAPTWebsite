@@ -1,3 +1,4 @@
+import { defaultListboxReducer } from "@mui/base";
 import { observer } from "mobx-react-lite";
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
@@ -16,10 +17,10 @@ const data = [
   {
     question: "Question Prompt",
     code: [
-      { text: "Roses are red", position: 0 },
-      { text: "Violets are blue", position: -1 },
-      { text: "Sugar is sweet", position: 1 },
-      { text: "And so are you", position: -1 }
+      {id: 0, text: "Roses are red", position: 0 },
+      {id: 1, text: "Violets are blue", position: -1 },
+      {id: 2, text: "Sugar is sweet", position: 1 },
+      {id: 3, text: "And so are you", position: -1 }
     ],
     answerLength: function(){
       let exclude = (this.code).filter(line => line.position === -1);
@@ -31,23 +32,24 @@ const data = [
 export const Parsons = observer(() => {
   const [list, updateList] = useState([]);
   const [solution, updateSolution] = useState(false);
+  const [submitted, updateSubmitted] = useState(false);
   const [pressed, updatePress] = useState(
     new Array((data[0].code).length).fill(false)
   );
   
   //Inserting Data into Sortable List
-  const insertData = (text, position, index) => {
+  const insertData = (id, text, position, index) => {
     if (!pressed[index]) {
-      updateList([...list, { text: text, position: position }]);
+      updateList([...list, {id: id, text: text, position: position }]);
       handlePressed(index);
     }
   };
 
   //Updating whether Button has been pressed
-  const handlePressed = (index) => {
+  const handlePressed = (id) => {
     updatePress((prevState) => {
       const newPress = [...prevState];
-      newPress[index] = !newPress[index];
+      newPress[id] = !newPress[id];
       return newPress;
     });
   };
@@ -63,6 +65,7 @@ export const Parsons = observer(() => {
 
   //Checking Answer
   const handleSubmission = (answerLen) => {
+    updateSubmitted(true)
     if (list.length === answerLen) {
       for (let i = 0; i < list.length; i++) {
         console.log(list[i])
@@ -76,38 +79,69 @@ export const Parsons = observer(() => {
       updateSolution(false);
     }};
 
+  //Reseting Problem
+  const handleReset = () =>{
+    updateList([])
+    updateSolution(false)
+    updateSubmitted(false)
+    const resetPressed = [...pressed]
+    resetPressed.fill(false)
+    updatePress(resetPressed)
+  }
+
+  //Deleting Data from Sortable List
+  const deleteData = (id, index) => {
+    const dList = [...list]
+    dList.splice(index, 1)
+    updateList(dList)
+    handlePressed(id)
+  }
+
   return (
-    <div className="blue">
-      <h2>{(data[0].question)}</h2>
+    <div className="parsonsProblem">
+      <h2 className="question">{(data[0].question)}</h2>
       <div className="parsons">
-        <List>
-          {(data[0].code).map(({ text, position }, index) => (
+        <List className="providedCode">
+          {(data[0].code).map(({id, text, position }, index) => (
             <List.Item className="codeLine" key={index} index={index}>
             <div className="codeText">
               {text}
-            </div>    
-            <div className="Insertborder">
-              <button className="Insertbutton" onClick={() => insertData(text, position, index)} disabled = {pressed[index]}> 
-                  Insert 
-              </button>
-            </div>
-            
+            </div> 
+               
+            <button className="insertButton" onClick={() => insertData(id, text, position, index)} disabled = {pressed[index]}> 
+                Insert 
+            </button>
             </List.Item>
           ))}
         </List>
-        <List sortable onSort={handleSortEnd}>
-          {list.map(({ text}, index) => (
-            <List.Item key={index} index={index}>
+        
+        <List className="solutionCode" sortable onSort={handleSortEnd}>
+            {list.map(({id, text}, index) => (
+            <List.Item className="solutionLine" key={index} index={index}>
+            <div className="solText">
               {text}
-            </List.Item>
+            </div>  
+
+            <button className="deleteButton" onClick={() => deleteData(id, index)}> 
+              Delete 
+            </button>
+          </List.Item>
           ))}
         </List>
       </div>
-      <button className="Submitbutton" onClick={() => handleSubmission(data[0].answerLength())}> Submit </button>
-      {solution ? 
-        <Message showIcon type="success" header="Success">
-        Detailed description and advices about successful copywriting.
-      </Message>: <div></div>}
+      <div className="cntrlButtons">
+        <button className="resetButton" onClick={() => handleReset()}> Reset</button> 
+        <button className="submitButton" onClick={() => handleSubmission(data[0].answerLength())}> Submit </button> 
+          {submitted && (solution ?
+            <Message showIcon type="success" header="Correct">
+            You got the answer right!
+            </Message>
+            :
+            <Message showIcon type="error" header="Try Again">
+            Your answer isn't quite right. 
+            </Message>)
+          }
+      </div>
     </div>
   );
 })

@@ -1,29 +1,97 @@
+.parsonsProblem{
+    background-color: #8eb1c2;
+    right: 100px;
+    border-radius: 10px;
+}
+
 .parsons {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
+    column-gap: 50px;
 }
 
-.Submitbutton{
+
+//Buttons
+.insertButton{
+    background-color: aqua;
+    border-radius: 8px;
+}
+.insertButton:disabled{
+    background-color: silver;
+}
+
+.deleteButton{
     background-color: aqua;
     border-radius: 8px;
 }
 
-.Insertbutton{
-    background-color: aqua;
-    border-radius: 8px;
+.cntrlButtons{
+    display: flex;
+    justify-content: center;
 }
 
+.resetButton{
+    background-color: aqua;
+    border-radius: 8px;
+    height: 30px;
+    width: 150px;
+}
+
+.submitButton{
+    background-color: aqua;
+    border-radius: 8px;
+    height: 30px;
+    width: 150px;
+}
+
+
+//Lists
+.providedCode{
+}
+
+.solutionCode{
+}
+
+
+//Individual Items in List
 .codeLine{
     display: flex;
     row-gap: 50px;
     //background-color: orange;
     border-radius: 8px;
-    width: 200px;
-    justify-content: space-evenly;
+    width: 250px;
+    justify-content: space-between;
+}
+.solutionLine{
+    display: flex;
+    row-gap: 50px;
+    //background-color: orange;
+    border-radius: 8px;
+    width: 250px;
+    justify-content: space-between;
 }
 
-.item{
-    background-color: red;
+
+//Text in List
+.codeText {
+    font-family: "Courier New", Courier, monospace;
+    background-color: #f2f2f2;
+    padding: 5px;
+    //border-radius: 5px;
+    color: black;
+  }  
+
+.solText{
+    font-family: "Courier New", Courier, monospace;
+    background-color: #f2f2f2;
+    padding: 5px;
+}
+
+//Text Question
+.question{
+    display: flex;
+    justify-content: center;
+    color: black;
 }
