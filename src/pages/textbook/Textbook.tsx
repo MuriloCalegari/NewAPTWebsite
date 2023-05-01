@@ -7,7 +7,7 @@ import Debugging from "@/pages/textbook/chapters/Debugging.mdx";
 import RunestoneContent from '../../components/RunestoneContent';
 
 export const Textbook = observer(() => {
-    console.log("hey")
+    
 
     return (<PageContent bodyFill className="textbook-page">
         <Panel>

@@ -58,7 +58,7 @@ const Frame = observer((props: FrameProps) => {
     const pathname = location.pathname
     const prefix = '/contents/page';
     return pathname.startsWith(prefix) && pathname.length > prefix.length;
-  }; 
+  };
 
   useEffect(() => {
     setWindowHeight(getHeight(window));
@@ -94,7 +94,7 @@ const Frame = observer((props: FrameProps) => {
                 {navs.map(item => {
                   const { children, ...rest } = item;
                   if (children) {
-                    console.log("annie1");
+
                     return (
                       <Nav.Menu key={item.eventKey} placement="rightStart" trigger="hover" {...rest}>
                         {children.map(child => {
@@ -105,16 +105,17 @@ const Frame = observer((props: FrameProps) => {
                   }
 
                   if (rest.target === '_blank') {
-                    console.log("annie2");
+
                     return (
                       <Nav.Item key={item.eventKey} {...rest}>
                         {item.title}
                       </Nav.Item>
                     );
                   }
-                  console.log(rest.eventKey);
-                  return <NavItem key={rest.eventKey} {...rest} className='turn-blue'/>;
+
+                  return <NavItem key={rest.eventKey} {...rest} className={rest.to === location.pathname ? "turn-blue" : "no-turn-blue"} />;
                 })}
+                {console.log("done")}
               </Nav>
             </Sidenav.Body>
           </Sidenav>

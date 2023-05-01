@@ -1,9 +1,7 @@
 import React from 'react';
 import { Icon } from '@rsuite/icons';
-import PageIcon from '@rsuite/icons/Page';
-import { MdDashboard } from 'react-icons/md';
 import { AiOutlineUsergroupAdd, AiOutlineOrderedList, AiOutlineTrophy, AiOutlineHighlight, AiOutlineQuestionCircle, AiOutlineSearch } from 'react-icons/ai';
-import { BsBookmark } from 'react-icons/bs';
+import { BsBookmark, BsTerminal } from 'react-icons/bs';
 import TextImageIcon from '@rsuite/icons/TextImage';
 
 export const appNavs = [
@@ -16,8 +14,8 @@ export const appNavs = [
   {
     eventKey: 'bookmarked',
     icon: <Icon as={BsBookmark} />,
-    title: 'Bookmark',
-    to: '/contents/bookmark'
+    title: 'Bookmarks',
+    to: '/contents/bookmarks'
   },
   {
     eventKey: 'journey',
@@ -44,6 +42,12 @@ export const appNavs = [
     to: '/contents/friends'
   },
   {
+    eventKey: 'course_apts',
+    icon: <Icon as={BsTerminal} />,
+    title: 'Course APTs',
+    to: '/contents/course_apts'
+  },
+  {
     eventKey: 'search',
     icon: <Icon as={AiOutlineSearch} />,
     title: 'Search',
@@ -55,6 +59,4 @@ export const appNavs = [
     title: 'Help Center',
     to: '/contents/help'
   },
-  
-  
 ];

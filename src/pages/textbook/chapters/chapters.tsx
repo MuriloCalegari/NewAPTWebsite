@@ -117,7 +117,7 @@ export const chapters : Chapter[] =
             ],
             rewards: "Violet, Orange, Lime"
         },
-        
+
         {
             id: "arraylists",
             title: "Learning about ArrayLists",
@@ -159,11 +159,11 @@ export const chapters : Chapter[] =
                     description: "This lesson concludes the LinkedLists section and includes a post class exercise.",
                     activeUsers: mockDifferentUsers(faker.datatype.number({min: 1, max: 5}))
                 },
-              /* {
-                    id: "exercises",
-                    title: "Exercises",
-              //      content: <Dictionaries/>,
-                },*/
+                /* {
+                      id: "exercises",
+                      title: "Exercises",
+                //      content: <Dictionaries/>,
+                  },*/
                 {
                     id: "lists_inclass",
                     title: "In Class",
@@ -174,9 +174,9 @@ export const chapters : Chapter[] =
             ],
             rewards: "Indigo, Periwinkle, Scarlet"
         },
-        
 
-        
+
+
     ];
 
 export const chapterParts : Part[] = chapters.flatMap((chapter) => chapter.parts);
