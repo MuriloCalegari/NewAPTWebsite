@@ -102,6 +102,10 @@ npm run dev:proxy
 - We would also love to integrate the APT system with Duke's official
   APT submission system.
 
+### Presentation
+
+A quick presentation on our thoughts and ideas behind the textbook can be found [here](https://github.com/MuriloCalegari/NewAPTWebsite/blob/20c6cbb292e7258e13e01668e45d81daea4072fa/images/CS390%20Project.pdf)
+
 ### Screenshots
 
 ![Home Page](./images/1_home_page.png)
