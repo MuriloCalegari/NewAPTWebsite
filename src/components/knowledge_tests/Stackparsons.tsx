@@ -9,16 +9,12 @@ import {Divider, List, Message } from "rsuite";
 //How to format Question Data for Problem
 const data = [
   {
-    question: "You are given 2 integers, x and y, as well as 2 lists, lst1 and lst2. Using indexing and concatenation make a new list, ret, such that the first element in ret is the yth element in lst2 and the second element of ret is the xth element in lst1",
-    code: [
-      {id: 0, text: "return ret", position: 3},
-      {id: 1, text: "ret = lst2[x]", position: -1 },
-      {id: 2, text: "def concatTwoLists(x, y, lst1, lst2)", position: -1 },
-      {id: 3, text: "ret = lst2[y]", position: 1 },
-      {id: 4, text: "ret += lst1[x]", position: 2},
-      {id: 5, text: "def concatTwoLists(x, y, lst1, lst2):", position: 0},
-      {id: 6, text: "ret += lst2[y]", position: -1},
-      {id: 7, text: "ret = lst1[x + y]", position: -1},
+    question: "Assume you are given the string '89CS3'. Let's say we push the string to a stack character by character. What would the order of the stack look like? The first character we would pop off the stack should be at the top of the list.",
+    code:  [{id: 0, text: "3", position: 0},
+      {id: 1, text: "9", position: 3 },
+      {id: 2, text: "8", position: 4 },
+      {id: 3, text: "C", position: 2 },
+      {id: 4, text: "S", position: 1}
     ],
     answerLength: function(){
       let exclude = (this.code).filter(line => line.position === -1);
