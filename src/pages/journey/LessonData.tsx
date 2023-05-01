@@ -1,6 +1,8 @@
 import { LoopType } from "@rive-app/react-canvas";
 import { Lesson } from "./LessonParams";
 
+
+
 export const LessonsData: Lesson[] = [
     {
         chapter: "Chapter 1",

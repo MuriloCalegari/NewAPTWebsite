@@ -2,6 +2,7 @@
   z-index: 1050;
   backdrop-filter: blur(2px);
 }
+
 .problem-set-cards {
   background: #fff;
   margin-top: 30px;
@@ -76,6 +77,7 @@
     border: #1c57a3;
     color: #FFFFFF;
   }
+
   &.current {
     background: #0c3469;
     border: #0c3469;
@@ -85,18 +87,27 @@
 
 .friends {
   width: 100px;
-  height: 75px;
+  height: 45px;
   margin: 10px;
   border: #1c57a3;
   background: #5686c4;
   margin-right: 0px;
   color: #FFFFFF;
+
+  &:hover {
+    background: #f5f5f5;
+    border: #1c57a3;
+    color: #1c57a3;
+    cursor: pointer;
+  }
 }
 
 .lesson-option {
-  width: 150px;
-  height: 150px;
+  width: 125px;
+  height: 75px;
   margin: 10px;
+  appearance: "primary";
+
 
   &.notselected {
     background: #7894be;
@@ -110,24 +121,49 @@
     color: #FFFFFF;
   }
 
+  &:hover {
+    background: #f5f5f5;
+    border: #1c57a3;
+    color: #1c57a3;
+    cursor: pointer;
+  }
+
 }
 
-.reward-chest {
+.reward-chest-unopened {
   width: 150px;
   height: 150px;
   margin: 10px;
 
-  &.opened {
-    background: #92662c;
-    border: #92662c;
-    color: rgb(255, 255, 255);
+  background: rgb(59, 36, 2);
+  border: rgb(59, 36, 2);
+  color: #FFFFFF;
+
+}
+
+//  &.opened {
+//background: #92662c;
+//border: #92662c;
+//color: rgb(255, 255, 255);
+//}
+
+.friend-buttons {
+  width: 100px;
+  height: 50px;
+  margin: 10px;
+  background: #1c57a3;
+  border: #1c57a3;
+  color: #FFFFFF;
+  //center text and make it smaller
+  text-align: center;
+
+  &:hover {
+    background: #f5f5f5;
+    border: #1c57a3;
+    color: #1c57a3;
+    cursor: pointer;
   }
 
-  &.unopened {
-    background: rgb(59, 36, 2);
-    border: rgb(59, 36, 2);
-    color: #FFFFFF;
-  }
 }
 
 .rs-theme-dark {
