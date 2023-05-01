@@ -13,7 +13,7 @@ function useSelectedText(): SelectedTextData {
     const [selectedTextData, setSelectedTextData] = useState<SelectedTextData>({ text: '', top: 0, left: 0, className: '' });
     const { textbookStore } = useStores();
     const { sidebarState } = textbookStore;
-    const allowedClassNames = ["code-text-panel", "rs-panel-body", "textbook-content", "textbook-card"];
+    const allowedClassNames = ["code-text-panel", "rs-panel-body", "textbook-content", "textbook-card", "textbook-page-container", "rs-content"];
 
     useEffect(() => {
         const handleMouseUp = () => {
@@ -31,7 +31,6 @@ function useSelectedText(): SelectedTextData {
 
                     setSelectedTextData({ text: selection.toString(), top: centerY, left: centerX, className: className || '' });
                 }
-
             } else {
                 setSelectedTextData({ text: '', top: 0, left: 0, className: '' });
             }
