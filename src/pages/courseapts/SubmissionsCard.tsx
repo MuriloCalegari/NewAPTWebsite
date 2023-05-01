@@ -8,8 +8,6 @@ import {SubmitButton} from "@/components/Buttons/SubmitButton";
 import {PerformanceGraph} from "@/components/graphs/PerformanceGraph";
 import {memoryData, runtimeData} from "@/data/ProblemSetsData";
 import React, {useEffect} from "react";
-import GlitchSquiggly from 'react-glitch-effect/core/GlitchSquiggly';
-import GlitchText from 'react-glitch-effect/core/GlitchText';
 import useSound from "use-sound";
 // @ts-ignore
 import computingSound from "@/media/animations/classic-computing-sound.mp3";
@@ -69,13 +67,7 @@ export const SubmissionsCard = observer((props: SubmissionsCardProps) => {
             setHasAnimationRun(true);
         }, 1350);
 
-        return (
-            <GlitchText>
-                <GlitchSquiggly className={"glitch-squiggly"}>
-                    {renderPanelGroup()}
-                </GlitchSquiggly>
-            </GlitchText>
-        );
+        return renderPanelGroup();
     }
 
     return (<Panel

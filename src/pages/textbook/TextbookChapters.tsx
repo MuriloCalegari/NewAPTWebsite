@@ -17,27 +17,27 @@ export const TextbookChapters = observer(() => {
 
     function goToStyleGuide() {
         navigate(`/contents/page/styleguide`);
-    }   
+    }
 
 
-    return ( 
-    
-    <PageContent bodyFill className="textbook-page" header={
-        <div className="textbook-title">
-            Introduction to the Design and Analysis of Algorithms
-        </div>
+    return (
+
+        <PageContent bodyFill className="textbook-page" header={
+            <div className="textbook-title">
+                Introduction to the Design and Analysis of Algorithms
+            </div>
         }>
 
-        <Panel collapsible bordered className="section" header={
-            <div style={{marginRight:'-20px'}}>
-                <div className="assignments" style={{fontSize:18}}> Assigned Readings </div>
-                <div className="assignments" style={{fontSize:14}}> 
-                    {new Date(assignments[0].due).toLocaleDateString("en-US", { weekday: 'long' }) + ", " + assignments[0].due} 
+            <Panel collapsible bordered className="section" header={
+                <div style={{ marginRight: '-20px' }}>
+                    <div className="assignments" style={{ fontSize: 18 }}> Assigned Readings </div>
+                    <div className="assignments" style={{ fontSize: 14 }}>
+                        {new Date(assignments[0].due).toLocaleDateString("en-US", { weekday: 'long' }) + ", " + assignments[0].due}
+                    </div>
+                    <div>
+                        <Progress.Line className="progress-bar" percent={75} showInfo={false} strokeColor={"var(--blue)"} />
+                    </div>
                 </div>
-                <div>
-                    <Progress.Line className="progress-bar" percent={75} showInfo={false} strokeColor={"var(--blue)"} />
-                </div>
-            </div>
             }>
             
             <div>
@@ -54,41 +54,41 @@ export const TextbookChapters = observer(() => {
             </div>
         </Panel>
 
-        <div className="textbook-title" style={{marginLeft:'0px', marginBottom:'20px'}}>
-            All Chapters:
-        </div>
-
-        
-
-        <PanelGroup accordion className="section">
-            {chapters.map((chapter, chapterIndex) => {
-                return (
-                    <Panel header={<div style={{fontSize:18}}>{(chapterIndex + 1) + ". " + chapter.title}</div>} eventKey={chapter.id}>
-                        <List>
-                            {chapter.parts.map((part, index) => {
-                                return (
-                                    <div className="assignment" onClick={() => goToPart(part)}>
-                                    <div>
-                                        <Progress.Circle trailColor='var(--dark-gray)' strokeWidth={20} strokeColor={"var(--red)"} style={{ width: 15, marginLeft: '5px' }} percent={0} showInfo={false} />
-                                    </div> 
-                                    <div className="assignment-title">
-                                    {(chapterIndex + 1) + "." + (index + 1) + " " + part.title}
-                                    </div>
-                                    </div>
-
-                                   
-                                );
-                            })
-                            }
-                        </List>
-                    </Panel>
-                );
-            })
-            }
-
-        </PanelGroup>
+            <div className="textbook-title" style={{ marginLeft: '0px', marginBottom: '20px' }}>
+                All Chapters:
+            </div>
 
 
-    </PageContent>
+
+            <PanelGroup accordion className="section">
+                {chapters.map((chapter, chapterIndex) => {
+                    return (
+                        <Panel header={<div style={{ fontSize: 18 }}>{(chapterIndex + 1) + ". " + chapter.title}</div>} eventKey={chapter.id}>
+                            <List>
+                                {chapter.parts.map((part, index) => {
+                                    return (
+                                        <div className="assignment" onClick={() => goToPart(part)}>
+                                            <div>
+                                                <Progress.Circle trailColor='var(--dark-gray)' strokeWidth={20} strokeColor={"var(--red)"} style={{ width: 15, marginLeft: '5px' }} percent={0} showInfo={false} />
+                                            </div>
+                                            <div className="assignment-title">
+                                                {(chapterIndex + 1) + "." + (index + 1) + " " + part.title}
+                                            </div>
+                                        </div>
+
+
+                                    );
+                                })
+                                }
+                            </List>
+                        </Panel>
+                    );
+                })
+                }
+
+            </PanelGroup>
+
+
+        </PageContent>
     );
 });

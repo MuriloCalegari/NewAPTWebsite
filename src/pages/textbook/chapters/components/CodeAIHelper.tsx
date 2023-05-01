@@ -16,11 +16,10 @@ export const CodeAIHelper = observer(() => {
     }
 
     const handleAI = async () => {
-        const query = `Please tell me if there is anything wrong with this javascript code: \n${code}\n. If there is nothing wrong say nothing is wrong with a quick congraluatory message.`
+        const query = `Will this javascript code lead to any errors or not return the desired output? \n\`\`\`${code}\`\`\`\n.`
         setAiLoading(true)
         const message = await callAPI(query);
         setAiLoading(false)
-        console.log(typeof (message))
         setLastMessage(message);
     }
 

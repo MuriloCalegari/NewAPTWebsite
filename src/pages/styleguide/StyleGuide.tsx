@@ -3,6 +3,7 @@ import {observer} from "mobx-react-lite";
 import { useNavigate } from "react-router-dom";
 // @ts-ignore
 import gif from "@/media/animations/ListSort.gif";
+import {Parsons} from "@/components/knowledge_tests/parsons";
 import { Icon } from '@rsuite/icons';
 import {AiOutlineEye, AiOutlineRead} from "react-icons/ai";
 // @ts-ignore
@@ -10,6 +11,21 @@ import mergesort from "@/media/animations/mergesort.png";
 import { MDXProvider } from "@mdx-js/react";
 import MockCodeTerminal from '@/components/MockCodeTerminal.mdx';
 
+const data = [
+    {
+      question: "Question Prompt",
+      code: [
+        { text: "Roses are red", position: 0 },
+        { text: "Violets are blue", position: -1 },
+        { text: "Sugar is sweet", position: 1 },
+        { text: "And so are you", position: -1 }
+      ],
+      answerLength: function(){
+        let exclude = (this.code).filter(line => line.position === -1);
+        return (this.code).length - exclude.length
+      }
+  }
+  ];
 
 export const StyleGuide = observer(() => {
     const navigate = useNavigate();
@@ -99,7 +115,7 @@ export const StyleGuide = observer(() => {
         <div className='textbook-header'>Check Your Understanding</div>
 
         <div>parsons problems</div>
-
+            <Parsons/>
 
         </div>
 

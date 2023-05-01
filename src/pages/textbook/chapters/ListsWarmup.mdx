@@ -1,22 +1,22 @@
 import { CodeRunner } from "./components/CodeRunner";
-import {Panel} from "rsuite";
-import {Col, Grid, Row, Divider} from "rsuite";
-import {MultipleChoiceQuestion} from "./components/MultipleChoiceQuestion";
-import {lists_questions} from "./lists/questions";
-import {Highlight} from "./components/Highlight";
+import { Panel } from "rsuite";
+import { Col, Grid, Row, Divider } from "rsuite";
+import { MultipleChoiceQuestion } from "./components/MultipleChoiceQuestion";
+import { lists_questions } from "./lists/questions";
+import { Highlight } from "./components/Highlight";
 
 # Warmup
->
-For this exercise, you are given most of the code.
-All that is left to do is fill in the blanks.
+
+> For this exercise, you are given most of the code.
+> All that is left to do is fill in the blanks.
 
 >
+
 ### SentenceLength
->
-As part of analyzing readability you've been asked to compute the average sentence length of a list of sentences.
-Each sentence is a white-space delimited string of words. <Highlight>The length of a sentence is the number of words in it.
-See the examples for details. </Highlight>
 
+> As part of analyzing readability you've been asked to compute the average sentence length of a list of sentences.
+> Each sentence is a white-space delimited string of words. <Highlight>The length of a sentence is the number of words in it.
+> See the examples for details. </Highlight>
 
 <Grid style={{width: "100%"}}>
     <Row>
@@ -44,6 +44,7 @@ See the examples for details. </Highlight>
             </Panel>
         </Col>
     </Row>
+
 </Grid>
 
 ### Complete the code below
@@ -52,6 +53,7 @@ See the examples for details. </Highlight>
 
 <CodeRunner
     javaScriptCode={`
+// The function should return the average sentence length of the inputted sentenceList.
 export function average(sentencelist) {
   let wordsinsentence = 0;
   for (let i = 0; i < sentencelist.length; i++) {
@@ -72,15 +74,15 @@ average(["the", "cat", "ate", "the", "dog"]);
 import { average } from ".";
 
 it("Example 1", () => {
-  expect(average(["the", "cat", "ate", "the", "dog"])).toBe(1);
+expect(average(["the", "cat", "ate", "the", "dog"])).toBe(1);
 });
 `}
 />
 
-<Divider/>
+<Divider />
 
 <MultipleChoiceQuestion
-    title={"Quick check"}
-    subtitle={"What do you currently know about lists?"}
-    questions={lists_questions}
+  title={"Quick check"}
+  subtitle={"What do you currently know about lists?"}
+  questions={lists_questions}
 />

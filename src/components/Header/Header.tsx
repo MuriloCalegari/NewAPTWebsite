@@ -13,7 +13,6 @@ import {
 } from 'rsuite';
 import NoticeIcon from '@rsuite/icons/Notice';
 import { useLocation } from 'react-router-dom';
-import HelpOutlineIcon from '@rsuite/icons/HelpOutline';
 import GithubIcon from '@rsuite/icons/legacy/Github';
 import { Icon } from "@rsuite/icons";
 import { MdOutlineNightlight, MdOutlineLightMode } from 'react-icons/md';
@@ -30,12 +29,13 @@ const renderAdminSpeaker = ({ onClose, left, top, className }: any, ref) => {
   const handleSelect = eventKey => {
     onClose();
   };
+
   return (
     <Popover ref={ref} className={className} style={{ left, top }} full>
       <Dropdown.Menu onSelect={handleSelect}>
         <Dropdown.Item panel style={{ padding: 10, width: 160 }}>
           <p>Signed in as</p>
-          <strong>Administrator</strong>
+          <strong>Robert Duvall</strong>
         </Dropdown.Item>
         <Dropdown.Item divider />
         <Dropdown.Item>Set status</Dropdown.Item>
@@ -44,14 +44,6 @@ const renderAdminSpeaker = ({ onClose, left, top, className }: any, ref) => {
         <Dropdown.Item divider />
         <Dropdown.Item>Settings</Dropdown.Item>
         <Dropdown.Item>Sign out</Dropdown.Item>
-        <Dropdown.Item
-          icon={<HelpOutlineIcon />}
-          href="https://rsuitejs.com"
-          target="_blank"
-          as="a"
-        >
-          Help{' '}
-        </Dropdown.Item>
       </Dropdown.Menu>
     </Popover>
   );
@@ -60,17 +52,13 @@ const renderAdminSpeaker = ({ onClose, left, top, className }: any, ref) => {
 const renderNoticeSpeaker = ({ onClose, left, top, className }: any, ref) => {
   const notifications = [
     [
-      '7 hours ago',
-      'The charts of the dashboard have been fully upgraded and are more visually pleasing.'
+      'Recently',
+      'Added all new features for textbook'
     ],
+    ['4 weeks ago', 'Added first textbook proof of concept.'],
     [
-      '13 hours ago',
-      'The function of virtualizing large lists has been added, and the style of the list can be customized as required.'
-    ],
-    ['2 days ago', 'Upgraded React 18 and Webpack 5.'],
-    [
-      '3 days ago',
-      'Upgraded React Suite 5 to support TypeScript, which is more concise and efficient.'
+      '2 months ago',
+      'We started the base website with the course APTs feature.'
     ]
   ];
 
@@ -118,7 +106,13 @@ const Header = observer((props: HeaderProps) => {
   } = props;
 
   const { textbookStore } = useStores();
-  const { users, isOnCollaborativeMode, bookmark } = textbookStore;
+  const { users, isOnCollaborativeMode, bookmarks } = textbookStore;
+
+  const isContentPath = () => {
+    const pathname = location.pathname
+    const prefix = '/contents/page';
+    return pathname.startsWith(prefix) && pathname.length > prefix.length;
+  };
 
   function handleOnClickThreads() {
     if (textbookStore.sidebarState === 'threads') {
@@ -183,15 +177,16 @@ const Header = observer((props: HeaderProps) => {
         }
         onClick={() => onChangeTheme(theme === 'dark' ? 'light' : 'dark')}
       />
-      <IconButton
+      {isContentPath() && (<IconButton
         icon={
           <Icon
-            as={pathname === bookmark ? BsBookmarkFill : BsBookmark}
+            as={bookmarks.some(bookmark => bookmark === pathname) ? BsBookmarkFill : BsBookmark}
             style={{ fontSize: 20 }}
           />
         }
         onClick={() => textbookStore.setBookmark(pathname)}
-      />
+      />)}
+
       <IconButton
         icon={<GithubIcon style={{ fontSize: 20 }} />}
         href="https://github.com/MuriloCalegari/NewAPTWebsite"
@@ -212,9 +207,10 @@ const Header = observer((props: HeaderProps) => {
         <Avatar
           size="sm"
           circle
-          src="https://avatars.githubusercontent.com/u/1203827"
+          src={theme !== "dark" ? "https://users.cs.duke.edu/~rcd/images/rcd.jpg" : "https://users.cs.duke.edu/~rcd/images/rcd_old.gif"}
           alt="@simonguo"
           style={{ marginLeft: 8 }}
+          imgProps={{style: {objectFit: "cover"}}}
         />
       </Whisper>
     </Stack>
