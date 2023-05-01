@@ -1,0 +1,28 @@
+import { CodeRunner } from "../pages/textbook/chapters/components/CodeRunner";
+
+<CodeRunner
+    javaScriptCode={`
+export function average(sentencelist) {
+  let wordsinsentence = 0;
+  for (let i = 0; i < sentencelist.length; i++) {
+    const item = sentencelist[i];
+    const wordsinitem = item.split(" ");
+    const wordsinindividualsentence = wordsinitem.length;
+    // MODIFY HERE ... WHAT IS NECESSARY TO HAPPEN TO wordsinsentence?
+  }
+  const numberofsentences = sentencelist.length;
+  const result = wordsinsentence / numberofsentences;
+  console.log(result);
+  return result;
+}
+
+average(["the", "cat", "ate", "the", "dog"]);
+`}
+    testCode={`
+import { average } from ".";
+
+it("Example 1", () => {
+  expect(average(["the", "cat", "ate", "the", "dog"])).toBe(1);
+});
+`}
+/>

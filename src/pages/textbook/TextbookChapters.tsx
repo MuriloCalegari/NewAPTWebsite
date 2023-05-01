@@ -42,11 +42,11 @@ export const TextbookChapters = observer(() => {
             
             <div>
                     
-                        <div className="assignment">
+                        <div className="assignment" onClick={goToStyleGuide}>
                             <div>
                                 <Progress.Circle trailColor='var(--dark-gray)' strokeWidth={20} strokeColor={"var(--green)"} style={{ width: 15, marginLeft: '5px' }} percent={100} showInfo={false} />
                             </div> 
-                            <div className="assignment-title" onClick={goToStyleGuide}>
+                            <div className="assignment-title" >
                                 <div>Style Guide</div>
                             </div>
                         </div>
