@@ -35,7 +35,7 @@ export const TextbookChapters = observer(() => {
                         {new Date(assignments[0].due).toLocaleDateString("en-US", { weekday: 'long' }) + ", " + assignments[0].due}
                     </div>
                     <div>
-                        <Progress.Line className="progress-bar" percent={75} showInfo={false} strokeColor={"var(--blue)"} />
+                        <Progress.Line className="progress-bar" percent={100} showInfo={false} strokeColor={"var(--blue)"} />
                     </div>
                 </div>
             }>
@@ -48,6 +48,14 @@ export const TextbookChapters = observer(() => {
                             </div> 
                             <div className="assignment-title" >
                                 <div>Style Guide</div>
+                            </div>
+                        </div>
+                        <div className="assignment" onClick={() => goToPart(chapters[0].parts[0])}>
+                            <div>
+                                <Progress.Circle trailColor='var(--dark-gray)' strokeWidth={20} strokeColor={"var(--green)"} style={{ width: 15, marginLeft: '5px' }} percent={100} showInfo={false} />
+                            </div> 
+                            <div className="assignment-title" >
+                                <div>{chapters[0].parts[0].title}</div>
                             </div>
                         </div>
                 
@@ -69,7 +77,7 @@ export const TextbookChapters = observer(() => {
                                     return (
                                         <div className="assignment" onClick={() => goToPart(part)}>
                                             <div>
-                                                <Progress.Circle trailColor='var(--dark-gray)' strokeWidth={20} strokeColor={"var(--red)"} style={{ width: 15, marginLeft: '5px' }} percent={0} showInfo={false} />
+                                                <Progress.Circle trailColor='var(--dark-gray)' strokeWidth={20} strokeColor={"var(--red)"} style={{ width: 15, marginLeft: '5px' }} percent={100} showInfo={false} />
                                             </div>
                                             <div className="assignment-title">
                                                 {(chapterIndex + 1) + "." + (index + 1) + " " + part.title}
